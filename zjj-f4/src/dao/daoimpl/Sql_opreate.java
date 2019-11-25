@@ -10,6 +10,7 @@ import java.util.List;
 import pojo.Goods;
 import pojo.User;
 import dao.Opreate;
+import db.ConnectionPool;
 import db.Load_sql;
 
 public class Sql_opreate implements Opreate {
@@ -18,7 +19,7 @@ public class Sql_opreate implements Opreate {
 	public List<Goods> goodsShow(int page, int pagesize) {
 		// TODO Auto-generated method stub
 		List<Goods> list=new ArrayList<>();
-	   Connection  cc=Load_sql.jiazai();
+	   Connection  cc=ConnectionPool.getConnection();
 	      String sql="select * from //? limit ?,? ";
 	      try {
 	    	  PreparedStatement pp;
@@ -37,7 +38,7 @@ public class Sql_opreate implements Opreate {
 			e.printStackTrace();
 		}
 	     finally{
-					 Load_sql.myclose(cc);
+					 ConnectionPool.closeConnection(cc);;
 	     }
 	   return list;
 	}
@@ -46,7 +47,7 @@ public class Sql_opreate implements Opreate {
 	public List<Goods> cateShow(int cate_id, int page, int pagesize) {
 		// TODO Auto-generated method stub
 		List<Goods> list=new ArrayList<>();
-		   Connection  cc=Load_sql.jiazai();
+		   Connection  cc=ConnectionPool.getConnection();
 		      String sql="select * from //? where cate_id=? limit ?,? ";
 		      try {
 		    	  PreparedStatement pp;
@@ -66,7 +67,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 		     finally{
-						 Load_sql.myclose(cc);
+		    	 ConnectionPool.closeConnection(cc);
 		     }
 		   return list;
 	}
@@ -74,7 +75,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean login(String name, String password) {
 		// TODO Auto-generated method stub
-		Connection  cc=Load_sql.jiazai();
+		Connection  cc=ConnectionPool.getConnection();
 	      String sql="select * from //? where name=? password=?";
 	     
 	    	  PreparedStatement pp;
@@ -92,7 +93,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally{
-				Load_sql.myclose(cc);
+				ConnectionPool.closeConnection(cc);
 			}
 			return false;
 	}
@@ -100,7 +101,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean register_compare(String name) {
 		// TODO Auto-generated method stub
-		Connection  cc=Load_sql.jiazai();
+		Connection  cc=ConnectionPool.getConnection();
 	      String sql="select * from //? where name=? ";
 	     
 	    	  PreparedStatement pp;
@@ -118,7 +119,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally{
-				Load_sql.myclose(cc);
+				ConnectionPool.closeConnection(cc);
 			}
 			return false;
 	}
@@ -126,7 +127,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean insertUser(User user) {
 		// TODO Auto-generated method stub
-		Connection  cc=Load_sql.jiazai();
+		Connection  cc=ConnectionPool.getConnection();
 	      String sql="insert into //?(name,pass....) value(?,?,?,?...)";
 	     
 	    	  PreparedStatement pp;
@@ -148,7 +149,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally{
-				Load_sql.myclose(cc);
+				ConnectionPool.closeConnection(cc);
 			}
 			return false;
 	}
@@ -156,7 +157,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean insert_shopid(int user_id, int shop_id) {
 		// TODO Auto-generated method stub
-		Connection  cc=Load_sql.jiazai();
+		Connection  cc=ConnectionPool.getConnection();
 	      String sql="insert into //?(shop_id) value(?) where id=?";
 	     
 	    	  PreparedStatement pp;
@@ -176,7 +177,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally{
-				Load_sql.myclose(cc);
+				ConnectionPool.closeConnection(cc);
 			}
 			return false;
 	}
@@ -185,7 +186,7 @@ public class Sql_opreate implements Opreate {
 	public int[] select_shopid(int user_id) {
 		// TODO Auto-generated method stub
 		int [] id = null;
-		Connection  cc=Load_sql.jiazai();
+		Connection  cc=ConnectionPool.getConnection();
 	      String sql="select *shop_id* from //? where user_id=? ";
 	     
 	    	  PreparedStatement pp;
@@ -210,7 +211,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally{
-				Load_sql.myclose(cc);
+				ConnectionPool.closeConnection(cc);
 			}
 			return id;
 	}
@@ -220,7 +221,7 @@ public class Sql_opreate implements Opreate {
 	public Goods selectGoods_shopid(int shop_id) {
 		// TODO Auto-generated method stub
 		Goods  goods=new Goods();
-		Connection  cc=Load_sql.jiazai();
+		Connection  cc=ConnectionPool.getConnection();
 	      String sql="select * from //? where shop_id=? ";
 	     
 	    	  PreparedStatement pp;
@@ -238,7 +239,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally{
-				Load_sql.myclose(cc);
+				ConnectionPool.closeConnection(cc);
 			}
 			return goods;
 		
@@ -248,7 +249,7 @@ public class Sql_opreate implements Opreate {
 	public List<Goods> search(String name) {
 		// TODO Auto-generated method stub
 		List<Goods> list =new ArrayList<>();
-		Connection  cc=Load_sql.jiazai();
+		Connection  cc=ConnectionPool.getConnection();
 	      String sql="select * from //? where desc(描述) like %?% ";
 	     
 	    	  PreparedStatement pp;
@@ -268,7 +269,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally{
-				Load_sql.myclose(cc);
+				ConnectionPool.closeConnection(cc);
 			}
 			return list;
 	
@@ -277,7 +278,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean insert_User(User user) {
 		// TODO Auto-generated method stub		// TODO Auto-generated method stub
-		Connection ccConnection=Load_sql.jiazai();
+		Connection ccConnection=ConnectionPool.getConnection();
 	    String sql="insert into user_imformation(账号,密码,性别,爱好,出生年月,个人简历) values(?,?,?,?,?,?)";
 	      try {
 		PreparedStatement ppst=	ccConnection.prepareStatement(sql);
@@ -298,7 +299,7 @@ public class Sql_opreate implements Opreate {
 			e.printStackTrace();
 		}
 	      finally {
-	    	  Load_sql.myclose(ccConnection);
+	    	  ConnectionPool.closeConnection(ccConnection);
 	    	  
 	      }
 	    
@@ -312,7 +313,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean delete_User(User user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=Load_sql.jiazai();
+		Connection ccConnection=ConnectionPool.getConnection();
 	    String sql="delete from user_imformation where id=?";
 		PreparedStatement ppst;
 		try {
@@ -327,7 +328,7 @@ public class Sql_opreate implements Opreate {
 			
 			e.printStackTrace();
 		}finally {
-	    	  Load_sql.myclose(ccConnection);
+			 ConnectionPool.closeConnection(ccConnection);
 	    	  
 	      }
 		return false;
@@ -336,7 +337,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean update_User(User user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=Load_sql.jiazai();
+		Connection ccConnection=ConnectionPool.getConnection();
 	    String sql="update user_imformation set  账号=? 密码=? 性别=? 爱好=? 出生年月=? 个人简历=? where id=?";
 	      try {
 		PreparedStatement ppst=	ccConnection.prepareStatement(sql);
@@ -357,7 +358,7 @@ public class Sql_opreate implements Opreate {
 			e.printStackTrace();
 		}
 	      finally {
-	    	  Load_sql.myclose(ccConnection);
+	    	  ConnectionPool.closeConnection(ccConnection);
 	    	  
 	      }
 		return false;
@@ -368,7 +369,7 @@ public class Sql_opreate implements Opreate {
 	public User select_User(User user) {
 		// TODO Auto-generated method stub
 		 User aUser=new User();
-		Connection ccConnection=Load_sql.jiazai();
+		Connection ccConnection=ConnectionPool.getConnection();
 	    String sql="select *from user_imformation where id=?";
 		PreparedStatement ppst;
 		try {
@@ -391,7 +392,7 @@ public class Sql_opreate implements Opreate {
 			e.printStackTrace();
 		}
 		finally {
-	    	  Load_sql.myclose(ccConnection);
+			 ConnectionPool.closeConnection(ccConnection);
 	    	  
 	      }
 		
@@ -402,7 +403,7 @@ public class Sql_opreate implements Opreate {
 	public List<User> selectALL_User(User user) {
 		// TODO Auto-generated method stub
 		 List<User> list=new ArrayList<>();
-			Connection ccConnection=Load_sql.jiazai();
+			Connection ccConnection=ConnectionPool.getConnection();
 		    String sql="select *from user_imformation where id=?";
 			PreparedStatement ppst;
 			try {
@@ -425,7 +426,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally {
-		    	  Load_sql.myclose(ccConnection);
+				 ConnectionPool.closeConnection(ccConnection);
 		    	  
 		      }
 			
@@ -435,7 +436,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean insert_Goods(Goods user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=Load_sql.jiazai();
+		Connection ccConnection=ConnectionPool.getConnection();
 	    String sql="insert into user_imformation(账号,密码,性别,爱好,出生年月,个人简历) values(?,?,?,?,?,?)";
 	      try {
 		PreparedStatement ppst=	ccConnection.prepareStatement(sql);
@@ -456,7 +457,7 @@ public class Sql_opreate implements Opreate {
 			e.printStackTrace();
 		}
 	      finally {
-	    	  Load_sql.myclose(ccConnection);
+	    	  ConnectionPool.closeConnection(ccConnection);
 	    	  
 	      }
 	    
@@ -469,7 +470,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean delete_Goods(Goods user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=Load_sql.jiazai();
+		Connection ccConnection=ConnectionPool.getConnection();
 	    String sql="delete from user_imformation where id=?";
 		PreparedStatement ppst;
 		try {
@@ -484,7 +485,7 @@ public class Sql_opreate implements Opreate {
 			
 			e.printStackTrace();
 		}finally {
-	    	  Load_sql.myclose(ccConnection);
+			 ConnectionPool.closeConnection(ccConnection);
 	    	  
 	      }
 		return false;
@@ -493,7 +494,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public boolean update_Goods(Goods user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=Load_sql.jiazai();
+		Connection ccConnection=ConnectionPool.getConnection();
 	    String sql="update user_imformation set  账号=? 密码=? 性别=? 爱好=? 出生年月=? 个人简历=? where id=?";
 	      try {
 		PreparedStatement ppst=	ccConnection.prepareStatement(sql);
@@ -514,7 +515,7 @@ public class Sql_opreate implements Opreate {
 			e.printStackTrace();
 		}
 	      finally {
-	    	  Load_sql.myclose(ccConnection);
+	    	  ConnectionPool.closeConnection(ccConnection);
 	    	  
 	      }
 		return false;
@@ -523,7 +524,7 @@ public class Sql_opreate implements Opreate {
 	@Override
 	public User select_Goods(Goods user) {
 		 User aUser=new User();
-			Connection ccConnection=Load_sql.jiazai();
+			Connection ccConnection=ConnectionPool.getConnection();
 		    String sql="select *from user_imformation where id=?";
 			PreparedStatement ppst;
 			try {
@@ -546,7 +547,7 @@ public class Sql_opreate implements Opreate {
 				e.printStackTrace();
 			}
 			finally {
-		    	  Load_sql.myclose(ccConnection);
+				 ConnectionPool.closeConnection(ccConnection);
 		    	  
 		      }
 			
@@ -557,7 +558,7 @@ public class Sql_opreate implements Opreate {
 	public List<User> selectALL_Goods(Goods user) {
 		// TODO Auto-generated method stub
 		List<User> list=new ArrayList<>();
-		Connection ccConnection=Load_sql.jiazai();
+		Connection ccConnection=ConnectionPool.getConnection();
 	    String sql="select *from user_imformation where id=?";
 		PreparedStatement ppst;
 		try {
@@ -580,7 +581,7 @@ public class Sql_opreate implements Opreate {
 			e.printStackTrace();
 		}
 		finally {
-	    	  Load_sql.myclose(ccConnection);
+			 ConnectionPool.closeConnection(ccConnection);
 	    	  
 	      }
 		
