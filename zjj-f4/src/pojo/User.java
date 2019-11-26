@@ -1,62 +1,47 @@
 package pojo;
 
 public class User {
-    private int userid;
-    private String ufuname;
-    private String ufsex;
-    private String ufphone;
-    private String ufname;
-    private String ufprov;
-    private String ufcity;
-    private String ufcounty;
+	private int userid;
+	private String userpass;
+	private String username;
+	private String usershoping;//购物车信息是多个 id-id-id 这样连接
+	private String userorder;//订单信息是多个
+	private String useradress;//地址是多个
 	public int getUserid() {
 		return userid;
 	}
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	public String getUfuname() {
-		return ufuname;
+	public String getUserpass() {
+		return userpass;
 	}
-	public void setUfuname(String ufuname) {
-		this.ufuname = ufuname;
+	public void setUserpass(String userpass) {
+		this.userpass = userpass;
 	}
-	public String getUfsex() {
-		return ufsex;
+	public String getUsername() {
+		return username;
 	}
-	public void setUfsex(String ufsex) {
-		this.ufsex = ufsex;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getUfphone() {
-		return ufphone;
+	public String getUsershoping() {
+		return usershoping;
 	}
-	public void setUfphone(String ufphone) {
-		this.ufphone = ufphone;
+	public void setUsershoping(String usershoping) {
+		this.usershoping = usershoping;
 	}
-	public String getUfname() {
-		return ufname;
+	public String getUserorder() {
+		return userorder;
 	}
-	public void setUfname(String ufname) {
-		this.ufname = ufname;
+	public void setUserorder(String userorder) {
+		this.userorder = userorder;
 	}
-	public String getUfprov() {
-		return ufprov;
+	public String getUseradress() {
+		return useradress;
 	}
-	public void setUfprov(String ufprov) {
-		this.ufprov = ufprov;
+	public void setUseradress(String useradress) {
+		this.useradress = useradress;
 	}
-	public String getUfcity() {
-		return ufcity;
-	}
-	public void setUfcity(String ufcity) {
-		this.ufcity = ufcity;
-	}
-	public String getUfcounty() {
-		return ufcounty;
-	}
-	public void setUfcounty(String ufcounty) {
-		this.ufcounty = ufcounty;
-	}
-   
-    
+	
 }
