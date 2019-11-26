@@ -1,3 +1,4 @@
+<%@page import="dao.daoimpl.Goodsdaoimpl"%>
 <%@page import="db.ConnectionPool"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
@@ -24,8 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <% 
-    Connection  c=ConnectionPool.getConnection();
-    System.out.print(c);
+    Goodsdaoimpl goim =new Goodsdaoimpl();
+    System.out.print(goim.selectByGoodsId(1));
   
    %>
      <center>

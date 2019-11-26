@@ -7,10 +7,10 @@ public class Goods {
    private String goodsimg;
    private String goodstype;
    private String goodsdesc;
-   private String goodsbigtype;
-   private String goodssmalltype;
-   private String goodscolor;
-   private String goodsmaterial;
+   private int goodsbigtype;
+   private int goodssmalltype;
+   private int goodscolor;
+   private int goodsmaterial;
 public int getGoodsid() {
 	return goodsid;
 }
@@ -47,28 +47,29 @@ public String getGoodsdesc() {
 public void setGoodsdesc(String goodsdesc) {
 	this.goodsdesc = goodsdesc;
 }
-public String getGoodsbigtype() {
+
+public int getGoodsbigtype() {
 	return goodsbigtype;
 }
-public void setGoodsbigtype(String goodsbigtype) {
+public void setGoodsbigtype(int goodsbigtype) {
 	this.goodsbigtype = goodsbigtype;
 }
-public String getGoodssmalltype() {
+public int getGoodssmalltype() {
 	return goodssmalltype;
 }
-public void setGoodssmalltype(String goodssmalltype) {
+public void setGoodssmalltype(int goodssmalltype) {
 	this.goodssmalltype = goodssmalltype;
 }
-public String getGoodscolor() {
+public int getGoodscolor() {
 	return goodscolor;
 }
-public void setGoodscolor(String goodscolor) {
+public void setGoodscolor(int goodscolor) {
 	this.goodscolor = goodscolor;
 }
-public String getGoodsmaterial() {
+public int getGoodsmaterial() {
 	return goodsmaterial;
 }
-public void setGoodsmaterial(String goodsmaterial) {
+public void setGoodsmaterial(int goodsmaterial) {
 	this.goodsmaterial = goodsmaterial;
 }
 @Override
