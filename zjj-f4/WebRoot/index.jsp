@@ -1,4 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@page import="db.ConnectionPool"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,6 +23,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+  <% 
+    Connection  c=ConnectionPool.getConnection();
+    System.out.print(c);
+  
+   %>
+     <center>
+     
+    <a   onclick="chuandi(this)"  name="dingfeng" id="1ahdab1" >点我传送数据</a>
+     </center>
   </body>
 </html>
+<script  src="js/jquery-3.4.1.min.js"></script>
+<script>
+    function chuandi(obj){
+		var name=obj.name;
+		var value=obj.id;
+		console.log(value);
+		$.get({
+		 type:"POST",
+		 url:"show.do",
+		 data:{"name":name,"value":value},
+		 success:function(result){
+		 
+		 console.log(JSON.parse(result));
+		 
+		 }
+		 
+		
+		
+		
+		})
+		
+	} 
+
+
+
+</script>

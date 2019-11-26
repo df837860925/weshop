@@ -31,7 +31,7 @@ public class ConnectionPool {
 	{
 		
 		try {
-			ds = (DataSource) ct.lookup("java:comp/env/c3p0_sql");
+			ds = (DataSource) ct.lookup("java:comp/env/mysql");
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

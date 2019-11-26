@@ -5,16 +5,21 @@
     <servlet-name>Mvc_servlet</servlet-name>
     <display-name>This is the display name of my J2EE component</display-name>
     <description>This is the description of my J2EE component</description>
-    <servlet-class>servlet.Mvc_servlet</servlet-class>
+    <servlet-class>service.core.Mvc_servlet</servlet-class>
+    <init-param>
+      <param-name>configLocaltion</param-name>
+      <param-value>/WEB-INF/config.properties</param-value>
+    </init-param>
+    <init-param>
+ 		<param-name>configLocation</param-name>
+ 		<param-value>/WEB-INF/config.properties</param-value>
+ 	</init-param>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>Mvc_servlet</servlet-name>
     <url-pattern>*.do</url-pattern>
-    <init-param>
-      <param-name>configlocaltion</param-name>
-      <param-value>/WEB-INF/config.properties</param-value>
-    </init-param>
+    
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -25,8 +30,8 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <resource-ref>
-  <res-ref-name>c3p0_sql</res-ref-name>
-  <res-type>com.mchange.v2.c3p0.ComboPooledDataSource</res-type>
+  <res-ref-name>mysql</res-ref-name>
+  <res-type>javax.sql.DataSource</res-type>
   <res-auth>Container</res-auth>
   
   
