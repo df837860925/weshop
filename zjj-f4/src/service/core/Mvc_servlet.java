@@ -63,17 +63,20 @@ public class Mvc_servlet extends HttpServlet {
 	//从初始化中拿到map，的信息 以及配置；
 	Properties  map=(Properties)	  this.getServletContext().getAttribute("action");
 	Properties  config=(Properties)	  this.getServletContext().getAttribute("config");
+	
 	//获得项目之后的路径
 		    String uri  = request.getRequestURI();
 		    //进行字符串的拆分，拿到跳转的名字
 		    int begin= uri.lastIndexOf("/");
-		     int end=uri.indexOf("\\.");
+		     int end=uri.indexOf(".");
 		     if (begin!=-1&&end!=-1&&end>begin) {
 				
 		    uri=  uri.substring(begin+1, end);
 			}
 		    //将跳转的名字拼接成想要的类的名字
 		      String  classFormPath=uri+"Form";
+		      System.out.println(classFormPath);
+		      System.out.println(config);
 		      String  classform=  config.getProperty(classFormPath);
 		      //加载该类
 		      Class class1;
@@ -81,6 +84,7 @@ public class Mvc_servlet extends HttpServlet {
 			try {
 				class1 = Class.forName(classform);
 				 af=   (ActionForm)class1.newInstance();
+				  System.out.println(request.getParameter("value"));
 			// 拿到request的所有值 将值赋予给actionform 
 			Set<Map.Entry<String, String[]>>	set=   request.getParameterMap().entrySet();
 				
@@ -130,7 +134,8 @@ public class Mvc_servlet extends HttpServlet {
 	public void init() throws ServletException {
 		//准备一个存实例的MAP集合
 		Properties action=new Properties();
-		    String configpath= this.getServletContext().getInitParameter("configloacltion");
+		    String configpath= this.getServletConfig().getInitParameter("configLocaltion");
+		    System.out.println(configpath+"1111111111111111111111");
 		    String path=this.getServletContext().getRealPath("/")+configpath;
 		    
 		    Properties config=new Properties();
