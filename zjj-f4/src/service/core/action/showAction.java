@@ -1,6 +1,9 @@
 package service.core.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.json.JsonObject;
@@ -31,7 +34,7 @@ public class showAction extends Action{
 		   System.out.println(name+"======="+value);
 		    
 		
-		  ServletOutputStream outputStream=    response.getOutputStream();
+		   PrintWriter pw =    response.getWriter();
 		  
 		  String  aStrin="{a:12,b:11}";
 		  JSONObject object=JSONObject.fromObject(aStrin);
@@ -41,13 +44,18 @@ public class showAction extends Action{
 			jsonclass  c=new jsonclass();
 			c.setList(list);
 			c.setCode(0);
-		c.setMessage(new String("获取数据成功".getBytes("ISO-8859-1")));
-			
-		
+		c.setMessage("获取数据成功");
+	
 		
 			JSONObject c1 = JSONObject.fromObject(c);
-		  
-		  outputStream.print(c1.toString());
+			
+		  request.setCharacterEncoding("utf-8");
+			response.setCharacterEncoding("UTF-8");
+//			response.setContentType("text/html; charset=UTF-8");
+			response.setContentType("text/json;charset=utf-8");
+	
+			System.out.println(c1.toString());
+		  pw.print(c1.toString());
 		
 		
 		return new ActionForword("succsee");

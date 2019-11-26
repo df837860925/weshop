@@ -7,8 +7,10 @@ public class Goods {
    private String goodsimg;
    private String goodstype;
    private String goodsdesc;
-   private String goodssex;
-   private String goodsbody;
+   private String goodsbigtype;
+   private String goodssmalltype;
+   private String goodscolor;
+   private String goodsmaterial;
 public int getGoodsid() {
 	return goodsid;
 }
@@ -45,25 +47,40 @@ public String getGoodsdesc() {
 public void setGoodsdesc(String goodsdesc) {
 	this.goodsdesc = goodsdesc;
 }
-public String getGoodssex() {
-	return goodssex;
+public String getGoodsbigtype() {
+	return goodsbigtype;
 }
-public void setGoodssex(String goodssex) {
-	this.goodssex = goodssex;
+public void setGoodsbigtype(String goodsbigtype) {
+	this.goodsbigtype = goodsbigtype;
 }
-public String getGoodsbody() {
-	return goodsbody;
+public String getGoodssmalltype() {
+	return goodssmalltype;
 }
-public void setGoodsbody(String goodsbody) {
-	this.goodsbody = goodsbody;
+public void setGoodssmalltype(String goodssmalltype) {
+	this.goodssmalltype = goodssmalltype;
+}
+public String getGoodscolor() {
+	return goodscolor;
+}
+public void setGoodscolor(String goodscolor) {
+	this.goodscolor = goodscolor;
+}
+public String getGoodsmaterial() {
+	return goodsmaterial;
+}
+public void setGoodsmaterial(String goodsmaterial) {
+	this.goodsmaterial = goodsmaterial;
 }
 @Override
 public String toString() {
 	return "Goods [goodsid=" + goodsid + ", goodsname=" + goodsname
 			+ ", goodsprice=" + goodsprice + ", goodsimg=" + goodsimg
 			+ ", goodstype=" + goodstype + ", goodsdesc=" + goodsdesc
-			+ ", goodssex=" + goodssex + ", goodsbody=" + goodsbody + "]";
+			+ ", goodsbigtype=" + goodsbigtype + ", goodssmalltype="
+			+ goodssmalltype + ", goodscolor=" + goodscolor
+			+ ", goodsmaterial=" + goodsmaterial + "]";
 }
+
    
    
 	

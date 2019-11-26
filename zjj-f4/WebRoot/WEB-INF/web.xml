@@ -3,6 +3,7 @@
   <display-name>zjj-f4</display-name>
   <servlet>
     <servlet-name>Mvc_servlet</servlet-name>
+
     <display-name>This is the display name of my J2EE component</display-name>
     <description>This is the description of my J2EE component</description>
     <servlet-class>service.core.Mvc_servlet</servlet-class>
@@ -14,6 +15,9 @@
  		<param-name>configLocation</param-name>
  		<param-value>/WEB-INF/config.properties</param-value>
  	</init-param>
+
+   
+
   </servlet>
 
   <servlet-mapping>
@@ -24,10 +28,10 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>main_frame.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>main_frame.jsp</welcome-file>
   </welcome-file-list>
   <resource-ref>
   <res-ref-name>mysql</res-ref-name>
