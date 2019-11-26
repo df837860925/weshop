@@ -76,8 +76,11 @@ public String toString() {
 	return "Goods [goodsid=" + goodsid + ", goodsname=" + goodsname
 			+ ", goodsprice=" + goodsprice + ", goodsimg=" + goodsimg
 			+ ", goodstype=" + goodstype + ", goodsdesc=" + goodsdesc
-			+ ", goodssex=" + goodssex + ", goodsbody=" + goodsbody + "]";
+			+ ", goodsbigtype=" + goodsbigtype + ", goodssmalltype="
+			+ goodssmalltype + ", goodscolor=" + goodscolor
+			+ ", goodsmaterial=" + goodsmaterial + "]";
 }
+
    
    
 	
