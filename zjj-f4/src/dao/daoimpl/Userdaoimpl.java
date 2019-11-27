@@ -64,9 +64,11 @@ public class Userdaoimpl implements Userdao{
 			us.setUserid(id); 
 			us.setUserpass(rs.getString("user_pass"));
 			us.setUsername(rs.getString("user_name"));
+			us.setUseradress(rs.getString("user_adress"));
 			us.setUsershoping(rs.getString("user_shopping"));
 			us.setUserorder(rs.getString("user_order"));
 		}
+		ConnectionPool.closeConnection(conn);
 		return us;
 	}
 
@@ -85,9 +87,11 @@ public class Userdaoimpl implements Userdao{
 			us.setUserid(rs.getInt("user_id")); 
 			us.setUserpass(rs.getString("user_pass"));
 			us.setUsername(rs.getString("user_name"));
+			us.setUseradress(rs.getString("user_adress"));
 			us.setUsershoping(rs.getString("user_shopping"));
 			us.setUserorder(rs.getString("user_order"));
 		}
+		ConnectionPool.closeConnection(conn);
 		return us;
 	}
 
