@@ -98,7 +98,7 @@ function addCart(){
       //用户没有登录    confirm  返回boolean   
       if(confirm('未登录，点击确定跳转登录页面')){
         //跳到登录
-        location.href = '王凯睿-注册.html?goods_id='+ goodsId+'&gc=2';
+        location.href = 'wkr-zhuce.jsp?goods_id='+ goodsId+'&gc=2';
       };
     };
   });

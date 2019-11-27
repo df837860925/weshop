@@ -333,8 +333,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   					<option value="">长沙市</option>
 	   				</select>
 	   				<p>查找其他地区直营店</p>
-	   				<img src="img/QQ截图20191025211758.png"/>
-	   				
+	   				<img src="img/QQjietu20191025211758.png"/>
 	   			</div>
 	   		</div>
 	   		<div class="row">

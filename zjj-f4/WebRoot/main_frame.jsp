@@ -993,7 +993,7 @@ var a = parseInt($(this).val());
 	
 	})
 	
-	var content_cat=``;
+	var content_cat="";
 	loadnav();
 	function loadnav(){
 		$.get("http://wjian.top/shop/api_cat.php",{},function (resulit){

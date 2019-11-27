@@ -3,10 +3,10 @@
   //发起请求
   $.get('http://www.wjian.top/shop/api_cat.php',{}, function(result){
     var obj = JSON.parse(result);
-    console.log(obj);
+//    console.log(obj);
     //验证
     if(obj.code != 0){
-      console.log(obj.message);
+//      console.log(obj.message);
       return;
     };
     //遍历数据
@@ -72,7 +72,7 @@
     var scrollTop = $(window).scrollTop();
     var windowH = $(window).height();
     var documentH = $(document).height();
-    console.log(scrollTop, windowH, documentH);
+//    console.log(scrollTop, windowH, documentH);
     
     if((scrollTop + windowH) / documentH == 1){
       if(lock){return};
