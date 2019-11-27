@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var value=obj.id;
 		console.log(value);
 		$.get({
-		 type:"get",
+		 type:"POST",
 		 url:"show.do",
 		 data:{"name":name,"value":value},
 		 success:function(result){
