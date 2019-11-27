@@ -1,4 +1,3 @@
-<%@page import="dao.daoimpl.Goodsdaoimpl"%>
 <%@page import="db.ConnectionPool"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
@@ -8,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html><%response.setCharacterEncoding("utf-8");%>
   <head>
     <base href="<%=basePath%>">
     
@@ -25,12 +24,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <% 
-    Goodsdaoimpl goim =new Goodsdaoimpl();
-    System.out.print(goim.selectByGoodsId(1));
+    Connection  c=ConnectionPool.getConnection();
+    System.out.print(c);
   
    %>
      <center>
-     
+     <input type="text" value=""  id="zhuanma"/>
     <a   onclick="chuandi(this)"  name="dingfeng" id="1ahdab1" >点我传送数据</a>
      </center>
   </body>
@@ -47,7 +46,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 data:{"name":name,"value":value},
 		 success:function(result){
 		 
-		 console.log(JSON.parse(result));
+		   console.log(result);
+		   
 		 
 		 }
 		 

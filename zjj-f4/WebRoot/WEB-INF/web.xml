@@ -4,8 +4,6 @@
   <servlet>
     <servlet-name>Mvc_servlet</servlet-name>
 
-    <servlet-class>servlet.Mvc_servlet</servlet-class>
-
     <display-name>This is the display name of my J2EE component</display-name>
     <description>This is the description of my J2EE component</description>
     <servlet-class>service.core.Mvc_servlet</servlet-class>
@@ -17,6 +15,8 @@
  		<param-name>configLocation</param-name>
  		<param-value>/WEB-INF/config.properties</param-value>
  	</init-param>
+
+   
 
   </servlet>
 

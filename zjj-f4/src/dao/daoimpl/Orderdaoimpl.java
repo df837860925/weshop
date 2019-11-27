@@ -20,7 +20,7 @@ public class Orderdaoimpl implements Orderdao{
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setInt(1, ode.getOrderuserid());
 		ps.setInt(2, ode.getOrdergoodsid());
-		ps.setInt(3, ode.getOrdergoodssum());
+		ps.setInt(3, ode.getOrdergoodsum());
 		ps.setInt(4, ode.getOrderadressid());
 		ps.executeUpdate();
 		ConnectionPool.closeConnection(conn);
@@ -58,7 +58,7 @@ public class Orderdaoimpl implements Orderdao{
 			ode.setOrderid(id);
 			ode.setOrderuserid(rs.getInt("order_userid"));
 			ode.setOrdergoodsid(rs.getInt("order_goodsid"));
-			ode.setOrdergoodssum(rs.getInt("order_goodssum"));
+			ode.setOrdergoodsum(rs.getInt("order_goodssum"));
 			ode.setOrderadressid(rs.getInt("order_adress"));
 		}
 		ConnectionPool.closeConnection(conn);
@@ -80,7 +80,7 @@ public class Orderdaoimpl implements Orderdao{
 			ode.setOrderid(rs.getInt("order_id"));
 			ode.setOrderuserid(rs.getInt("order_userid"));
 			ode.setOrdergoodsid(rs.getInt("order_goodsid"));
-			ode.setOrdergoodssum(rs.getInt("order_goodssum"));
+			ode.setOrdergoodsum(rs.getInt("order_goodssum"));
 			ode.setOrderadressid(rs.getInt("order_adress"));
 			}
 		}
