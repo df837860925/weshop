@@ -852,7 +852,7 @@ function loadhtml(x,y)	{
 //		console.log(obj.message);
 		console.log(obj);
 		for (var i=0;i<obj.data.length;i++) {
-			content+='<div class="col-md-4 " id="big_liebao"><div class="liebiao_box"><a href="kqx-xiangqqing.jsp?goods_id='+obj.data[i].goods_id+'"><img src="'+obj.data[i].goods_thumb+'"/></a><ul class="liebiao"><li><p>'+obj.data[i].goods_name+'</p></li><li><p>￥'+obj.data[i].price+'</p></li><li><span class="glyphicon glyphicon-eye-open">'+obj.data[i].star_number+'</span></li></ul></div></div>'
+			content+='<div class="col-md-4 " id="big_liebao"><div class="liebiao_box"><a href="kqx-xiangqing.jsp?goods_id='+obj.data[i].goods_id+'"><img src="'+obj.data[i].goods_thumb+'"/></a><ul class="liebiao"><li><p>'+obj.data[i].goods_name+'</p></li><li><p>￥'+obj.data[i].price+'</p></li><li><span class="glyphicon glyphicon-eye-open">'+obj.data[i].star_number+'</span></li></ul></div></div>'
 			
 		}
 		
