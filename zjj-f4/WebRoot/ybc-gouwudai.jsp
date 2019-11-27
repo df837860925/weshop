@@ -42,6 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				font-size: 11px;
 			}
 	</style>
+	
 	<body>
 		<div class="ybc_nav">
 			<div class="container " id="ybc_mynav">

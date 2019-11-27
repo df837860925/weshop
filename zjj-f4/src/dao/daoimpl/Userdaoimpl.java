@@ -81,8 +81,8 @@ public class Userdaoimpl implements Userdao{
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, username);
 		ResultSet rs=ps.executeQuery();
-		if(rs!=null){
-			rs.next();
+		System.out.println(rs);
+		if(rs.next()){
 			us=new User();
 			us.setUserid(rs.getInt("user_id")); 
 			us.setUserpass(rs.getString("user_pass"));
