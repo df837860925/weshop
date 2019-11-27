@@ -1,16 +1,15 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC"-//W3C//DTD HTML 4.01Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'ybc-gouwudai.jsp' starting page</title>
+    <title>My JSP 'w_smalltype.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,12 +19,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
 		<meta charset="utf-8" />
 		<title></title>
 		<meta name="viewport" content="witdh=device-witdh,initial-scale=1"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/daohang.css"/>
+		<link rel="stylesheet" type="text/css" href="css/w_small_type.css" />
 	</head>
 	<style type="text/css">
 		#last{
@@ -106,140 +105,100 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="row ">
 							<div class="col-lg-4 text-center col-lg-offset-4  visible-lg">
-								<h1>购物袋</h1>
+								<h1>女士</h1>
 							</div>
 						</div>
 			</div>
 		</div>
-		<section class="ybc_main">
-			<div class="container">
-				<div class="row">
-				<div class="col-md-8">
-					<p><input id="quanxuan" type="checkbox" checked="checked"/>全选</p>
-					<hr />
-					<div class="shangping">
-						<input class="check" type="checkbox" checked="checked" />
-						<a><img src="img/pibao.jpg"/></a>
-						<div class="shangping_desc">
-							<div class="shangping_rightline">
-								<a id="shangping_name">柔软皮革书包</a>
-								<p id="shangping_type"><span>款号#</span><span>5878661GZ0X6420</span><p>
-								<p id="shangping_type"><span>款式#</span><span> 红色皮革</span><p>
-							</div>
-							<p class="full">
-								<p>有货</p>
-								<span>预计发货后2-4个工作日送达</span>
-							</p>
-							<a class="con" href="">编辑</a>
-							<span class="fenge">|</span>
-							<a class="con" href="">加入心愿订单</a>
-							<span class="fenge">|</span>
-							<a class="con delete"  href="javascript:;">删除</a>
-						</div>
-						<div class="shangping_price">
-							<div class="shangping_count">
-								<select name="conut_choice" >
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
-							</div>
-							<div class="fsize-md">
-								 <span>￥</span><span class="price">1600.00</span>
-							</div>
-						</div>
+		<section class="ybc_main" style="padding: 0px;">
+			<div class="ybc_clohtes ">
+				<a href="">
+					<img src="https://res.gucci.cn/resources/2019/10/22/1571731200670454_content_LightGray_CategoryDoubleVertical_Medium_360x720_1570117507_CategoryDoubleVertical_SS20MNWLook018_001_Light.jpg" />
+					<div class="banner_clothes">
+						<h2>女士服饰</h2>
+						<p>探索 ></p>
 					</div>
-					<div class="shangping">
-						<input class="check" type="checkbox"  checked="checked"/>
-						<a><img src="img/pibao2.jpg"/></a>
-						<div class="shangping_desc">
-							<div class="shangping_rightline">
-								<a id="shangping_name">Gucci Zumi系列迷你水桶包</a>
-								<p id="shangping_type"><span>款号#</span><span>5764320OLRX9698</span><p>
-								<p id="shangping_type"><span>款式#</span><span>  米色/黑色皮革</span><p>
-							</div>
-							<p class="full">
-								<p class="fsize-sm">有货</p>
-								<span class="gray">预计发货后2-4个工作日送达</span>
-							</p>
-							<a class="con" href="">编辑</a>
-							<span class="fenge">|</span>
-							<a class="con" href="">加入心愿订单</a>
-							<span class="fenge">|</span>
-							<a class="con delete"  href="javascript:;">删除</a>
-						</div>
-						<div class="shangping_price">
-							<div class="shangping_count">
-								<select name="conut_choice" >
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
-							</div>
-							<div class="fsize-md">
-								<span>￥</span><span class="price">7700.00</span>
-							</div>
-						</div>
+				</a>
+			</div>
+			<div class="ybc_handbag">   
+				<div class="banner_handbag ">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/10/15706789081696141_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>手袋</h2>
+						<p>探索 ></p>
 					</div>
+				</a>
 				</div>
-				<div class="col-md-4">
-					<div class="spice">
-						<div class="summery_title">
-							<span class="gray">订单小计</span>
-							<span class="rightf fsize-sm">已选 <span id="spcount">2</span> 件商品</span>
-						</div>
-						<div class="summery_content fsize-sm">
-							<div class="allmonney"><span >商品总计</span><span class="rightf fsize-md">￥<span class="allpay">2600.00</span></span></div>
-							<div class="movepay"><span>运费</span><span class="gray rightf">免费</span></div>
-							<div class="monney"><span>总计</span><span class="rightf fsize-xs">￥<span class="allpay">2600.00</span></div>
-						</div>
-						<div class="summery_desc gray">
-							<p>说明</p>
-							<span>
-							订单提交之后1小时内未付款，订单将被系统自动取消，请您尽快完成支付以确保商品能及时送达，有货商品和门店配货商品是分开寄出。
-							</span>
-						</div>
-						
-						<div class="button">
-							<a href="" class="gopay">立即结算</a>
-							<a href="" class="gobay">继续购买</a>
-						</div>
+			</div>
+			<div class="ybc_shouse">
+				<div class="banner_shouse">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/4/15701334874667130_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>女鞋</h2>
+						<p>探索 ></p>
 					</div>
+				</a>
 				</div>
+			</div>
+			<div class="ybc_wallet">
+				<div class="banner_wallet">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/4/14/15552135146438727_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>皮包&小皮件</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
+			</div>
+			<div class="ybc_belt">
+				<div class="banner_belt">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2017/5/15/14948540515149090_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>腰带</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
+			</div>
+			<div class="ybc_wristwatch">
+				<div class="banner_wristwatch">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/9/8/15679392839127966_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>腕表</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
+			</div>
+			<div class="ybc_jewel">
+				<div class="banner_jewel">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2018/5/9/15258126100208072_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>珠宝</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
+			</div>
+			<div class="ybc_glasses">
+				<div class="banner_glasses">
+					<a href="">
+					<img class="imglimit"  src="https://res.gucci.cn/resources/2019/8/30/15671506341921057_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>眼镜</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
 				</div>
 			</div>
 		</section>
-		<section class="aboutus">
-			<div class="container text-center">
-				<h3>GUCCI 在线精品店全新购物体验</h3>
-				<ul>
-					<li><a href="">Gucci正品认证</a></li>|
-					<li><a href="">免费礼品包装 </a></li>|
-					 <li><a href="">退换货政策</a><li>
-				</ul>
-				<p>Gucci重视个人信息保护，以确保一个安全无忧的购物环境。</p>
-				<a href="">阅读隐私政策。</a>
-			</div>
-		</section>
-		<section class="nearsee">
-			<div class="nearsee4 text-center">
-				<div class="texts">
-					<h3>最近浏览</h3>
-					<span class="glyphicon glyphicon-eye-open">
-					</span>
-					<p>您浏览过的精品</p>
-				</div>
-			</div>
-			<div class="nearsee1">
-				<img src="img/baobao1.jpg"/>
-			</div>
-			<div class="nearsee2">
-				<img src="img/baobao2.jpg"/>
-			</div>
-			<div class="nearsee3">
-				<img src="img/baobao3.jpg"/>
-			</div>
-		</section>
+			
 		<section id="last">
 	   	<div class="container">
 	   		<div class="row">
@@ -294,7 +253,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   					<option value="">长沙市</option>
 	   				</select>
 	   				<p>查找其他地区直营店</p>
-	   				<img src="img/QQjietu20191025211758.png"/>
+	   				<img src="img/QQ截图20191025211758.png"/>
 	   				
 	   			</div>
 	   		</div>
@@ -302,8 +261,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   		    <div class="col-md-3">
 	   		    	<p style="font-size: 11px;">©2019 古驰（中国）贸易有限公司 保留所有权利</p>
 	   		    </div>
-	   		    
-	  
 	   		</div>
 	   	</div>
 	   </section>

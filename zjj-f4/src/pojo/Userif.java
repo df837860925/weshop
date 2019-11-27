@@ -5,7 +5,7 @@ public class Userif {
 	private String userifsex;
 	private String userifphone;
 	private String userifname;//真实姓名
-	private String userifadress;//自己的地址 对应一条地址信息表的记录
+	private int userifadress;//自己的地址 对应一条地址信息表的记录
 	public int getUserifid() {
 		return userifid;
 	}
@@ -30,11 +30,12 @@ public class Userif {
 	public void setUserifname(String userifname) {
 		this.userifname = userifname;
 	}
-	public String getUserifadress() {
+	public int getUserifadress() {
 		return userifadress;
 	}
-	public void setUserifadress(String userifadress) {
+	public void setUserifadress(int userifadress) {
 		this.userifadress = userifadress;
 	}
+	
 	
 }

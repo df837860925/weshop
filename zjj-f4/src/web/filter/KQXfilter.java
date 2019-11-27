@@ -28,6 +28,7 @@ public class KQXfilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) arg1;
 		// 获得session中是否有值
 		HttpSession session = request.getSession();
+		// 账号的参数名loginName
 		Object obj = session.getAttribute("loginName");
 		if (obj == null) {
 			// 没有登录过

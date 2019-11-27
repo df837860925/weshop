@@ -1,14 +1,10 @@
 package pojo;
-/**
- * ∂©µ•–≈œ¢
- * @author Administrator
- *
- */
+
 public class Order {
 	private int orderid;
 	private int orderuserid;
 	private int ordergoodsid;
-	private int ordergoodssum;
+	private int ordergoodsum;
 	private int orderadressid;
 	public int getOrderid() {
 		return orderid;
@@ -28,11 +24,11 @@ public class Order {
 	public void setOrdergoodsid(int ordergoodsid) {
 		this.ordergoodsid = ordergoodsid;
 	}
-	public int getOrdergoodssum() {
-		return ordergoodssum;
+	public int getOrdergoodsum() {
+		return ordergoodsum;
 	}
-	public void setOrdergoodssum(int ordergoodssum) {
-		this.ordergoodssum = ordergoodssum;
+	public void setOrdergoodsum(int ordergoodsum) {
+		this.ordergoodsum = ordergoodsum;
 	}
 	public int getOrderadressid() {
 		return orderadressid;
@@ -40,5 +36,6 @@ public class Order {
 	public void setOrderadressid(int orderadressid) {
 		this.orderadressid = orderadressid;
 	}
+	
 	
 }

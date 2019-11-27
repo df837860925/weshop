@@ -60,6 +60,8 @@ public class Mvc_servlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setHeader("Content-Type", "application/json;charset=utf-8");
 	//从初始化中拿到map，的信息 以及配置；
 	Properties  map=(Properties)	  this.getServletContext().getAttribute("action");
 	Properties  config=(Properties)	  this.getServletContext().getAttribute("config");
@@ -120,7 +122,8 @@ public class Mvc_servlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		  
+//	PrintWriter pWriter=	   response.getWriter();
+//		  pWriter.print("丁锋");
 		  
 		
 		

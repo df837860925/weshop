@@ -56,7 +56,7 @@ public class Goodsdaoimpl implements Goodsdao{
 			good.setGoodscolor(rs.getInt("goods_color"));
 			good.setGoodsmaterial(rs.getInt("goods_material"));
 		}
-		
+		ConnectionPool.closeConnection(conn);
 		return good;
 	}
 
@@ -85,6 +85,7 @@ public class Goodsdaoimpl implements Goodsdao{
 				list.add(good);
 			}
 		}
+		ConnectionPool.closeConnection(conn);
 		return list;
 	}
 
@@ -113,6 +114,7 @@ public class Goodsdaoimpl implements Goodsdao{
 				list.add(good);
 			}
 		}
+		ConnectionPool.closeConnection(conn);
 		return list;
 	}
 

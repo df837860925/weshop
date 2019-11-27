@@ -47,7 +47,6 @@ public String getGoodsdesc() {
 public void setGoodsdesc(String goodsdesc) {
 	this.goodsdesc = goodsdesc;
 }
-
 public int getGoodsbigtype() {
 	return goodsbigtype;
 }
