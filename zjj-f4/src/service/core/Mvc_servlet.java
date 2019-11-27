@@ -92,7 +92,7 @@ public class Mvc_servlet extends HttpServlet {
 				
 			for (Map.Entry<String, String[]> entry : set) {
 				                        String fuc = entry.getKey();
-				  Method m=  class1.getDeclaredMethod("set"+fuc.substring(0,1).toUpperCase()+fuc.substring(1), String.class);
+				  Method m=  class1.getDeclaredMethod("set"+fuc.substring(0,1).toUpperCase()+fuc.substring(1),String.class);
 				      m.invoke(af, entry.getValue()[0]);
 			}
 				
@@ -117,7 +117,8 @@ public class Mvc_servlet extends HttpServlet {
 		try {
 			o = Class.forName(classForName);
 			Action action=(Action) o.newInstance();
-			action.execute(request, response,af);
+			ActionForword forword =action.execute(request, response,af);
+			forword.forword(request, response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

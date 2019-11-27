@@ -1,5 +1,10 @@
+<%@page import="pojo.Goods"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<% 
+	List<Goods> list =(List<Goods>)request.getAttribute("shoppinglist");
+	System.out.print(list);
+%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -42,6 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				font-size: 11px;
 			}
 	</style>
+	
 	<body>
 		<div class="ybc_nav">
 			<div class="container " id="ybc_mynav">
@@ -117,46 +123,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-8">
 					<p><input id="quanxuan" type="checkbox" checked="checked"/>全选</p>
 					<hr />
-					<div class="shangping">
-						<input class="check" type="checkbox" checked="checked" />
-						<a><img src="img/pibao.jpg"/></a>
-						<div class="shangping_desc">
-							<div class="shangping_rightline">
-								<a id="shangping_name">柔软皮革书包</a>
-								<p id="shangping_type"><span>款号#</span><span>5878661GZ0X6420</span><p>
-								<p id="shangping_type"><span>款式#</span><span> 红色皮革</span><p>
-							</div>
-							<p class="full">
-								<p>有货</p>
-								<span>预计发货后2-4个工作日送达</span>
-							</p>
-							<a class="con" href="">编辑</a>
-							<span class="fenge">|</span>
-							<a class="con" href="">加入心愿订单</a>
-							<span class="fenge">|</span>
-							<a class="con delete"  href="javascript:;">删除</a>
-						</div>
-						<div class="shangping_price">
-							<div class="shangping_count">
-								<select name="conut_choice" >
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
-							</div>
-							<div class="fsize-md">
-								 <span>￥</span><span class="price">1600.00</span>
-							</div>
-						</div>
-					</div>
+					<!--循环页面  -->
+					<c:forEach items="${shoppinglist}" var="goods" varStatus="i">
 					<div class="shangping">
 						<input class="check" type="checkbox"  checked="checked"/>
-						<a><img src="img/pibao2.jpg"/></a>
+						<a><img src="${goods.goodsimg}"/></a>
 						<div class="shangping_desc">
 							<div class="shangping_rightline">
-								<a id="shangping_name">Gucci Zumi系列迷你水桶包</a>
+								<a id="shangping_name">${goods.goodsname}</a>
 								<p id="shangping_type"><span>款号#</span><span>5764320OLRX9698</span><p>
-								<p id="shangping_type"><span>款式#</span><span>  米色/黑色皮革</span><p>
+								<p id="shangping_type"><span>款式#</span><span>  ${goods.goodstype}</span><p>
 							</div>
 							<p class="full">
 								<p class="fsize-sm">有货</p>
@@ -177,10 +153,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</select>
 							</div>
 							<div class="fsize-md">
-								<span>￥</span><span class="price">7700.00</span>
+								<span>￥</span><span class="price">${goods.goodsprice}</span>
 							</div>
 						</div>
 					</div>
+					</c:forEach>
 				</div>
 				<div class="col-md-4">
 					<div class="spice">
@@ -404,7 +381,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function changepay(){
 		$('.check').each(function(x){
 			if($(this).prop('checked')){
-				allpay+=$('select').eq(x).val()*parseFloat($('.price').eq(x).html());
+				var price= $('.price').eq(x).html()
+				price=price.replace(',','');
+				allpay+=$('select').eq(x).val()*parseFloat(price);
 				spcount+=parseFloat($('select').eq(x).val());
 			}
 		})
