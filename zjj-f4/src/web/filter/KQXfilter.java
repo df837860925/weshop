@@ -35,7 +35,7 @@ public class KQXfilter implements Filter {
 			response.sendRedirect("/zjj-f4/wkr-zhuce.jsp");
 		} else {
 			// 不为空表示登录过
-			arg2.doFilter(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 		}
 	}
 
