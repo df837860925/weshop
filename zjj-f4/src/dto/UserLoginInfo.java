@@ -20,6 +20,13 @@ public class UserLoginInfo implements  Serializable{
 	private String ip;
 	//用户登陆的时间
 	private Date logindate;
+	public UserLoginInfo(){}
+	public UserLoginInfo(int userid,String username,String ip,Date logindate){
+		this.userid=userid;
+		this.username=username;
+		this.ip=ip;
+		this.logindate=logindate;
+	}
 	public int getUserid() {
 		return userid;
 	}

@@ -36,6 +36,10 @@
   </filter>
   <filter-mapping>
   	<filter-name>sessionFilter</filter-name>
-  	<url-pattern></url-pattern>
+  	<url-pattern>/kqx-xiangqing.jsp</url-pattern>
   </filter-mapping>
+  <!--这是杨保才的 session属性监听器  -->
+  <listener>
+  <listener-class>web.listener.YbcSessionListener</listener-class>
+  </listener>
 </web-app>
