@@ -132,11 +132,12 @@ public class Mvc_servlet extends HttpServlet {
 	 * @throws ServletException if an error occurs
 	 */
 	public void init() throws ServletException {
+		System.out.println("dsadsa");
 		//准备一个存实例的MAP集合
 		Properties action=new Properties();
-		    String configpath= this.getServletConfig().getInitParameter("configLocaltion");
-		    System.out.println(configpath+"1111111111111111111111");
-		    String path=this.getServletContext().getRealPath("/")+configpath;
+//		    String configpath= this.getServletConfig().getInitParameter("configLocaltion");
+//		    System.out.println(configpath+"1111111111111111111111");
+		    String path=this.getServletContext().                                                                                    b("/")+"/WEB-INF/config.properties";
 		    
 		    Properties config=new Properties();
 		    try {
