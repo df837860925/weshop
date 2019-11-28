@@ -110,7 +110,9 @@ ul{
     font-size: 22px;
     color: #111;
 }
-
+.product-price .price{
+	float:left;
+}
 .symbol{
 	font-size: 16px;
 }

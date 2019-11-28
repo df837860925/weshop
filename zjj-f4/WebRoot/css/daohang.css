@@ -300,7 +300,7 @@
 			text-align: center;
 		}
 		.price{
-			/*float: right;*/
+			float: right;
 			margin-right: 20px;
 		}
 		.aboutus{
