@@ -25,7 +25,7 @@ public class UsersDaoImpl {
 		list.add(new Users("zs", "111", 20));
 		list.add(new Users("ls", "222", 30));
 		list.add(new Users("ww", "333", 40));
-		list.add(new Users("zl", "444", 50));
+		list.add(new Users("zl", "¶¡·æ", 50));
 		return list;
 	}
 }

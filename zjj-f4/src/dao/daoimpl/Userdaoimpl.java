@@ -21,7 +21,7 @@ public class Userdaoimpl implements Userdao{
 		ps.setString(1, us.getUserpass());
 		ps.setString(2, us.getUsername());
 		ps.setString(3, us.getUseradress());
-		ps.setString(4, us.getUsershoping());
+		ps.setString(4, us.getShopping());
 		ps.setString(5, us.getUserorder());
 		ps.executeUpdate();
 		ConnectionPool.closeConnection(conn);
@@ -42,7 +42,7 @@ public class Userdaoimpl implements Userdao{
 		ps.setString(1, us.getUserpass());
 		ps.setString(2, us.getUsername());
 		ps.setString(3, us.getUseradress());
-		ps.setString(4, us.getUsershoping());
+		ps.setString(4, us.getShopping());
 		ps.setString(5, us.getUserorder());
 		ps.setInt(6, us.getUserid());
 		ps.executeUpdate();
@@ -64,9 +64,11 @@ public class Userdaoimpl implements Userdao{
 			us.setUserid(id); 
 			us.setUserpass(rs.getString("user_pass"));
 			us.setUsername(rs.getString("user_name"));
-			us.setUsershoping(rs.getString("user_shopping"));
+			us.setUseradress(rs.getString("user_adress"));
+			us.setShopping(rs.getString("user_shopping"));
 			us.setUserorder(rs.getString("user_order"));
 		}
+		ConnectionPool.closeConnection(conn);
 		return us;
 	}
 
@@ -79,15 +81,17 @@ public class Userdaoimpl implements Userdao{
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, username);
 		ResultSet rs=ps.executeQuery();
-		if(rs!=null){
-			rs.next();
+		System.out.println(rs);
+		if(rs.next()){
 			us=new User();
 			us.setUserid(rs.getInt("user_id")); 
 			us.setUserpass(rs.getString("user_pass"));
 			us.setUsername(rs.getString("user_name"));
-			us.setUsershoping(rs.getString("user_shopping"));
+			us.setUseradress(rs.getString("user_adress"));
+			us.setShopping(rs.getString("user_shopping"));
 			us.setUserorder(rs.getString("user_order"));
 		}
+		ConnectionPool.closeConnection(conn);
 		return us;
 	}
 

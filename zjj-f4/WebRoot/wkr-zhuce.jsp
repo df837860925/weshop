@@ -589,7 +589,7 @@ $(".tijiao").click(function(){
   		
   	})
   }
-  //=================登录
+  //=================登录dd
   $(".denglubiaoqian").click(function(){
   var zh=	$(".shurukuang7").val();
   var mm=$(".shurukuang8").val();

@@ -2,7 +2,7 @@ package pojo;
 
 public class Adress {
 	private int adressid;
-	private String adresstopeople;
+	private String adressname;
 	private String adresstel;
 	private String adresssheng;
 	private String adressshi;
@@ -10,11 +10,12 @@ public class Adress {
 	private String adresszipcode;//ÓÊÕş±àÂë
 	private String adressdetail;//ÏêÏ¸µØÖ·
 	
-	public String getAdresstopeople() {
-		return adresstopeople;
+	
+	public String getAdressname() {
+		return adressname;
 	}
-	public void setAdresstopeople(String adresstopeople) {
-		this.adresstopeople = adresstopeople;
+	public void setAdressname(String adressname) {
+		this.adressname = adressname;
 	}
 	public int getAdressid() {
 		return adressid;

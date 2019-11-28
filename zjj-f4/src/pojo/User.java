@@ -1,12 +1,12 @@
 package pojo;
 
 public class User {
-	private int userid;
-	private String userpass;
-	private String username;
-	private String usershoping;//购物车信息是多个 id-id-id 这样连接
-	private String userorder;//订单信息是多个
-	private String useradress;//地址是多个
+   private int userid;
+   private String userpass;
+   private String username;
+    private String useradress;
+    private String usershopping;
+    private String userorder;
 	public int getUserid() {
 		return userid;
 	}
@@ -25,11 +25,17 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getUsershoping() {
-		return usershoping;
+	public String getUseradress() {
+		return useradress;
 	}
-	public void setUsershoping(String usershoping) {
-		this.usershoping = usershoping;
+	public void setUseradress(String useradress) {
+		this.useradress = useradress;
+	}
+	public String getShopping() {
+		return usershopping;
+	}
+	public void setShopping(String shopping) {
+		this.usershopping = shopping;
 	}
 	public String getUserorder() {
 		return userorder;
@@ -37,11 +43,5 @@ public class User {
 	public void setUserorder(String userorder) {
 		this.userorder = userorder;
 	}
-	public String getUseradress() {
-		return useradress;
-	}
-	public void setUseradress(String useradress) {
-		this.useradress = useradress;
-	}
-	
+    
 }

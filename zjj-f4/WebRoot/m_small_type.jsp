@@ -1,21 +1,15 @@
-<%@page import="pojo.Goods"%>
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<% 
-	List<Goods> list =(List<Goods>)request.getAttribute("shoppinglist");
-	System.out.print(list);
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC"-//W3C//DTD HTML 4.01Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'ybc-gouwudai.jsp' starting page</title>
+    <title>My JSP 'm_small_type.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,12 +19,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
 		<meta charset="utf-8" />
 		<title></title>
 		<meta name="viewport" content="witdh=device-witdh,initial-scale=1"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/daohang.css"/>
+		<link rel="stylesheet" type="text/css" href="css/m_small_type.css" />
 	</head>
 	<style type="text/css">
 		#last{
@@ -47,7 +41,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				font-size: 11px;
 			}
 	</style>
-	
 	<body>
 		<div class="ybc_nav">
 			<div class="container " id="ybc_mynav">
@@ -112,111 +105,90 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="row ">
 							<div class="col-lg-4 text-center col-lg-offset-4  visible-lg">
-								<h1>购物袋</h1>
+								<h1>男士</h1>
 							</div>
 						</div>
 			</div>
 		</div>
-		<section class="ybc_main">
-			<div class="container">
-				<div class="row">
-				<div class="col-md-8">
-					<p><input id="quanxuan" type="checkbox" checked="checked"/>全选</p>
-					<hr />
-					<!--循环页面  -->
-					<c:forEach items="${shoppinglist}" var="goods" varStatus="i">
-					<div class="shangping">
-						<input class="check" type="checkbox"  checked="checked"/>
-						<a><img src="${goods.goodsimg}"/></a>
-						<div class="shangping_desc">
-							<div class="shangping_rightline">
-								<a id="shangping_name">${goods.goodsname}</a>
-								<p id="shangping_type"><span>款号#</span><span>5764320OLRX9698</span><p>
-								<p id="shangping_type"><span>款式#</span><span>  ${goods.goodstype}</span><p>
-							</div>
-							<p class="full">
-								<p class="fsize-sm">有货</p>
-								<span class="gray">预计发货后2-4个工作日送达</span>
-							</p>
-							<a class="con" href="">编辑</a>
-							<span class="fenge">|</span>
-							<a class="con" href="">加入心愿订单</a>
-							<span class="fenge">|</span>
-							<a class="con delete"  href="javascript:;">删除</a>
-						</div>
-						<div class="shangping_price">
-							<div class="shangping_count">
-								<select name="conut_choice" >
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
-							</div>
-							<div class="fsize-md">
-								<span>￥</span><span class="price">${goods.goodsprice}</span>
-							</div>
-						</div>
+		<section class="ybc_main" style="padding: 0px;">
+			<div class="ybc_clohtes ">
+				<a href="">
+					<img src="https://res.gucci.cn/resources/2019/10/23/15718156659127710_content_LightGray_CategoryDoubleVertical_Standard_463x926_1570117506_CategoryDoubleVertical_SS20MNMLook063_001_Light.jpg" />
+					<div class="banner_clothes">
+						<h2>男士服饰</h2>
+						<p>探索 ></p>
 					</div>
-					</c:forEach>
-				</div>
-				<div class="col-md-4">
-					<div class="spice">
-						<div class="summery_title">
-							<span class="gray">订单小计</span>
-							<span class="rightf fsize-sm">已选 <span id="spcount">2</span> 件商品</span>
-						</div>
-						<div class="summery_content fsize-sm">
-							<div class="allmonney"><span >商品总计</span><span class="rightf fsize-md">￥<span class="allpay">2600.00</span></span></div>
-							<div class="movepay"><span>运费</span><span class="gray rightf">免费</span></div>
-							<div class="monney"><span>总计</span><span class="rightf fsize-xs">￥<span class="allpay">2600.00</span></div>
-						</div>
-						<div class="summery_desc gray">
-							<p>说明</p>
-							<span>
-							订单提交之后1小时内未付款，订单将被系统自动取消，请您尽快完成支付以确保商品能及时送达，有货商品和门店配货商品是分开寄出。
-							</span>
-						</div>
-						
-						<div class="button">
-							<a href="" class="gopay">立即结算</a>
-							<a href="" class="gobay">继续购买</a>
-						</div>
+				</a>
+			</div>
+			<div class="ybc_handbag">   
+				<div class="banner_handbag ">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/26/15720321324792962_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>男士箱包</h2>
+						<p>探索 ></p>
 					</div>
-				</div>
-				</div>
-			</div>
-		</section>
-		<section class="aboutus">
-			<div class="container text-center">
-				<h3>GUCCI 在线精品店全新购物体验</h3>
-				<ul>
-					<li><a href="">Gucci正品认证</a></li>|
-					<li><a href="">免费礼品包装 </a></li>|
-					 <li><a href="">退换货政策</a><li>
-				</ul>
-				<p>Gucci重视个人信息保护，以确保一个安全无忧的购物环境。</p>
-				<a href="">阅读隐私政策。</a>
-			</div>
-		</section>
-		<section class="nearsee">
-			<div class="nearsee4 text-center">
-				<div class="texts">
-					<h3>最近浏览</h3>
-					<span class="glyphicon glyphicon-eye-open">
-					</span>
-					<p>您浏览过的精品</p>
+				</a>
 				</div>
 			</div>
-			<div class="nearsee1">
-				<img src="img/baobao1.jpg"/>
+			<div class="ybc_shouse">
+				<div class="banner_shouse">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/8/15705403357969434_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>男鞋</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
 			</div>
-			<div class="nearsee2">
-				<img src="img/baobao2.jpg"/>
+			<div class="ybc_wallet">
+				<div class="banner_wallet">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/5/8/15572928846066415_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>银饰</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
 			</div>
-			<div class="nearsee3">
-				<img src="img/baobao3.jpg"/>
+			<div class="ybc_belt">
+				<div class="banner_belt">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/1/11/15471486269581417_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>眼镜</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
 			</div>
+			<div class="ybc_wristwatch">
+				<div class="banner_wristwatch">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/9/24/15692724207606658_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>腕表</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
+			</div>
+			<div class="ybc_jewel">
+				<div class="banner_jewel">
+					<a href="">
+					<img class="imglimit" src="https://res.gucci.cn/resources/2019/9/22/15691464537037810_gs_470X470.jpg" />
+					<div class="ps">
+						<h2>帽子&手套</h2>
+						<p>探索 ></p>
+					</div>
+				</a>
+				</div>
+			</div>
+			
 		</section>
+			
 		<section id="last">
 	   	<div class="container">
 	   		<div class="row">
@@ -271,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   					<option value="">长沙市</option>
 	   				</select>
 	   				<p>查找其他地区直营店</p>
-	   				<img src="img/QQjietu20191025211758.png"/>
+	   				<img src="img/QQ截图20191025211758.png"/>
 	   				
 	   			</div>
 	   		</div>
@@ -381,9 +353,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function changepay(){
 		$('.check').each(function(x){
 			if($(this).prop('checked')){
-				var price= $('.price').eq(x).html()
-				price=price.replace(',','');
-				allpay+=$('select').eq(x).val()*parseFloat(price);
+				allpay+=$('select').eq(x).val()*parseFloat($('.price').eq(x).html());
 				spcount+=parseFloat($('select').eq(x).val());
 			}
 		})
