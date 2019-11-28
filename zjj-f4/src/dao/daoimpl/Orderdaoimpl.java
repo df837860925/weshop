@@ -10,9 +10,6 @@ import pojo.Order;
 import dao.Orderdao;
 import db.ConnectionPool;
 
-/*
- * ������Ϣ�?order���Ĳ���
- */
 public class Orderdaoimpl implements Orderdao {
 
 	@Override
@@ -85,10 +82,11 @@ public class Orderdaoimpl implements Orderdao {
 				ode.setOrdergoodsid(rs.getInt("order_goodsid"));
 				ode.setOrdergoodsum(rs.getInt("order_goodssum"));
 				ode.setOrderadressid(rs.getInt("order_adress"));
+				list.add(ode);
 			}
 		}
 		ConnectionPool.closeConnection(conn);
-		return null;
+		return list;
 	}
 
 	@Override

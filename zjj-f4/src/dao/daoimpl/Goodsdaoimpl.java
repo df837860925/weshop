@@ -10,9 +10,6 @@ import pojo.Goods;
 import dao.Goodsdao;
 import db.ConnectionPool;
 
-/*
- * 商品信息表（goods）的操作
- */
 public class Goodsdaoimpl implements Goodsdao {
 
 	@Override
