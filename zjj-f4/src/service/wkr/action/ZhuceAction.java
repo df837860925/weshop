@@ -1,4 +1,4 @@
-package service.core.action;
+package service.wkr.action;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import service.core.Action;
 import service.core.ActionForm;
 import service.core.ActionForword;
-import service.core.form.ZhuceActionForm;
+import service.wkr.form.ZhuceActionForm;
 
 public class ZhuceAction extends Action{
 	@Override

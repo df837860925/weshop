@@ -1,4 +1,4 @@
-package service.core.form;
+package service.wkr.form;
 
 import service.core.ActionForm;
 
@@ -33,7 +33,7 @@ public class LoginActionForm extends ActionForm{
 
 	@Override
 	public void flagfunction() {
-		System.out.println("µ½ÁËµÇÂ¼±íµ¥");
+		System.out.println("ï¿½ï¿½ï¿½Ëµï¿½Â¼ï¿½?");
 		
 	}
 }

@@ -8,9 +8,6 @@ import pojo.Adress;
 import dao.Adressdao;
 import db.ConnectionPool;
 
-/*
- * 地址信息表（address）的操作
- */
 public class Adressdaoimpl implements Adressdao {
 
 	@Override

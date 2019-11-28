@@ -60,41 +60,37 @@ public class Mvc_servlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setHeader("Content-Type", "application/json;charset=utf-8");
-	//ï¿½Ó³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½mapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ã£ï¿½
+	//´Ó³õÊ¼»¯ÖÐÄÃµ½map£¬µÄÐÅÏ¢ ÒÔ¼°ÅäÖÃ£»
 	Properties  map=(Properties)	  this.getServletContext().getAttribute("action");
 	Properties  config=(Properties)	  this.getServletContext().getAttribute("config");
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Ö®ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+	//»ñµÃÏîÄ¿Ö®ºóµÄÂ·¾¶
 		    String uri  = request.getRequestURI();
-		    //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ä²ï¿½Ö£ï¿½ï¿½Ãµï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		    //½øÐÐ×Ö·û´®µÄ²ð·Ö£¬ÄÃµ½Ìø×ªµÄÃû×Ö
 		    int begin= uri.lastIndexOf("/");
 		     int end=uri.indexOf(".");
 		     if (begin!=-1&&end!=-1&&end>begin) {
 				
 		    uri=  uri.substring(begin+1, end);
 			}
-		    //ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½Ó³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		    //½«Ìø×ªµÄÃû×ÖÆ´½Ó³ÉÏëÒªµÄÀàµÄÃû×Ö
 		      String  classFormPath=uri+"Form";
-		      System.out.println("classFormPathæ˜¯ï¼š"+classFormPath);
-		      System.out.println("configæ˜¯ï¼š"+config);
+		      System.out.println(classFormPath);
+		      System.out.println(config);
 		      String  classform=  config.getProperty(classFormPath);
-		      //ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½
+		      //¼ÓÔØ¸ÃÀà
 		      Class class1;
 		      ActionForm af = null;
 			try {
 				class1 = Class.forName(classform);
 				 af=   (ActionForm)class1.newInstance();
-			// ï¿½Ãµï¿½requestï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½actionform 
+			// ÄÃµ½requestµÄËùÓÐÖµ ½«Öµ¸³Óè¸øactionform 
 			Set<Map.Entry<String, String[]>>	set=   request.getParameterMap().entrySet();
 				
 			for (Map.Entry<String, String[]> entry : set) {
 				                        String fuc = entry.getKey();
-				  Method m=  class1.getDeclaredMethod("set"+fuc.substring(0,1).toUpperCase()+fuc.substring(1),String.class);
-				  if (m!=null) {
+				  Method m=  class1.getDeclaredMethod("set"+fuc.substring(0,1).toUpperCase()+fuc.substring(1), String.class);
 				      m.invoke(af, entry.getValue()[0]);
-				}
 			}
 				
 				
@@ -112,22 +108,18 @@ public class Mvc_servlet extends HttpServlet {
 		     
 		     
 		     
-		     //ï¿½ï¿½request.response ï¿½Ô¼ï¿½Òªï¿½Ãµï¿½Öµï¿½ï¿½ ï¿½ï¿½ï¿½Ýµï¿½Êµï¿½ï¿½ï¿½ï¿½×ªÒ³ï¿½æ¡£
+		     //½«request.response ÒÔ¼°ÒªÄÃµÄÖµµÄ ´«µÝµ½ÊµÏÖÌø×ªÒ³Ãæ¡£
 		 String classForName=   config.getProperty(uri);
 		   Class o;
 		try {
 			o = Class.forName(classForName);
 			Action action=(Action) o.newInstance();
-			ActionForword forword =action.execute(request, response,af);
-			if (forword!=null) {
-				forword.forword(request, response);
-			}
+			action.execute(request, response,af);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//	PrintWriter pWriter=	   response.getWriter();
-//		  pWriter.print("ï¿½ï¿½ï¿½ï¿½");
+		  
 		  
 		
 		
@@ -139,8 +131,7 @@ public class Mvc_servlet extends HttpServlet {
 	 * @throws ServletException if an error occurs
 	 */
 	public void init() throws ServletException {
-		System.out.println("dsadsa");
-		//×¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½MAPï¿½ï¿½ï¿½ï¿½
+		//×¼±¸Ò»¸ö´æÊµÀýµÄMAP¼¯ºÏ
 		Properties action=new Properties();
 		    String configpath= this.getServletConfig().getInitParameter("configLocaltion");
 		    System.out.println(configpath+"1111111111111111111111");

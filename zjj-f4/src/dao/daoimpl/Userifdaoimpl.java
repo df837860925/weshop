@@ -9,9 +9,6 @@ import pojo.Userif;
 import dao.Userifdao;
 import db.ConnectionPool;
 
-/*
- * 用户基本信息表的操作
- */
 public class Userifdaoimpl implements Userifdao {
 
 	@Override

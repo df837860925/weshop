@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class KQXfilter implements Filter {
+public class KQXxiangqingfilter implements Filter {
 
 	@Override
 	public void destroy() {
@@ -28,14 +28,17 @@ public class KQXfilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) arg1;
 		// 获得session中是否有值
 		HttpSession session = request.getSession();
-		// 账号的参数名loginName
-		Object obj = session.getAttribute("loginName");
+		// 从请求中拿到当前访问的goods_id（商品编号）
+		String goods_id = (String) request.getAttribute("goods_id");
+		// 从session中拿到当前的账号
+		Object obj = session.getAttribute("user_id");
 		if (obj == null) {
-			// 没有登录过
-			response.sendRedirect("/zjj-f4/wkr-zhuce.jsp");
+			// 如果没有登录过，跳转到注册登录页面，并重写URL把当前goods_id（商品编号）传过去
+			response.sendRedirect("/zjj-f4/wkr-zhuce.jsp?goods_id=" + goods_id);
 		} else {
-			// 不为空表示登录过
-			request.getRequestDispatcher("").forward(request, response);
+			// 不为空表示登录过，跳转到xiangqingAction.java中进行操作
+			request.getRequestDispatcher("xiangqing.do").forward(request,
+					response);
 		}
 	}
 

@@ -9,9 +9,6 @@ import pojo.User;
 import dao.Userdao;
 import db.ConnectionPool;
 
-/*
- * 用户信息表（user）的操作
- */
 public class Userdaoimpl implements Userdao {
 
 	@Override
