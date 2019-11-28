@@ -1,4 +1,4 @@
-package service.core.form;
+package service.kqx.form;
 
 import service.core.ActionForm;
 

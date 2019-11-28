@@ -1,4 +1,4 @@
-package service.core.action;
+package service.kqx.action;
 
 import java.io.IOException;
 

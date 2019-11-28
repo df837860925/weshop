@@ -157,10 +157,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				background-color: #f5f5f5;
 			}
 			.shurukuang5{
-				display: inline-block;
-				position: absolute;
-				top: 418px;
-    			left: 20px;
+				display: inline-flex;
+				position: relative;
+				top: -37px;
 				padding: 0 12px;
 				height: 37px;
 				width: 286.375px;
@@ -228,8 +227,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    height: 40px;
 			}
 			#tuyanzheng img{
-				width: 15px;
-				height: 30px;
+				width: 90px;
+				height: 37px;
 			}
 			span{
 				font-size: 12px;
@@ -404,13 +403,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="denglu3">
 				<div class="denglu4">
+				<form action="login.do"id="loginid"method="post">
 					<div class="denglu6">
 						<label>手机号码/电子邮箱</label>
-						<input class="shurukuang7" placeholder="请输入电子邮箱或手机号"/>
+						<input class="shurukuang7" placeholder="请输入电子邮箱或手机号" name="loginShoujihao"/>
 					</div>
 					<div class="denglu7">
 						<label>密码</label>
-						<input class="shurukuang8" placeholder="请输入密码"/>
+						<input class="shurukuang8" type="password" placeholder="请输入密码" name="loginPassword"/>
 					</div>
 					<div class="denglu8">
 						<div>
@@ -423,7 +423,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="denglu9">
 						<div>
-							<a class="denglubiaoqian">登录</a>
+							<a class="denglubiaoqian"onclick="document:loginid.submit()">登录</a>
 						</div>
 					</div>
 					<div class="denglu10">
@@ -431,6 +431,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a style="font-size: 12px;color: #999999;">忘记密码？</a>
 						</div>
 					</div>
+				</form>
 				</div>
 				<canvas ></canvas>
 				<div class="denglu5">
@@ -470,14 +471,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li class="zhuce5li">×</li>
 							<div class="zhuce8">
 								<div class="zhuce9">
-									<form class="form1">
+									<form class="form1"action="zhuce.do"id="zhuceid"method="post">
 										<div class="formdiv">
 											<div>
 												<label>
 													手机号码
 												</label>
 												<div>
-													<input class="shurukuang1" type="text" placeholder="请输入11位手机号码"/>
+													<input class="shurukuang1" type="text" placeholder="请输入11位手机号码"name="zhucePhone"/>
 												</div>
 											</div>
 										</div>
@@ -487,12 +488,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													图形验证码
 												</label>
 												<div>
-													<input class="shurukuang2" type="text" placeholder="请输入图中所示验证码" />
-													<a id="tuyanzheng" style="cursor: pointer; display: inline-block;margin-left: 11px;">
-														<img class="tuxingyanzhengma" src="images/0.png"/>
-														<img class="tuxingyanzhengma" src="images/1.png"/>
-														<img class="tuxingyanzhengma" src="images/2.png"/>
-														<img class="tuxingyanzhengma" src="images/3.png"/>
+													<input class="shurukuang2" type="text" placeholder="请输入图中所示验证码" name="yanZhengma"/>
+													<a id="tuyanzheng" style="cursor: pointer; display: inline-flex;margin-left: 11px;position: relative;top:15px">
+														<img src="img.do"onclick="flushCode(this)"/>
 													</a>
 												</div>
 											</div>
@@ -503,7 +501,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													手机验证码
 												</label>
 												<div>
-													<input class="shurukuang3" type="text" placeholder="请输入短信验证码" />
+													<input class="shurukuang3" type="text" placeholder="请输入短信验证码" name="shoujiYanzhengma"/>
 													<a  class="yanzhengma"> 发送验证码</a>
 												</div>
 											</div>
@@ -513,10 +511,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<label>
 													密码
 												</label>
-												<div>
-													<input class="shurukuang4" type="password" placeholder="至少六个字符，区分大小写" id="mm"/>
+												<div style="width:286.38px;height:37px">
+													<input class="shurukuang4" type="password" placeholder="至少六个字符，区分大小写" id="mm"name="zhucePassword"/>
 													<input class="shurukuang5" type="text" placeholder="至少六个字符，区分大小写"/>
-													<a class="yanjing" style="cursor: pointer; position: absolute;right: 35px;top: 425px;font-size: 16px;">∅</a>
+													<a class="yanjing" style="cursor: pointer; position: relative;left: 255px;top: -65px;font-size: 16px;">∅</a>
 												</div>
 											</div>
 										</div>
@@ -532,7 +530,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</div>
 										<div style="margin-top: 15px;margin-bottom: 20px;">
 											<div>
-												<a href="#" class="tijiao">创建账户</a>
+												<a  class="tijiao"onclick="document:zhuceid.submit()">创建账户</a>
 											</div>
 										</div>
 									</form>
@@ -556,6 +554,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	})
 //=====================================================请求服务器
+
 //==========注册
 $(".tijiao").click(function(){
 	console.log("!!!!!!!!!!")
@@ -589,7 +588,7 @@ $(".tijiao").click(function(){
   		
   	})
   }
-  //=================登录dd
+  //=================登录
   $(".denglubiaoqian").click(function(){
   var zh=	$(".shurukuang7").val();
   var mm=$(".shurukuang8").val();
@@ -708,6 +707,7 @@ $("#login").click(function(){
 		if ($(this).val().length<1) {
 			if (tishi1!=null) {
 				tishi1.remove();
+				tishi1 = null;
 			}
 			$(this).removeClass('cuowu');
 			return;
@@ -723,6 +723,7 @@ $("#login").click(function(){
 		else{
 			if (tishi1!=null) {
 				tishi1.remove();
+				tishi1 = null;
 			}
 			$(this).removeClass('cuowu');
 		}
@@ -737,6 +738,7 @@ $("#login").click(function(){
 		if ($(this).val().length<1) {
 			if (tishi4!=null) {
 				tishi4.remove();
+				tishi4 = null
 			}
 			$(this).removeClass('cuowu');
 			return;
@@ -744,7 +746,7 @@ $("#login").click(function(){
 		if (!re2.test($(this).val())) {
 			console.log(tishi4);
 			if (tishi4 == null) {
-				tishi4 = $(this).after($('<div><span>至少6个字符含数字大小写字母</span></div>')).siblings('div');
+				tishi4 = $(this).parent().after($('<div><span>至少6个字符含数字大小写字母</span></div>')).siblings('div');
 			}
 			console.log(tishi4);
 			tishi4.css('color','red');
@@ -755,6 +757,7 @@ $("#login").click(function(){
 		else{
 			if (tishi4!=null) {
 				tishi4.remove();
+				tishi4 = null;
 			}
 			$(this).removeClass('cuowu');
 		}
@@ -765,13 +768,14 @@ $("#login").click(function(){
 		if ($(this).val().length<1) {
 			if (tishi4!=null) {
 				tishi4.remove();
+				tishi4 = null;
 			}
 			$(this).removeClass('cuowu');
 			return;
 		}
 		if (!re2.test($(this).val())) {
 			if (tishi4 == null) {
-				tishi4 = $(this).after($('<div><span>至少6个字符含数字大小写字母</span></div>')).siblings('div');
+				tishi4 = $(this).parent().after($('<div><span>至少6个字符含数字大小写字母</span></div>')).siblings('div');
 			}
 			console.log(tishi4);
 			tishi4.css('color','red');
@@ -783,6 +787,7 @@ $("#login").click(function(){
 		else{
 			if (tishi4!=null) {
 				tishi4.remove();
+				tishi4 = null;
 			}
 			$(this).removeClass('cuowu');
 		}
@@ -805,7 +810,7 @@ $("#login").click(function(){
 	var tishi3 = null;
 	$('#youjiankuang').click(function(){
 		if($('#youjiankuang').is(':checked')){
-			youxiangdiv = $(this).parent().after('<div class="formdiv"><label>邮箱</label><div><input id="zh" class="shurukuang6" type="text" placeholder="请输入电子邮箱地址"/></div></div>').siblings('div').eq(4);
+			youxiangdiv = $(this).parent().after('<div class="formdiv"><label>邮箱</label><div><input id="zh" class="shurukuang6" type="text" placeholder="请输入电子邮箱地址" name="zhuceEmail"/></div></div>').siblings('div').eq(4);
 			console.log(youxiangdiv);
 		}
 		else{
@@ -816,6 +821,7 @@ $("#login").click(function(){
 			if ($(this).val().length<1) {
 				if (tishi3!=null) {
 					tishi3.remove();
+					tishi3 = null;
 				}
 				$(this).removeClass('cuowu');
 				return;
@@ -831,6 +837,7 @@ $("#login").click(function(){
 			else{
 				if (tishi3!=null) {
 					tishi3.remove();
+					tishi3 = null;
 				}
 				$(this).removeClass('cuowu');
 			}
@@ -839,7 +846,11 @@ $("#login").click(function(){
 	})
 	
 
-	
+	//验证码和验证图片
+		function flushCode(obj){
+			obj.src = "img.do?id="+new Date().getTime();
+		}
+	/*
 //	随机
 	var suiji = function(){
 		var number = Math.random();
@@ -892,6 +903,7 @@ $("#login").click(function(){
 			$(this).removeClass('cuowu');
 		}
 	})
+	*/
 	
 //	记住账号复选框
 	$('.fuxuankuang').parent().click(function(){
