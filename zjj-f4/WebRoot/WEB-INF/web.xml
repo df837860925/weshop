@@ -5,7 +5,7 @@
     <servlet-name>mvc</servlet-name>
     <servlet-class>service.core.Mvc_servlet</servlet-class>
     <init-param>
- 		<param-name>configLocation</param-name>
+ 		<param-name>configLocaltion</param-name>
  		<param-value>/WEB-INF/config.properties</param-value>
  	</init-param>
   </servlet>
