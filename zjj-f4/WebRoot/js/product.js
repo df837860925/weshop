@@ -79,7 +79,7 @@ $('.img-small .clothes img').each(function(){
 				<img src="${goods.goods_thumb}" class="clothes2"/>`);
 		$(".big").css('background-image',str4);
 		$('.brand-name').html(str5);
-    //页面有数据按钮才能点击
+    //页面有数据按钮才能点击！
     addCart();
   });
 })();

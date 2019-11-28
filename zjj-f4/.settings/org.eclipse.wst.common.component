@@ -2,7 +2,6 @@
     <wb-module deploy-name="zjj-f4">
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
         <property name="context-root" value="zjj-f4"/>
         <property name="java-output-path" value="/zjj-f4/WebRoot/WEB-INF/classes"/>
     </wb-module>

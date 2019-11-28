@@ -8,14 +8,17 @@ import pojo.Adress;
 import dao.Adressdao;
 import db.ConnectionPool;
 
-public class Adressdaoimpl implements Adressdao{
+/*
+ * 地址信息表（address）的操作
+ */
+public class Adressdaoimpl implements Adressdao {
 
 	@Override
 	public void insertAdress(Adress adr) throws Exception {
 		// TODO Auto-generated method stub
-		Connection conn =ConnectionPool.getConnection();
-		String sql="insert into adress(adress_name,adress_tel,adress_sheng,adress_shi,adress_xian,adress_zipcode,adress_detail) values(?,?,?,?,?,?,?)";
-		PreparedStatement ps=conn.prepareStatement(sql);
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "insert into adress(adress_name,adress_tel,adress_sheng,adress_shi,adress_xian,adress_zipcode,adress_detail) values(?,?,?,?,?,?,?)";
+		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, adr.getAdressname());
 		ps.setString(2, adr.getAdresstel());
 		ps.setString(3, adr.getAdresssheng());
@@ -30,9 +33,9 @@ public class Adressdaoimpl implements Adressdao{
 	@Override
 	public void deleteAdressById(int id) throws Exception {
 		// TODO Auto-generated method stub
-		Connection conn =ConnectionPool.getConnection();
-		String sql="delete from adress where adress_id=?";
-		PreparedStatement ps=conn.prepareStatement(sql);
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "delete from adress where adress_id=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, id);
 		ps.executeUpdate();
 		ConnectionPool.closeConnection(conn);
@@ -41,9 +44,9 @@ public class Adressdaoimpl implements Adressdao{
 	@Override
 	public void updateAdress(Adress adr) throws Exception {
 		// TODO Auto-generated method stub
-		Connection conn =ConnectionPool.getConnection();
-		String sql="update adress set adress_name=?,adress_tel=?,adress_sheng=?,adress_shi=?,adress_xian=?,adress_zipcode=?,adress_detail=? where adress_id=?) values(?,?,?,?,?,?,?,?)";
-		PreparedStatement ps=conn.prepareStatement(sql);
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "update adress set adress_name=?,adress_tel=?,adress_sheng=?,adress_shi=?,adress_xian=?,adress_zipcode=?,adress_detail=? where adress_id=?) values(?,?,?,?,?,?,?,?)";
+		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, adr.getAdressname());
 		ps.setString(2, adr.getAdresstel());
 		ps.setString(3, adr.getAdresssheng());
@@ -59,15 +62,15 @@ public class Adressdaoimpl implements Adressdao{
 	@Override
 	public Adress selectAdressById(int id) throws Exception {
 		// TODO Auto-generated method stub
-		Adress adr=null;
-		Connection conn =ConnectionPool.getConnection();
-		String sql="select from  adress where adress_id=?";
-		PreparedStatement ps=conn.prepareStatement(sql);
+		Adress adr = null;
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "select from  adress where adress_id=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, id);
-		ResultSet rs =ps.executeQuery();
-		if(rs!=null){
+		ResultSet rs = ps.executeQuery();
+		if (rs != null) {
 			rs.next();
-			adr=new Adress();
+			adr = new Adress();
 			adr.setAdressid(id);
 			adr.setAdressname(rs.getString("adress_name"));
 			adr.setAdresstel(rs.getString("adress_tel"));
@@ -84,7 +87,7 @@ public class Adressdaoimpl implements Adressdao{
 	@Override
 	public void selectAll() throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

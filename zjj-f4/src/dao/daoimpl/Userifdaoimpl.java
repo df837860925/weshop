@@ -5,19 +5,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
-import pojo.User;
 import pojo.Userif;
 import dao.Userifdao;
 import db.ConnectionPool;
 
-public class Userifdaoimpl implements Userifdao{
+/*
+ * 用户基本信息表的操作
+ */
+public class Userifdaoimpl implements Userifdao {
 
 	@Override
 	public void insertUserif(Userif usif) throws Exception {
 		// TODO Auto-generated method stub
-		Connection conn =ConnectionPool.getConnection();
-		String sql="insert into userif(userif_sex,userif_phone,userif_name,userif_adress) values(?,?,?,?)";
-		PreparedStatement ps=conn.prepareStatement(sql);
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "insert into userif(userif_sex,userif_phone,userif_name,userif_adress) values(?,?,?,?)";
+		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, usif.getUserifsex());
 		ps.setString(2, usif.getUserifphone());
 		ps.setString(3, usif.getUserifname());
@@ -29,15 +31,15 @@ public class Userifdaoimpl implements Userifdao{
 	@Override
 	public void deleteUserif(Userif usif) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void updateUserif(Userif usif) throws Exception {
 		// TODO Auto-generated method stub
-		Connection conn =ConnectionPool.getConnection();
-		String sql="update userif set userif_sex=?,userif_phone=?,userif_name=?,userif_adress=? where userif_id=?";
-		PreparedStatement ps=conn.prepareStatement(sql);
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "update userif set userif_sex=?,userif_phone=?,userif_name=?,userif_adress=? where userif_id=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, usif.getUserifsex());
 		ps.setString(2, usif.getUserifphone());
 		ps.setString(3, usif.getUserifname());
@@ -50,15 +52,15 @@ public class Userifdaoimpl implements Userifdao{
 	@Override
 	public Userif selectUserifById(int id) throws Exception {
 		// TODO Auto-generated method stub
-		Userif usif=null;
-		Connection conn =ConnectionPool.getConnection();
-		String sql="select * from userif where userif_id=?";
-		PreparedStatement ps=conn.prepareStatement(sql);
+		Userif usif = null;
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "select * from userif where userif_id=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, id);
-		ResultSet rs=ps.executeQuery();
-		if(rs!=null){
+		ResultSet rs = ps.executeQuery();
+		if (rs != null) {
 			rs.next();
-			usif=new Userif();
+			usif = new Userif();
 			usif.setUserifid(id);
 			usif.setUserifsex(rs.getString("userif_sex"));
 			usif.setUserifphone(rs.getString("userif_phone"));
