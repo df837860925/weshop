@@ -1,6 +1,6 @@
 package pojo;
 
-public class User {
+public class User {  // 用户的购物信息
    private int userid;
    private String userpass;
    private String username;

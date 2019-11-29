@@ -6,6 +6,9 @@ import java.util.List;
 
 
 public class UsersDaoImpl {
+	
+	public List<Users> list ;
+	
 	public boolean login(String uname,String password){
 		if("zs".equals(uname) && "123".equals(password)){
 			return true;
