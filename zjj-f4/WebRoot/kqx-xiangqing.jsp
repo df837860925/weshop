@@ -1,4 +1,10 @@
+<%@page import="pojo.Goods"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%
+	Goods goods = (Goods) request.getAttribute("goods");
+	System.out.println(goods);
+ %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -119,21 +125,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="header">
 			<p>古驰首页 > 商品>商品详情</p>
 			<div class="img1">
-				<div class="slide"></div>
-			</div>
+				<img src="${goods.goodsimg}"/>
+					<div class="slide"></div>
+				</div>
 			<!--显示-->
 	      <div class="big">
-	        
 	      </div>
 				<div class="product-info">
-					<div class="product-name"></div>
+					<div class="product-name">${goods.goodsname}</div>
 					<div class="brand-name">
 						<!--<span>品牌：Armani Jeans</span>
 						<div>商品编号：939210776841865</div>-->
 					</div>
 					<div class="product-price">
 						<span class="symbol">¥</span>
-						<span class="price"></span>
+						<span class="price">${goods.goodsprice }</span>
 						<span class="original-price"></span>
 					</div>
 					<div class="product-region">
@@ -185,7 +191,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="img-small">
 				<input type="button" value="<" class="prev"/>
 				<div class="clothes">
-				
+					<img src="${goods.goodsimg}" class="clothes1"/>
+					<img src="${goods.goodsimg}" class="clothes2"/>
 				</div>
 				<input type="button" value=">" class="next" />
 			</div>

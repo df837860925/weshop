@@ -3,10 +3,8 @@ package service.core;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
@@ -16,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Mvc_servlet extends HttpServlet {
-	Map<String, String[]> map=null;
+	Map<String, String[]> map = null;
+
 	/**
 	 * Constructor of the object.
 	 */
@@ -34,13 +33,17 @@ public class Mvc_servlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
-	 *
+	 * 
 	 * This method is called when a form has its tag value method equals to get.
 	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
+	 * @param request
+	 *            the request send by the client to the server
+	 * @param response
+	 *            the response send by the server to the client
+	 * @throws ServletException
+	 *             if an error occurred
+	 * @throws IOException
+	 *             if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -50,17 +53,24 @@ public class Mvc_servlet extends HttpServlet {
 
 	/**
 	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
 	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
+	 * This method is called when a form has its tag value method equals to
+	 * post.
+	 * 
+	 * @param request
+	 *            the request send by the client to the server
+	 * @param response
+	 *            the response send by the server to the client
+	 * @throws ServletException
+	 *             if an error occurred
+	 * @throws IOException
+	 *             if an error occurred
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	//�ӳ�ʼ�����õ�map������Ϣ �Լ����ã�
+	response.setCharacterEncoding("UTF-8");
+	response.setHeader("Content-Type", "application/json;charset=utf-8");
 	Properties  map=(Properties)	  this.getServletContext().getAttribute("action");
 	Properties  config=(Properties)	  this.getServletContext().getAttribute("config");
 	
@@ -86,70 +96,60 @@ public class Mvc_servlet extends HttpServlet {
 			Set<Map.Entry<String, String[]>>	set=   request.getParameterMap().entrySet();
 				
 			for (Map.Entry<String, String[]> entry : set) {
-				                        String fuc = entry.getKey();
-				  Method m=  class1.getDeclaredMethod("set"+fuc.substring(0,1).toUpperCase()+fuc.substring(1), String.class);
-				      m.invoke(af, entry.getValue()[0]);
+				String fuc = entry.getKey();
+				Method m = class1.getDeclaredMethod("set"
+						+ fuc.substring(0, 1).toUpperCase() + fuc.substring(1),
+						String.class);
+				m.invoke(af, entry.getValue()[0]);
 			}
-				
-				
-			} catch (Exception e1) {
-				
-				e1.printStackTrace();
-			}
-		     
-		     
-		     
-		     
-		     
-		     
-		     
-		     
-		     
-		     
-		     //��request.response �Լ�Ҫ�õ�ֵ�� ���ݵ�ʵ����תҳ�档
-		 String classForName=   config.getProperty(uri);
-		   Class o;
+		} catch (Exception e1) {
+
+			e1.printStackTrace();
+		}
+
+		// ��request.response �Լ�Ҫ�õ�ֵ�� ���ݵ�ʵ����תҳ�档
+		String classForName = config.getProperty(uri);
+		Class o;
 		try {
 			o = Class.forName(classForName);
-			Action action=(Action) o.newInstance();
-			ActionForword afd = action.execute(request, response,af);
+			Action action = (Action) o.newInstance();
+			ActionForword afd = action.execute(request, response, af);
 			afd.forword(request, response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		  
-		  
-		
-		
+
 	}
 
 	/**
 	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
+	 * 
+	 * @throws ServletException
+	 *             if an error occurs
 	 */
 	public void init() throws ServletException {
-		//׼��һ����ʵ���MAP����
-		Properties action=new Properties();
-		    String configpath= this.getServletConfig().getInitParameter("configLocaltion");
-		    System.out.println(configpath+"1111111111111111111111");
-		    String path=this.getServletContext().getRealPath("/")+configpath;
-		    
-		    Properties config=new Properties();
-		    try {
-				config.load(new FileInputStream(path));
-				
-				this.getServletContext().setAttribute("action", action);
-				this.getServletContext().setAttribute("config", config);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		  
+		// ׼��һ����ʵ���MAP����
+		Properties action = new Properties();
+		String configpath = this.getServletConfig().getInitParameter(
+				"configLocaltion");
+		System.out.println(configpath + "1111111111111111111111");
+		String path = this.getServletContext().getRealPath("/") + configpath;
+
+		Properties config = new Properties();
+		try {
+			config.load(new FileInputStream(path));
+
+			this.getServletContext().setAttribute("action", action);
+			this.getServletContext().setAttribute("config", config);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }

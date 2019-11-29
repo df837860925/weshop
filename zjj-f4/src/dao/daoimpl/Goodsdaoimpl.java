@@ -57,6 +57,8 @@ public class Goodsdaoimpl implements Goodsdao {
 			good.setGoodsmaterial(rs.getInt("goods_material"));
 		}
 		ConnectionPool.closeConnection(conn);
+		System.out.println(good);
+		System.out.println("123456");
 		return good;
 	}
 
