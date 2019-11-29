@@ -15,6 +15,7 @@ import pojo.User;
 import dao.daoimpl.DaoimplFactory;
 import dao.daoimpl.Goodsdaoimpl;
 import dao.daoimpl.Userdaoimpl;
+import dto.UserLoginInfo;
 import service.core.Action;
 import service.core.ActionForm;
 import service.core.ActionForword;
@@ -33,12 +34,12 @@ public class GouwudaiAction extends Action{
 			return new ActionForword("zhuce.do",true);
 		}else{
 			//如果登陆了,就查出购物车内的商品信息
-			int userid=Integer.parseInt(obj.toString());
+			UserLoginInfo uslf=	(UserLoginInfo)obj;
 			Userdaoimpl usim=DaoimplFactory.getUserdaoimpl();
 			Goodsdaoimpl goodim=DaoimplFactory.getGoodsdaoimpl();
 			try {
 				List<Goods> list=new ArrayList<Goods>();
-				User us=usim.selectByUserId(userid);
+				User us=usim.selectByUserId(uslf.getUserid());
 				//因为用户的购车是按照 id-id-id... 来排列的 所以在这里分割一下
 				StringTokenizer st=new StringTokenizer(us.getShopping(),"-");
 				while(st.hasMoreTokens()){
