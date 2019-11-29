@@ -27,6 +27,7 @@ public class GouwudaiAction extends Action{
 			HttpServletResponse response, ActionForm actionForm)
 			throws ServletException, IOException {
 		// 获得作用域中的userid
+		request.getParameter("goods_id");
 		HttpSession session =request.getSession();
 		Object obj=session.getAttribute("userlogininfo");
 		if(obj==null){
