@@ -45,7 +45,10 @@ $('.img-small .clothes img').each(function(){
   });
   
 })();
-
+(function(){
+	addCart();
+	Buy();
+})()
 //(function(){
 //	var goodsId = getUrlVal('goods_id');
 //  $.get('http://www.wjian.top/shop/api_goods.php', {
@@ -56,7 +59,7 @@ $('.img-small .clothes img').each(function(){
 //    var goods = obj.data[0];
 //    var str1=`${goods.goods_name}`;
 //    var str2 =`${goods.price}`;
-//    var str3 = `<span data-goods-id="${goods.goods_id}">åŠ å…¥è´­ç‰©è½/span>`;
+//    var str3 = `<span data-goods-id="${goods.goods_id}">åŠ å…¥è´­ç‰©ï¿½/span>`;
 //    var str4 = `url(${goods.goods_thumb})`;
 //    var str5 = `${goods.goods_desc}`
 //    $('.product-name').html(str1);
@@ -74,15 +77,24 @@ $('.img-small .clothes img').each(function(){
 
 function addCart(){
   $('.add-cart').click(function(){
+	console.log(goods_id);
+	console.log(typeof(goods_id));
     var token = localStorage.getItem('token');
     var goodsId = $('.add-cart span').attr('data-goods-id');
-    console.log(goodsId)
+    console.log(goodsId);
+    console.log(typeof(goodsId));
     if(token){
-    	alert("Ìí¼Ó¹ºÎï³µ³É¹¦£¡");
+    	alert("æ·»åŠ æˆåŠŸï¼");
     }else{
-      if(confirm('Î´µÇÂ¼£¬½«Ìø×ªµ½µÇÂ¼½çÃæ')){
+      if(confirm('æœªç™»å½•ï¼Œå³å°†è·³è½¬åˆ°ç™»å½•ç•Œé¢')){
         location.href = 'wkr-zhuce.jsp?goods_id='+ goodsId+'&gc=2';
       };
     };
   });
 };
+
+function Buy(){
+	  $('.buy').click(function(){
+	  
+	  });
+	};

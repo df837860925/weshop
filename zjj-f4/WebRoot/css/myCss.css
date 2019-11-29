@@ -381,7 +381,6 @@ ul{
   border: 2px solid orange;
   position: absolute;
   left:500px; top:30px;
-  background:url(../img/clothes1.jpg);
   background-size: 800px 800px;
   background-position: -0px 0px;
   z-index: 999;

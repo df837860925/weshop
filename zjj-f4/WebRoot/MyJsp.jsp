@@ -23,8 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <center>
-  	<a href="xiangqing.do">跳转</a>
-  </center>
+	<center><a href="xiangqing.do?goods_id=1">xiangqing</a></center>
   </body>
 </html>

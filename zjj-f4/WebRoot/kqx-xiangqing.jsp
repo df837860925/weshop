@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
        
     <title>My JSP 'kqx-xiangqing.jsp' starting page</title>
-    
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -129,13 +129,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="slide"></div>
 				</div>
 			<!--显示-->
-	      <div class="big">
+	      <div class="big" style="background-image:url(${goods.goodsimg}) ">
 	      </div>
 				<div class="product-info">
 					<div class="product-name">${goods.goodsname}</div>
 					<div class="brand-name">
-						<!--<span>品牌：Armani Jeans</span>
-						<div>商品编号：939210776841865</div>-->
+						${goods.goodsdesc}
 					</div>
 					<div class="product-price">
 						<span class="symbol">¥</span>
@@ -184,7 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="button-wrap">
 						<button  type="button" class="buy"><span>立即购买</span></button> 
-						<button  type="button" class="add-cart" ><span>加入购物车</span></button>
+						<button  type="button" class="add-cart" ><span data-goods-id="${goods.goodsid}">加入购物车</span></button>
 					</div>
 				</div>
 			
@@ -540,4 +539,7 @@ $('#nav_a li').each(function(x){
 	{return;}
 	else return result[2];
 	}
+</script>
+<script language="javascript">
+	var goods_id = ${goods.goodsid}
 </script>

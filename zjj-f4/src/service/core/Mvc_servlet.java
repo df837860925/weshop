@@ -68,33 +68,37 @@ public class Mvc_servlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	//�ӳ�ʼ�����õ�map������Ϣ �Լ����ã�
-	response.setCharacterEncoding("UTF-8");
-	response.setHeader("Content-Type", "application/json;charset=utf-8");
-	Properties  map=(Properties)	  this.getServletContext().getAttribute("action");
-	Properties  config=(Properties)	  this.getServletContext().getAttribute("config");
-	
-	//�����Ŀ֮���·��
-		    String uri  = request.getRequestURI();
-		    //�����ַ�Ĳ�֣��õ���ת������
-		    int begin= uri.lastIndexOf("/");
-		     int end=uri.indexOf(".");
-		     if (begin!=-1&&end!=-1&&end>begin) {
-				
-		    uri=  uri.substring(begin+1, end);
-			}
-		    //����ת������ƴ�ӳ���Ҫ���������
-		      String  classFormPath=uri+"Form";
-		      String  classform=  config.getProperty(classFormPath);
-		      //���ظ���
-		      Class class1;
-		      ActionForm af = null;
-			try {
-				class1 = Class.forName(classform);
-				 af=   (ActionForm)class1.newInstance();
-			// �õ�request������ֵ ��ֵ�����actionform 
-			Set<Map.Entry<String, String[]>>	set=   request.getParameterMap().entrySet();
-				
+		response.setCharacterEncoding("UTF-8");
+		response.setHeader("Content-Type", "application/json;charset=utf-8");
+		Properties map = (Properties) this.getServletContext().getAttribute(
+				"action");
+		Properties config = (Properties) this.getServletContext().getAttribute(
+				"config");
+
+		// �����Ŀ֮���·��
+		String uri = request.getRequestURI();
+		System.out.println(uri);
+		// �����ַ�Ĳ�֣��õ���ת������
+		int begin = uri.lastIndexOf("/");
+		int end = uri.indexOf(".");
+		if (begin != -1 && end != -1 && end > begin) {
+			uri = uri.substring(begin + 1, end);
+		}
+		// ����ת������ƴ�ӳ���Ҫ���������
+		String classFormPath = uri + "Form";
+		String classform = config.getProperty(classFormPath);
+		System.out.println(classform);
+		// ���ظ���
+		Class class1;
+		ActionForm af = null;
+		try {
+			class1 = Class.forName(classform);
+			//
+			af = (ActionForm) class1.newInstance();
+			// �õ�request������ֵ ��ֵ�����actionform
+			Set<Map.Entry<String, String[]>> set = request.getParameterMap()
+					.entrySet();
+
 			for (Map.Entry<String, String[]> entry : set) {
 				String fuc = entry.getKey();
 				Method m = class1.getDeclaredMethod("set"
@@ -109,6 +113,7 @@ public class Mvc_servlet extends HttpServlet {
 
 		// ��request.response �Լ�Ҫ�õ�ֵ�� ���ݵ�ʵ����תҳ�档
 		String classForName = config.getProperty(uri);
+		System.out.println(classForName);
 		Class o;
 		try {
 			o = Class.forName(classForName);
@@ -139,7 +144,6 @@ public class Mvc_servlet extends HttpServlet {
 		Properties config = new Properties();
 		try {
 			config.load(new FileInputStream(path));
-
 			this.getServletContext().setAttribute("action", action);
 			this.getServletContext().setAttribute("config", config);
 		} catch (FileNotFoundException e) {
