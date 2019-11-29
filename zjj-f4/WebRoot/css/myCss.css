@@ -21,12 +21,15 @@ ul{
 	position: relative;
 	width: 500px;
 	height: 500px;
-	background-image: url(../img/clothes1.jpg);
 	background-size: 100%;
 	background-color: #e7e7e7;
 	opacity: 0.6;
 	float: left;
 	margin-right: 50px;
+}
+.img1 img{
+	width: 500px;
+	height: 500px;
 }
 .img-small{
 	width: 500px;
