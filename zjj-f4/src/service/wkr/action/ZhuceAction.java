@@ -24,7 +24,7 @@ public class ZhuceAction extends Action{
 		else{
 			System.out.println("验证码错误");
 		}
-		System.out.println(af);
-		return null;
+		//凯瑞 这里要返回一个ActionForword让MVC帮 你 跳转
+		return new ActionForword("wkr-zhuce",true);
 	}
 }

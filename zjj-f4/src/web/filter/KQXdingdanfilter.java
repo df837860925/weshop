@@ -42,7 +42,6 @@ public class KQXdingdanfilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) arg1;
 		Object obj=request.getAttribute("userlogininfo");
 		if(obj!=null){
-			System.out.println("进了过滤器");
 			arg2.doFilter(request, response);
 		}else{
 			response.sendRedirect("wkr-zhuce.do");

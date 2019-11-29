@@ -23,9 +23,11 @@ public class KQXxiangqingfilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
 			FilterChain arg2) throws IOException, ServletException {
+		System.out.println("进了详情页的过滤器");
 		// 强转成HTTP协议
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
+		
 		// 获得session中是否有值
 		HttpSession session = request.getSession();
 		// 从请求中拿到当前访问的goods_id（商品编号）

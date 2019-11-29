@@ -27,9 +27,10 @@ public class GouwudaiAction extends Action{
 			throws ServletException, IOException {
 		// 获得作用域中的userid
 		HttpSession session =request.getSession();
-		Object obj=session.getAttribute("userid");
+		Object obj=session.getAttribute("userlogininfo");
 		if(obj==null){
-			//如果没登陆
+			//如果没有登录 就跳转到注册页面
+			return new ActionForword("zhuce.do",true);
 		}else{
 			//如果登陆了,就查出购物车内的商品信息
 			int userid=Integer.parseInt(obj.toString());

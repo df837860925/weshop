@@ -60,31 +60,31 @@ public class Mvc_servlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	//´Ó³õÊ¼»¯ÖÐÄÃµ½map£¬µÄÐÅÏ¢ ÒÔ¼°ÅäÖÃ£»
+	//ï¿½Ó³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½mapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ã£ï¿½
 	Properties  map=(Properties)	  this.getServletContext().getAttribute("action");
 	Properties  config=(Properties)	  this.getServletContext().getAttribute("config");
 	
-	//»ñµÃÏîÄ¿Ö®ºóµÄÂ·¾¶
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Ö®ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 		    String uri  = request.getRequestURI();
-		    //½øÐÐ×Ö·û´®µÄ²ð·Ö£¬ÄÃµ½Ìø×ªµÄÃû×Ö
+		    //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ä²ï¿½Ö£ï¿½ï¿½Ãµï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		    int begin= uri.lastIndexOf("/");
 		     int end=uri.indexOf(".");
 		     if (begin!=-1&&end!=-1&&end>begin) {
 				
 		    uri=  uri.substring(begin+1, end);
 			}
-		    //½«Ìø×ªµÄÃû×ÖÆ´½Ó³ÉÏëÒªµÄÀàµÄÃû×Ö
+		    //ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½Ó³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		      String  classFormPath=uri+"Form";
 		      System.out.println(classFormPath);
 		      System.out.println(config);
 		      String  classform=  config.getProperty(classFormPath);
-		      //¼ÓÔØ¸ÃÀà
+		      //ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½
 		      Class class1;
 		      ActionForm af = null;
 			try {
 				class1 = Class.forName(classform);
 				 af=   (ActionForm)class1.newInstance();
-			// ÄÃµ½requestµÄËùÓÐÖµ ½«Öµ¸³Óè¸øactionform 
+			// ï¿½Ãµï¿½requestï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½actionform 
 			Set<Map.Entry<String, String[]>>	set=   request.getParameterMap().entrySet();
 				
 			for (Map.Entry<String, String[]> entry : set) {
@@ -108,13 +108,14 @@ public class Mvc_servlet extends HttpServlet {
 		     
 		     
 		     
-		     //½«request.response ÒÔ¼°ÒªÄÃµÄÖµµÄ ´«µÝµ½ÊµÏÖÌø×ªÒ³Ãæ¡£
+		     //ï¿½ï¿½request.response ï¿½Ô¼ï¿½Òªï¿½Ãµï¿½Öµï¿½ï¿½ ï¿½ï¿½ï¿½Ýµï¿½Êµï¿½ï¿½ï¿½ï¿½×ªÒ³ï¿½æ¡£
 		 String classForName=   config.getProperty(uri);
 		   Class o;
 		try {
 			o = Class.forName(classForName);
 			Action action=(Action) o.newInstance();
-			action.execute(request, response,af);
+			ActionForword afd = action.execute(request, response,af);
+			afd.forword(request, response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -131,7 +132,7 @@ public class Mvc_servlet extends HttpServlet {
 	 * @throws ServletException if an error occurs
 	 */
 	public void init() throws ServletException {
-		//×¼±¸Ò»¸ö´æÊµÀýµÄMAP¼¯ºÏ
+		//×¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½MAPï¿½ï¿½ï¿½ï¿½
 		Properties action=new Properties();
 		    String configpath= this.getServletConfig().getInitParameter("configLocaltion");
 		    System.out.println(configpath+"1111111111111111111111");
