@@ -277,315 +277,64 @@ public class Sql_opreate implements Opreate {
 
 	@Override
 	public boolean insert_User(User user) {
-		// TODO Auto-generated method stub		// TODO Auto-generated method stub
-		Connection ccConnection=ConnectionPool.getConnection();
-	    String sql="insert into user_imformation(账号,密码,性别,爱好,出生年月,个人简历) values(?,?,?,?,?,?)";
-	      try {
-		PreparedStatement ppst=	ccConnection.prepareStatement(sql);
-		
-		ppst.setString(1, user.getZhanghao());
-		ppst.setString(2, user.getMima());
-		ppst.setString(3, user.getSex());
-		ppst.setString(4, user.getAihao());
-		ppst.setDate(5, user.getBirth());
-		ppst.setString(6, user.getGerenjianli());
-		
-	int n=	ppst.executeUpdate();
-	if (n>0) {
-		return true;
-	}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      finally {
-	    	  ConnectionPool.closeConnection(ccConnection);
-	    	  
-	      }
-	    
-
-
-			
-		
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean delete_User(User user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=ConnectionPool.getConnection();
-	    String sql="delete from user_imformation where id=?";
-		PreparedStatement ppst;
-		try {
-			ppst = ccConnection.prepareStatement(sql);
-			ppst.setInt(1, user.getId());
-			
-			int n=	ppst.executeUpdate();
-			if (n>0) {
-				return true;
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}finally {
-			 ConnectionPool.closeConnection(ccConnection);
-	    	  
-	      }
 		return false;
 	}
 
 	@Override
 	public boolean update_User(User user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=ConnectionPool.getConnection();
-	    String sql="update user_imformation set  账号=? 密码=? 性别=? 爱好=? 出生年月=? 个人简历=? where id=?";
-	      try {
-		PreparedStatement ppst=	ccConnection.prepareStatement(sql);
-		
-		ppst.setString(1, user.getZhanghao());
-		ppst.setString(2, user.getMima());
-		ppst.setString(3, user.getSex());
-		ppst.setString(4, user.getAihao());
-		ppst.setDate(5, user.getBirth());
-		ppst.setString(6, user.getGerenjianli());
-		ppst.setInt(7, user.getId());
-	int n=	ppst.executeUpdate();
-	if (n>0) {
-		return true;
-	}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      finally {
-	    	  ConnectionPool.closeConnection(ccConnection);
-	    	  
-	      }
 		return false;
-		
 	}
 
 	@Override
 	public User select_User(User user) {
 		// TODO Auto-generated method stub
-		 User aUser=new User();
-		Connection ccConnection=ConnectionPool.getConnection();
-	    String sql="select *from user_imformation where id=?";
-		PreparedStatement ppst;
-		try {
-			ppst = ccConnection.prepareStatement(sql);
-			ppst.setInt(1,user.getUserid());
-			ResultSet aResultSet=	ppst.executeQuery();
-			if (aResultSet.next()) {
-				
-				aUser.setId(aResultSet.getInt("id"));
-				aUser.setZhanghao(aResultSet.getString("账号"));
-				aUser.setMima(aResultSet.getString("密码"));
-				aUser.setSex(aResultSet.getString("性别"));
-				aUser.setAihao(aResultSet.getString("爱好"));
-				aUser.setBirth(aResultSet.getDate("出生年月"));
-				aUser.setGerenjianli(aResultSet.getString("个人简历"));
-				
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		finally {
-			 ConnectionPool.closeConnection(ccConnection);
-	    	  
-	      }
-		
-		return aUser;
+		return null;
 	}
 
 	@Override
 	public List<User> selectALL_User(User user) {
 		// TODO Auto-generated method stub
-		 List<User> list=new ArrayList<>();
-			Connection ccConnection=ConnectionPool.getConnection();
-		    String sql="select *from user_imformation where id=?";
-			PreparedStatement ppst;
-			try {
-				ppst = ccConnection.prepareStatement(sql);
-				ppst.setInt(1,user.getUserid());
-				ResultSet aResultSet=	ppst.executeQuery();
-				if (aResultSet.next()) {
-					 User aUser=new User();
-					aUser.setId(aResultSet.getInt("id"));
-					aUser.setZhanghao(aResultSet.getString("账号"));
-					aUser.setMima(aResultSet.getString("密码"));
-					aUser.setSex(aResultSet.getString("性别"));
-					aUser.setAihao(aResultSet.getString("爱好"));
-					aUser.setBirth(aResultSet.getDate("出生年月"));
-					aUser.setGerenjianli(aResultSet.getString("个人简历"));
-					list.add(aUser);
-				}
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
-			finally {
-				 ConnectionPool.closeConnection(ccConnection);
-		    	  
-		      }
-			
-			return list;
+		return null;
 	}
 
 	@Override
 	public boolean insert_Goods(Goods user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=ConnectionPool.getConnection();
-	    String sql="insert into user_imformation(账号,密码,性别,爱好,出生年月,个人简历) values(?,?,?,?,?,?)";
-	      try {
-		PreparedStatement ppst=	ccConnection.prepareStatement(sql);
-		
-		ppst.setString(1, user.getZhanghao());
-		ppst.setString(2, user.getMima());
-		ppst.setString(3, user.getSex());
-		ppst.setString(4, user.getAihao());
-		ppst.setDate(5, user.getBirth());
-		ppst.setString(6, user.getGerenjianli());
-		
-	int n=	ppst.executeUpdate();
-	if (n>0) {
-		return true;
-	}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      finally {
-	    	  ConnectionPool.closeConnection(ccConnection);
-	    	  
-	      }
-	    
-
-
-			
 		return false;
 	}
 
 	@Override
 	public boolean delete_Goods(Goods user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=ConnectionPool.getConnection();
-	    String sql="delete from user_imformation where id=?";
-		PreparedStatement ppst;
-		try {
-			ppst = ccConnection.prepareStatement(sql);
-			ppst.setInt(1, user.getId());
-			
-			int n=	ppst.executeUpdate();
-			if (n>0) {
-				return true;
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}finally {
-			 ConnectionPool.closeConnection(ccConnection);
-	    	  
-	      }
 		return false;
 	}
 
 	@Override
 	public boolean update_Goods(Goods user) {
 		// TODO Auto-generated method stub
-		Connection ccConnection=ConnectionPool.getConnection();
-	    String sql="update user_imformation set  账号=? 密码=? 性别=? 爱好=? 出生年月=? 个人简历=? where id=?";
-	      try {
-		PreparedStatement ppst=	ccConnection.prepareStatement(sql);
-		
-		ppst.setString(1, user.getZhanghao());
-		ppst.setString(2, user.getMima());
-		ppst.setString(3, user.getSex());
-		ppst.setString(4, user.getAihao());
-		ppst.setDate(5, user.getBirth());
-		ppst.setString(6, user.getGerenjianli());
-		ppst.setInt(7, user.getId());
-	int n=	ppst.executeUpdate();
-	if (n>0) {
-		return true;
-	}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      finally {
-	    	  ConnectionPool.closeConnection(ccConnection);
-	    	  
-	      }
 		return false;
 	}
 
 	@Override
 	public User select_Goods(Goods user) {
-		 User aUser=new User();
-			Connection ccConnection=ConnectionPool.getConnection();
-		    String sql="select *from user_imformation where id=?";
-			PreparedStatement ppst;
-			try {
-				ppst = ccConnection.prepareStatement(sql);
-				ppst.setInt(1,user.getUserid());
-				ResultSet aResultSet=	ppst.executeQuery();
-				if (aResultSet.next()) {
-					
-					aUser.setId(aResultSet.getInt("id"));
-					aUser.setZhanghao(aResultSet.getString("账号"));
-					aUser.setMima(aResultSet.getString("密码"));
-					aUser.setSex(aResultSet.getString("性别"));
-					aUser.setAihao(aResultSet.getString("爱好"));
-					aUser.setBirth(aResultSet.getDate("出生年月"));
-					aUser.setGerenjianli(aResultSet.getString("个人简历"));
-					
-				}
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
-			finally {
-				 ConnectionPool.closeConnection(ccConnection);
-		    	  
-		      }
-			
-			return aUser;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<User> selectALL_Goods(Goods user) {
 		// TODO Auto-generated method stub
-		List<User> list=new ArrayList<>();
-		Connection ccConnection=ConnectionPool.getConnection();
-	    String sql="select *from user_imformation where id=?";
-		PreparedStatement ppst;
-		try {
-			ppst = ccConnection.prepareStatement(sql);
-			ppst.setInt(1,user.getUserid());
-			ResultSet aResultSet=	ppst.executeQuery();
-			if (aResultSet.next()) {
-				 User aUser=new User();
-				aUser.setId(aResultSet.getInt("id"));
-				aUser.setZhanghao(aResultSet.getString("账号"));
-				aUser.setMima(aResultSet.getString("密码"));
-				aUser.setSex(aResultSet.getString("性别"));
-				aUser.setAihao(aResultSet.getString("爱好"));
-				aUser.setBirth(aResultSet.getDate("出生年月"));
-				aUser.setGerenjianli(aResultSet.getString("个人简历"));
-				list.add(aUser);
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		finally {
-			 ConnectionPool.closeConnection(ccConnection);
-	    	  
-	      }
-		
-		return list;
+		return null;
 	}
-
 }
+
+
+

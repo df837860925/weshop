@@ -1,6 +1,6 @@
 package pojo;
 
-public class Userif {
+public class Userif {  //用户的个人信息
 	private int  userifid;
 	private String userifsex;
 	private String userifphone;

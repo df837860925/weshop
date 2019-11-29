@@ -1,6 +1,6 @@
 package pojo;
 
-public class Goods {
+public class Goods {  //商品信息
    private int goodsid;
    private String goodsname;
    private String goodsprice;
