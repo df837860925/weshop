@@ -29,15 +29,7 @@
   <res-auth>Container</res-auth>
   </resource-ref>
   
-  <!-- 这是kqx的防恶意访问过滤器 --> 
-  <filter>
-  	<filter-name>sessionFilter</filter-name>
-  	<filter-class>web.filter.KQXxiangqingfilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>sessionFilter</filter-name>
-  	<url-pattern>/kqx-xiangqing.jsp</url-pattern>
-  </filter-mapping>
+  
   <!--这是杨保才的 session属性监听器  -->
   <listener>
   <listener-class>web.listener.YbcSessionListener</listener-class>

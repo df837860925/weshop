@@ -21,22 +21,27 @@ public class xiangqingAction extends Action {
 			HttpServletResponse response, ActionForm actionForm)
 			throws ServletException, IOException {
 		Goods goods = new Goods();
+		// »ñµÃ×÷ÓÃÓòÖĞµÄuserid
 		HttpSession session = request.getSession();
-		// ä»requestä¸­æ‹¿åˆ°å½“å‰çš„å•†å“
-		Object goods_id = session.getAttribute("goods_id");
-		// ä»DaoimplFactoryä¸­æ‹¿ä¸€ä¸ªGoodsdaoimplå¹¶æ ¹æ®idæŸ¥åˆ°è¯¥å•†å“ä¿¡æ¯
-		Goodsdaoimpl Goodsimpl = DaoimplFactory.getGoodsdaoimpl();
-		if (goods_id != null) {
-			try {
-				goods = Goodsimpl.selectByGoodsId(Integer
-						.parseInt((String) goods_id));
-			} catch (Exception e) {
-				e.printStackTrace();
+		Object obj = session.getAttribute("userid");
+		// ÅĞ¶Ï£¬Ã»ÓĞ¾ÍÌø×ªµ½µÇÂ¼×¢²áÒ³Ãæ
+		if (obj == null) {
+			return new ActionForword("zhuce.do");
+		} else {
+			// ´ÓÇëÇóÖĞÄÃµ½ÉÌÆ·ID
+			Object goods_id = request.getAttribute("goods_id");
+			// µ÷ÓÃÊı¾İ¿â
+			Goodsdaoimpl Goodsimpl = DaoimplFactory.getGoodsdaoimpl();
+			if (goods_id != null) {
+				try {
+					goods = Goodsimpl.selectByGoodsId(Integer
+							.parseInt((String) goods_id));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				request.setAttribute("goods", goods);
 			}
 		}
-		// å°†æ‹¿åˆ°çš„å•†å“ä¿¡æ¯å­˜è¿›requestä¸­
-		request.setAttribute("goods", goods);
-		// è·³è½¬åˆ°è¯¦æƒ…é¡µ
 		return new ActionForword("kqx-xiangqing");
 	}
 }
