@@ -75,8 +75,6 @@ public class Mvc_servlet extends HttpServlet {
 			}
 		    //����ת������ƴ�ӳ���Ҫ���������
 		      String  classFormPath=uri+"Form";
-		      System.out.println(classFormPath);
-		      System.out.println(config);
 		      String  classform=  config.getProperty(classFormPath);
 		      //���ظ���
 		      Class class1;
