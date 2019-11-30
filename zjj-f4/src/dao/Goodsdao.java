@@ -13,4 +13,5 @@ public interface Goodsdao {
 	public List<Goods> selectByGoodsSmalltype(int type) throws Exception; 
 	public List<Goods> selectAll(int num) throws Exception;
 	public List<Goods> selectAll() throws Exception;
-}
+	public List<Goods> selectByGoodsDesc(String desc,int num)throws Exception;
+	}
