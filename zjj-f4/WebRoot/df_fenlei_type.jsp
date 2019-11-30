@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -6,15 +6,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<meta name="viewport" content="witdh=device-witdh,initial-scale=1"/>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'df_fenlei_type.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<meta name="viewport" content="witdh=device-witdh,initial-scale=1"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="css/daohang.css"/>
 		<link rel="stylesheet" type="text/css" href="css/DF_small_type.css" />
-	</head>
-	<style type="text/css">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
+  </head>
+  <style type="text/css">
 		#last{
 				background: #1B1B1B;
 			}
@@ -122,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     border: 1px solid #c9c9c9;
     border-radius: 2px;
     outline: none;
-				
+	 float: left;			
 				
 			}
 			.shaixuan input:checked{
@@ -191,8 +202,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				text-decoration: none;
 			}
 	</style>
-	<body>
-		<div class="ybc_nav">
+  <body>
+    	<div class="ybc_nav">
 			<div class="container " id="ybc_mynav">
 				<div class="row" >
 					<div class="col-lg-4 col-lg-offset-4 text-center">
@@ -278,52 +289,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		<div class="shaixuan">
 				 			<p style="color: #A6A5A6; font-size: 14px; float: left; margin-left:50px;">颜色</p>
 				 			<ul  style="display: inline-block; float: left;">
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　黄色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　绿色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-1" /><span id="color">　蓝色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-2" /><span id="color">　粉色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-3" /><span id="color">　绿色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-4" /><span id="color">　红色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-5" /><span id="color">　酒红色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-6" /><span id="color">　白色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-7" /><span id="color">　棕色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-8" /><span id="color">　黄色</span></li>
 				 			
 				 			</ul>
 				 			<ul style="display: inline-block;float: left;" >
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　黄色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　绿色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-9" /><span id="color">　灰色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-10" /><span id="color">　紫色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-11" /><span id="color">　橙色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-12" /><span id="color">　米色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-13" /><span id="color">　黑色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-14" /><span id="color">　金色</span></li>
+				 			
 				 			
 				 			</ul>
 				 			<p style="color: #A6A5A6; font-size: 14px; float: left;margin-left:100px; ">材质</p>
 				 			<ul  style="display: inline-block; float: left; margin-left:70px ;">
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　黄色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　绿色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-1" checked="checked" /><span id="color">　织物</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-2" /><span id="color">　真皮</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-3" /><span id="color">　GG帆布</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-4" /><span id="color">　天鹅绒</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-5" /><span id="color">　绒面真皮</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-6" /><span id="color">　稀有皮</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-7" /><span id="color">　帆布</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-8" /><span id="color">　橡胶</span></li>
 				 			
 				 			</ul>
 				 			<ul style="display: inline-block;float: left;" >
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　黄色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　绿色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="" /><span id="color">　红色</span></li>
+				 				<li class="leibie2"><input type="checkbox" name="" id="" value="12-9" /><span id="color">　带有logo</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-10" /><span id="color">　纯银</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-11" /><span id="color">　时尚首饰</span></li>
+				 			
+				 			
 				 			
 				 			</ul>
+				 			<div style="width: 500px; margin: 0 auto;">
 				 			<button id="btn_sure">确定</button>
 				 			<button  id="btn_quxiao">取消</button>
+				 			</div>
 				 		</div>
 				 	</li>
 				 	<li id="li_paixu">排序<span class="caret"></span>
@@ -396,6 +405,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</section>
 			
+			
+			
 		<section id="last">
 	   	<div class="container">
 	   		<div class="row">
@@ -450,7 +461,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   					<option value="">长沙市</option>
 	   				</select>
 	   				<p>查找其他地区直营店</p>
-	   				<img src="img/QQ截图20191025211758.png"/>
+	   				<img src="img/QQjietu20191025211758.png"/>
 	   				
 	   			</div>
 	   		</div>
@@ -463,20 +474,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   		</div>
 	   	</div>
 	   </section>
-	</body>
+	
+  </body>
 </html>
-<script src="js/jquery.singlePageNav.min.js">
-</script>
+
 <script src="js/jquery.min.js">
 	<script src="js/bootstrap.js"></script>
 	
 </script>
 <script type="text/javascript">
-
-
-
-
-
+	
+	var fenlei_data='';
+	// 请求数据
+	var  page=0;
+	fenleidata(page);
+	
+	function fenleidata(i){
+	
+	$.get({
+		 type:"POST",
+		 url:"DF_fenlei_datashow.do",
+		 data:{"bigtype":1,"smalltype":1,"page":i,"pagesize":24},
+		 success:function(result){
+		   var obj=result;
+		 
+   console.log(result);
+		   
+	   for (var i=0;i<obj.list.length;i++) {
+	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+		   }
+	   $(".ybc_main").html(fenlei_data);
+	   $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
+	   
+		$(".ybc_jewel").mouseenter(function(){
+		$(this).children(".banner_glasses").children(".jihe").children(".ps").fadeIn(500);	
+	})
+	
+	$(".ybc_jewel").mouseleave(function(){
+		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
+	}) 
+		
+		$("#moregoods").click(function(){
+		
+		page++;
+		fenleidata(page);
+		
+		
+	}) 
+		}
+		
+		
+		})
+	
+	
+	}
+	
+	
+	
+	
 	//头部JS
 	var flag=0;
 	$(document).scroll(function(){
@@ -636,14 +691,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(".shaixuan").slideUp(0);
 	})
 	
-	
-	$(".ybc_jewel").mouseenter(function(){
-		$(this).children(".banner_glasses").children().children(".ps").fadeIn(500);		
+	$("#btn_quxiao").click(function(){
+		$(".shaixuan").children("ul").children("li").children("input").attr("checked",false);
 	})
-	
-	$(".ybc_jewel").mouseleave(function(){
-		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
+	var colorarray =[];
+	$("#btn_sure").click(function(){
+		var count=0;
+	   $(".shaixuan>ul>li>input").each(function(i){
+	   if ($(this).prop("checked")==true){
+	   	
+	   colorarray[count]=$(this).prop("value");
+	   count++;
+	  }
+	   })
+	   
+	   
+	$.get({
+	type:"POST",
+		 url:"DF_fenlei_shaixuan.do",
+		 data:{"bigtype":1,"smalltype":2,"page":0,"pagesize":24,"list":colorarray},
+		 success:function(result){
+		   var obj=result;
+		   console.log(result);
+	}
 	})
+
+	console.log(colorarray);
+	colorarray=[];
+})
 	
 	
 	
