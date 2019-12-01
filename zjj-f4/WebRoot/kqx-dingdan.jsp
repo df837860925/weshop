@@ -1,9 +1,17 @@
+<%@page import="pojo.Adress"%>
+<%@page import="pojo.Goods"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%
+	Adress adress = (Adress)request.getAttribute("adress");
+	HashMap<Goods, String> map = (HashMap<Goods, String>)request.getAttribute("map");
+	String Order_mes = (String) request.getAttribute("Order_mes");
+	System.out.println(map);
+ %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -147,7 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 <div class="container">
     <div class="checkout-box">
-        <form  id="checkoutForm" action="#" method="post">
+        <!--  <form  id="checkoutForm" action="#" method="post"> -->
             <div class="checkout-box-bd">
                     <!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
                 <input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
@@ -161,13 +169,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="clearfix xm-address-list" id="checkoutAddrList">
           <dl class="item" >
             <dt>
-                <strong class="itemConsignee"></strong>
+                <strong class="itemConsignee">${adress.adressname}</strong>
                                 <span class="itemTag tag">家</span>
                             </dt>
             <dd>
-                <p class="tel itemTel"></p>
-                <p class="itemRegion"></p>
-                <p class="itemStreet"></p>
+                <p class="tel itemTel">${adress.adresstel}</p>
+                <p class="itemRegion">${adress.adresssheng}&nbsp;&nbsp;
+                					  ${adress.adressshi}&nbsp;&nbsp;
+                					  ${adress.adressxian}</p>
+                <p class="itemStreet">${adress.adressdetail}(${adress.adresszipcode})</p>
                                                         <span class="edit-btn J_editAddr">编辑</span>
                                                                 </dd>
             <dd style="display:none">
@@ -198,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="item">
                 <label>联系电话<span>*</span></label> 
-                <input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
+                <input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="输入11位手机号" autocomplete='off'>
                 <p class="tel-modify-tip" id="telModifyTip"></p>
                 <p class="tip-msg tipMsg"></p>
             </div>
@@ -366,58 +376,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <span class="col col-3">购买数量</span>
                                 <span class="col col-4">小计（元）</span>
                             </dt>
-                                                        <dd class="item clearfix">
+                            <!--循环页面  -->
+                            <c:set var="count" value="0"></c:set>
+							<c:forEach items="${map}" var="goods" varStatus="i">
+							<c:set var="count" value="${count + (goods.key.goodsprice*goods.value)}"></c:set>
+                                <dd class="item clearfix">
                                 <div class="item-row">
                                     <div class="col col-1">
                                         <div class="g-pic">
-                                            <img src="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
+                                            <img src="${goods.key.goodsimg}" width="40" height="40" />
                                         </div>
                                         <div class="g-info">
-                                                                                          <a href="#">
-                                                小米T恤 忍者米兔双截棍 军绿 XXL                                            </a>
-                                                                                                                                </div>
+										<a href="#">${goods.key.goodsname}</a>
+										</div>
                                     </div>
-                
-                                    <div class="col col-2">39元</div>
-                                    <div class="col col-3">1</div>
-                                    <div class="col col-4">39元</div>
+                                    <div class="col col-2">${goods.key.goodsprice}元</div>
+                                    <div class="col col-3">${goods.value}</div>
+                                    <div class="col col-4">${goods.key.goodsprice*goods.value}元</div>
                                 </div>
-                            </dd>
-                                                        <dd class="item clearfix">
-                                <div class="item-row">
-                                    <div class="col col-1">
-                                        <div class="g-pic">
-                                            <img src="http://i1.mifile.cn/a1/T14BLvBKJT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T14BLvBKJT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
-                                        </div>
-                                        <div class="g-info">
-                                                                                         <a href="#">
-                                                招财猫米兔 白色                                            </a>
-                                                                                                                                </div>
-                                    </div>
-                
-                                    <div class="col col-2">49元</div>
-                                    <div class="col col-3">1</div>
-                                    <div class="col col-4">49元</div>
-                                </div>
-                            </dd>
-                                                        <dd class="item clearfix">
-                                <div class="item-row">
-                                    <div class="col col-1">
-                                        <div class="g-pic">
-                                            <img src="http://i1.mifile.cn/a1/T1rrDgB4DT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T1rrDgB4DT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
-                                        </div>
-                                        <div class="g-info">
-                                                                                         <a href="#">
-                                                小米圆领纯色T恤 男款 红色 XXL                                            </a>
-                                                                                                                                </div>
-                                    </div>
-                
-                                    <div class="col col-2">39元</div>
-                                    <div class="col col-3">4</div>
-                                    <div class="col col-4">156元</div>
-                                </div>
-                            </dd>
-                                                    </dl>
+                            </dd> 
+                            </c:forEach>
+                            
+                      </dl>
                         <div class="checkout-count clearfix">
                             <div class="checkout-count-extend xm-add-buy">
                                 <h3 class="title">会员留言</h2></br>
@@ -429,13 +409,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <ul>
 
                                     <li>
-                                       订单总额：<span>244元</span>
+                                       订单总额：<span>${count}元</span>
                                     </li>
                                     <li>
                                         活动优惠：<span>-0元</span>
                                         <script type="text/javascript">
                                             checkoutConfig.activityDiscountMoney=0;
-                                            checkoutConfig.totalPrice=244.00;
+                                            checkoutConfig.totalPrice=${count};
                                         </script>
                                     </li>
                                     <li>
@@ -445,106 +425,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         运费：<span id="postageDesc">0元</span>
                                     </li>
                                 </ul>
-                                <p class="checkout-total">应付总额：<span><strong id="totalPrice">244</strong>元</span></p>
+                                <p class="checkout-total">应付总额：<span><strong id="totalPrice">${count}</strong>元</span></p>
                             </div>
                             <!--  -->
                         </div>
                     </div>
                 </div>
-
-    <!--S 加价购 产品选择弹框 -->
-                <div class="modal hide modal-choose-pro" id="J_choosePro-664">
-                <div class="modal-header">
-                    <span class="close" data-dismiss='modal'><i class="iconfont">&#xe617;</i></span>
-                    <h3>选择产品</h3>
-                    <div class="more">
-                        <div class="xm-recommend-page clearfix">
-                            <a class="page-btn-prev   J_carouselPrev iconfont" href="javascript: void(0);">&#xe604;</a><a class="page-btn-next  J_carouselNext iconfont" href="javascript: void(0);">&#xe605;</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body J_chooseProCarousel">
-                    <div class="J_carouselWrap modal-choose-pro-list-wrap">
-                        <ul class="clearfix J_carouselList">
-                                                    </ul>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
-                </div>
-            </div>
-                <!--E 加价购 产品选择弹框 -->
-    
-    <!--S 保障计划 产品选择弹框 -->
-    
-    
                 </div>
                 <!-- 商品清单 END -->
                 <input type="hidden"  id="couponType" name="Checkout[couponsType]">
                 <input type="hidden" id="couponValue" name="Checkout[couponsValue]">
                 <div class="checkout-confirm">
-                    
+               		 <form action="tijiao.do" method="get">  
+                	 <input type="hidden" name="map" value="<%=map%>">
+                	 <input type="hidden" name="adress" value="<%=adress%>">
+                	 <input type="hidden" name="Order_mes" value="<%=Order_mes%>">
                      <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-                     <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" />
-                                     </div>
+               <!-- <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" /> -->
+               		<input type="submit" class="btn btn-primary" value="立即下单" id="toPay"/>
+                 </form>
+                 </div>
             </div>
         </div>
-
-    </form>
-
+       <!-- </form> -->
 </div>
-<!-- 禮品卡提示 S-->
-    <div class="modal hide lipin-modal" id="lipinTip">
-        <div class="modal-header">
-            <h2 class="title">温馨提示</h2>
-            <p> 为保障您的利益与安全，下单后礼品卡将会被使用，<br>
- 且订单信息将不可修改。请确认收货信息：</p>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li><strong>收&nbsp;&nbsp;货&nbsp;&nbsp;人：</strong><span id="lipin-uname"></span></li>
-                <li><strong>联系电话：</strong><span id="lipin-uphone"></span></li>
-                <li><strong>收货地址：</strong><span id="lipin-uaddr"></span></li>
-            </ul>
-        </div>
-        <div class="modal-footer">
-            <span class="btn btn-primary" id="useGiftCard">确认下单</span><span class="btn btn-dakeLight" id="closeGiftCard">返回修改</span>
-        </div>
-    </div>
-<!--  禮品卡提示 E-->
-<!-- 预售提示 S-->
-    <div class="modal hide yushou-modal" id="yushouTip">
-        <div class="modal-body">
-            <h2>请确认收货地址及发货时间</h2>
-            <ul class="list">
-                <li>
-                    <strong>请确认配送地址，提交后不可变更：</strong>
-                    <p id="yushouAddr"> </p>
-                    <span class="icon-common icon-1"></span>
-                </li>
-                <li>
-                    <strong>支付后发货</strong>
-                    <p>如您随预售商品一起购买的商品，将与预售商品一起发货</p>
-                    <span class="icon-common icon-2"></span>
-                </li>
-                <li>
-                    <strong>以支付价格为准</strong>
-                    <p>如预售产品发生调价，已支付订单价格将不受影响。</p>
-                    <span class="icon-common icon-3"></span>
-                </li>
-            </ul>
-        </div>
-        <div class="modal-footer">
-                <p id="yushouOk" class="yushou-ok">
-                    <span class="icon-checkbox"><i class="iconfont">&#xe626;</i></span>
-                    我已确认收货地址正确，不再变更</p>
-                <span class="btn btn-lineDakeLight" data-dismiss="modal">返回修改地址</span>    
-                <span class="btn btn-primary" id="yushouCheckout">继续下单</span>
-                
-            </div>
-    </div>
-<!--  预售提示 E-->
-
 <script id="newAddrTemplate" type="text/x-dot-template">
         <dl class="item selected" data-isnew="true" data-consignee="{{=it.consignee}}" data-tel="{{=it.tel}}" data-province="{{=it.province}}" data-provincename="{{=it.provinceName}}" data-city="{{=it.city}}" data-cityname="{{=it.cityName}}" data-county="{{=it.county}}" data-countyname="{{=it.countyName}}" data-zipcode="{{=it.zipcode}}" data-street="{{=it.street}}" data-tag="{{=it.tag}}">
             <dt>
@@ -561,16 +465,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </dd>
         </dl>
 </script>
-
-
-<!-- 保险弹窗 -->
-<!-- 保险弹窗 -->
-
-
-        
-
     <script src="js/base.min.js"></script>
-
         <script type="text/javascript" src="js/address_all.js"></script>
 <script type="text/javascript" src="js/checkout.min.js"></script> 
 </div>

@@ -413,7 +413,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		}
 			allparm=allparm.replace(/\s+/g, "");
-			location.href="dingdan.do?goods_id="+allparm;
+			location.href="dingdan.do?order_mes="+allparm;
 			return;
 		}
 			alert("亲，您还未选择任何商品哦");

@@ -61,7 +61,7 @@ public class Adressdaoimpl implements Adressdao {
 		// TODO Auto-generated method stub
 		Adress adr = null;
 		Connection conn = ConnectionPool.getConnection();
-		String sql = "select from  adress where adress_id=?";
+		String sql = "select * from  adress where adress_id=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, id);
 		ResultSet rs = ps.executeQuery();

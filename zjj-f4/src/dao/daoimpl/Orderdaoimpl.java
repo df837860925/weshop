@@ -16,7 +16,7 @@ public class Orderdaoimpl implements Orderdao {
 	public void insertOrder(Order ode) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = ConnectionPool.getConnection();
-		String sql = "insert into order(order_userid,order_goodsid,order_goodssum,order_adressid) values(?,?,?,?)";
+		String sql = "insert into orders(order_userid,order_goodsid,order_goodsum,order_adressid) values(?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, ode.getOrderuserid());
 		ps.setInt(2, ode.getOrdergoodsid());

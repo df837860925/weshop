@@ -74,17 +74,23 @@ $('.img-small .clothes img').each(function(){
 //    addCart();
 //  });
 //})();
-
+var times = 0;
 function addCart(){
   $('.add-cart').click(function(){
-	console.log(goods_id);
-	console.log(typeof(goods_id));
+	if(times !=0){
+		confirm('您已经添加至购物车！')
+		return;
+	}
     var token = localStorage.getItem('token');
     var goodsId = $('.add-cart span').attr('data-goods-id');
-    console.log(goodsId);
-    console.log(typeof(goodsId));
-    if(token){
-    	alert("添加成功！");
+    if(!token){
+    	var goodsId = $('.add-cart span').attr('data-goods-id');
+    	var number =  $(".input-number input").val();
+		goodsId = goodsId+"-"+number;
+		//传入了一个状态参数 status
+		location.href="gouwudai.do?goods_id="+goodsId+"&status=addCart";
+		times = 1;
+		confirm('添加成功！')
     }else{
       if(confirm('未登录，即将跳转到登录界面')){
         location.href = 'wkr-zhuce.jsp?goods_id='+ goodsId+'&gc=2';
@@ -95,6 +101,10 @@ function addCart(){
 
 function Buy(){
 	  $('.buy').click(function(){
-	  
+		  var goodsId = $('.add-cart span').attr('data-goods-id');
+		  var number = $(".input-number input").val();
+		  goodsId = goodsId+"-"+number;
+		  //传入了一个状态参数 status
+		  location.href="gouwudai.do?goods_id="+goodsId+"&status=buy";
 	  });
 	};
