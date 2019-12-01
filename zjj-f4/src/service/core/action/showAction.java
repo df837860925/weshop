@@ -65,7 +65,7 @@ public class showAction extends Action{
 ////		  sos.print(URLDecoder.decode(c1.toString()));
 //		
 //		
-		return new ActionForword("succsee");
+		return null;
 	}
 
 }
