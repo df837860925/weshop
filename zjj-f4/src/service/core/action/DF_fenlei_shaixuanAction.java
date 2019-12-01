@@ -34,6 +34,7 @@ public class DF_fenlei_shaixuanAction  extends Action {
 	     int pagesize=Integer.valueOf(shaixuan.getPagesize());
 		  String list=shaixuan.getList();
 		  
+		  System.out.println("list:"+list);
 		  String lists[]=new String[1];
 		  if (list.indexOf(",")<0) {
 			lists[0]=list;

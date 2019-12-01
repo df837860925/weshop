@@ -1,4 +1,10 @@
+<%@page import="pojo.Goods"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%
+	Goods goods = (Goods) request.getAttribute("goods");
+	System.out.println(goods);
+ %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
        
     <title>My JSP 'kqx-xiangqing.jsp' starting page</title>
-    
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -119,21 +125,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="header">
 			<p>古驰首页 > 商品>商品详情</p>
 			<div class="img1">
-				<div class="slide"></div>
-			</div>
+				<img src="${goods.goodsimg}"/>
+					<div class="slide"></div>
+				</div>
 			<!--显示-->
-	      <div class="big">
-	        
+	      <div class="big" style="background-image:url(${goods.goodsimg}) ">
 	      </div>
 				<div class="product-info">
-					<div class="product-name"></div>
+					<div class="product-name">${goods.goodsname}</div>
 					<div class="brand-name">
-						<!--<span>品牌：Armani Jeans</span>
-						<div>商品编号：939210776841865</div>-->
+						${goods.goodsdesc}
 					</div>
 					<div class="product-price">
 						<span class="symbol">¥</span>
-						<span class="price"></span>
+						<span class="price">${goods.goodsprice }</span>
 						<span class="original-price"></span>
 					</div>
 					<div class="product-region">
@@ -178,14 +183,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="button-wrap">
 						<button  type="button" class="buy"><span>立即购买</span></button> 
-						<button  type="button" class="add-cart" ><span>加入购物车</span></button>
+						<button  type="button" class="add-cart" ><span data-goods-id="${goods.goodsid}">加入购物车</span></button>
 					</div>
 				</div>
 			
 			<div class="img-small">
 				<input type="button" value="<" class="prev"/>
 				<div class="clothes">
-				
+					<img src="${goods.goodsimg}" class="clothes1"/>
+					<img src="${goods.goodsimg}" class="clothes2"/>
 				</div>
 				<input type="button" value=">" class="next" />
 			</div>
@@ -533,4 +539,7 @@ $('#nav_a li').each(function(x){
 	{return;}
 	else return result[2];
 	}
+</script>
+<script language="javascript">
+	var goods_id = ${goods.goodsid}
 </script>

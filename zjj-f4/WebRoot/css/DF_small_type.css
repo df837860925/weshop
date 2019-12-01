@@ -17,6 +17,10 @@ a:hover{
 .ybc_main p{
 	text-align: center;
 }
+.ybc_main{
+	
+margin: 0px;
+}
 
 .ybc_clohtes{
 			width: 50%;
@@ -62,6 +66,7 @@ a:hover{
 	height: 500px;
 	float: left;
 	border-right:1px solid #FFFFFF;
+	border-bottom:3px solid #FFFFFF;
 }
 .ybc_glasses{
 	width: 25%;
@@ -107,3 +112,20 @@ a:hover{
     line-height: 14px;
 	
 }
+#moregoods{
+				margin: 20px 10px; 
+				display: inline-block;
+				padding-top: 1px;
+				font-size: ;
+				color: #e5dfd9;
+				background-color:#1b1b1b;
+				width: 100px;
+				height: 45px;
+			}
+#moregoods:hover
+{
+				background: #444;
+				color: white;
+				list-style: none;
+				text-decoration: none;
+			}

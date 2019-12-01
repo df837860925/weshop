@@ -209,7 +209,7 @@ public class Goodsdaoimpl implements Goodsdao {
 		ps.setInt(3, page*pagesize);
 		ps.setInt(4, pagesize);
 		ResultSet rs = ps.executeQuery();
-		if (rs != null) {
+		
 			while (rs.next()) {
 				Goods good = new Goods();
 				good.setGoodsid(rs.getInt("goods_id"));
@@ -224,7 +224,7 @@ public class Goodsdaoimpl implements Goodsdao {
 				good.setGoodsmaterial(rs.getInt("goods_material"));
 				lists.add(good);
 			}
-		}
+	
 		ConnectionPool.closeConnection(conn);
 		return lists;
 		

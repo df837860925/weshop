@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="css/daohang.css"/>
 		<link rel="stylesheet" type="text/css" href="css/DF_small_type.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -80,6 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width: 120px;
 				height: 100px;
 			background: white;
+			z-index: 10000;
 			}
 			.leibie li{
 				
@@ -280,8 +282,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<li id="li_leibie"><a href="">类别 </a><span class="caret"></span>
 				 		<div class="leibie">
 				 			<ul>
-				 				<li class="leibie1"><a href="">价格从高到底</a></li>
-				 			     <li class="leibie1"><a href="">价格从低到高</a></li>
+				 				<li class="leibie1"><a  onclick="paixu_height_low()">价格从高到底</a></li>
+				 			     <li class="leibie1"><a  onclick="paixu_low_height()">价格从低到高</a></li>
 				 			</ul>
 				 		</div>
 				 	</li >
@@ -311,7 +313,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			</ul>
 				 			<p style="color: #A6A5A6; font-size: 14px; float: left;margin-left:100px; ">材质</p>
 				 			<ul  style="display: inline-block; float: left; margin-left:70px ;">
-				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-1" checked="checked" /><span id="color">　织物</span></li>
+				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-1"  /><span id="color">　织物</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-2" /><span id="color">　真皮</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-3" /><span id="color">　GG帆布</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-4" /><span id="color">　天鹅绒</span></li>
@@ -475,6 +477,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   	</div>
 	   </section>
 	
+	
+	<input type="text" style="display: none;"  name="data" id="" value="${goods_bigtype}+','+${goods_smalltype}" />
   </body>
 </html>
 
@@ -483,28 +487,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 </script>
 <script type="text/javascript">
-	
+var data=$("#data").val();
+if(data)
+{ var x=data.split(",")[0];
+var y=data.split(",")[1];
+}
+else{
+var x=1;
+var y=2;
+}
+	var tiaojianpage=0;
 	var fenlei_data='';
 	// 请求数据
 	var  page=0;
-	fenleidata(page);
+	fenleidata(x,y,page);
 	
-	function fenleidata(i){
+	function fenleidata(x,y,i){
 	
 	$.get({
 		 type:"POST",
 		 url:"DF_fenlei_datashow.do",
-		 data:{"bigtype":1,"smalltype":1,"page":i,"pagesize":24},
+		 data:{"bigtype":x,"smalltype":y,"page":i,"pagesize":24},
 		 success:function(result){
 		   var obj=result;
 		 
    console.log(result);
 		   
 	   for (var i=0;i<obj.list.length;i++) {
-	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="'+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
 		   }
 	   $(".ybc_main").html(fenlei_data);
 	   $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
+		$("#moregoods").click(function(){
+		
+		page++;
+		fenleidata(x,y,page);
+		
+		
+	}) 
 	   
 		$(".ybc_jewel").mouseenter(function(){
 		$(this).children(".banner_glasses").children(".jihe").children(".ps").fadeIn(500);	
@@ -514,13 +534,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
 	}) 
 		
-		$("#moregoods").click(function(){
-		
-		page++;
-		fenleidata(page);
-		
-		
-	}) 
 		}
 		
 		
@@ -541,6 +554,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}else{
 			$('#logo').slideDown(500);
 			$('#ybc_mynav').css('background','none');
+		}
+		if($(document).scrollTop()>350){
+		
+			$(".smll_daohang").css({"position":"fixed",
+			    "left":"0px",
+			    "top":"50px",
+			    "z-index":"10000"
+			
+			})
+			
+		}else{
+			$(".smll_daohang").css({"position":"relative",
+			    "left":"0px",
+			    "top":"0px",
+			    "z-index":"10000"
+			
+			})
 		}
 	})
 	$(".leibie").hide();
@@ -697,6 +727,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var colorarray =[];
 	$("#btn_sure").click(function(){
 		var count=0;
+		
 	   $(".shaixuan>ul>li>input").each(function(i){
 	   if ($(this).prop("checked")==true){
 	   	
@@ -705,23 +736,186 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  }
 	   })
 	   
+	 
+	    fenlei_data='';
 	   
-	$.get({
-	type:"POST",
-		 url:"DF_fenlei_shaixuan.do",
-		 data:{"bigtype":1,"smalltype":2,"page":0,"pagesize":24,"list":colorarray},
-		 success:function(result){
-		   var obj=result;
-		   console.log(result);
-	}
-	})
+	  
+	tiaojian(x,y,tiaojianpage);
+		   
+
+	
 
 	console.log(colorarray);
 	colorarray=[];
 })
 	
+	function tiaojian(x,y,i){
+	
+		$.get({
+	type:"POST",
+		 url:"DF_fenlei_shaixuan.do",
+		 data:{"bigtype":x,"smalltype":y,"page":i,"pagesize":24,"list":colorarray},
+		 success:function(result){
+		   var obj=result;
+		   console.log(result);
+		  
+		   if(obj.list.length!=0){
+		   
+		    for (var i=0;i<obj.list.length;i++) {
+	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="'+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p >点击购买></p></div></a></div></div>'
+		   }
+		   }
+		   else{
+		     fenlei_data='<h1>没有相关的物品<h1>';
+		   }
+	   $(".ybc_main").html(fenlei_data);
+	   if(obj.list.length>=24){
+	   $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
+		$("#moregoods").click(function(){
+		var count=0;
+	   $(".shaixuan>ul>li>input").each(function(i){
+	   if ($(this).prop("checked")==true){
+	   	
+	   colorarray[count]=$(this).prop("value");
+	   count++;
+	  }
+	   })
+	   
+		tiaojianpage++;
+	tiaojian(x,y,tiaojianpage);
+		   
+		
+
+	
+
+	console.log(colorarray);
+	colorarray=[];
+		
+		
+	}) }
 	
 	
+		   if(tiaojianpage<0){
+		   
+		   fenlei_data='';
+		   }
+		   
+		   $(".ybc_jewel").mouseenter(function(){
+		$(this).children(".banner_glasses").children(".jihe").children(".ps").fadeIn(500);	
+	})
 	
+	
+	$(".ybc_jewel").mouseleave(function(){
+		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
+	}) 
+	
+	 $("html,body").animate({"scrollTop":0},1000);
+	}
+	})
+	
+	}
+	
+	var obj_ar=[];
+	
+	function paixu_low_height(){
+	 $(".ybc_jewel>.banner_glasses>a>.ps>#price").each(function(i){
+	 	
+	var txt= 	$(this).text();
+	  
+	  var txt_array=txt.split(",");
+	  txt=txt_array[0].substring(1)+txt_array[1];
+	
+	 var price= txt;
+	 console.log(price);
+	 obj_ar.push({"price":parseInt(price),"obj":$(this).parent().parent().parent().parent()});
+	 //$(this).parent().parent().parent().parent()
+	// console.log($(this).parent().parent().parent().parent().html());
+	 	
+	 	
+	 })
+	   
+	for (var i=0;i<obj_ar.length;i++) {
+		for (var j=0;j<obj_ar.length-i-1;j++) {
+			if(obj_ar[j].price>obj_ar[j+1].price)
+			{
+				var guodu=obj_ar[j];
+				obj_ar[j]=obj_ar[j+1];
+				obj_ar[j+1]=guodu;
+			}
+			
+		}
+	}
+	//  console.log(obj_ar[0].obj);
+	var htmltext='';
+	$(".ybc_main").html("");
+	for (var i=0;i<obj_ar.length;i++) {
+		$(".ybc_main").append($(obj_ar[i].obj));
+	}
+	  
+	  $(".ybc_jewel").mouseenter(function(){
+		$(this).children(".banner_glasses").children().children(".ps").fadeIn(500);		
+	})
+	
+	$(".ybc_jewel").mouseleave(function(){
+		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
+	})
+	  
+		
+		obj_ar=[];
+		
+	}
+	
+	function paixu_height_low(){
+		
+		 $(".ybc_jewel>.banner_glasses>a>.ps>#price").each(function(i){
+	 	
+	var txt= 	$(this).text();
+	  var heat= txt.indexOf("￥");
+	  var tail=txt.indexOf(",");
+	  var txt_array=txt.split(",");
+	  txt=txt_array[0].substring(1)+txt_array[1];
+	
+	 var price=  txt;
+	 console.log(price);
+	 obj_ar.push({"price":parseInt(price),"obj":$(this).parent().parent().parent().parent()});
+	 //$(this).parent().parent().parent().parent()
+	// console.log($(this).parent().parent().parent().parent().html());
+	 	
+	 	
+	 })
+	   
+	for (var i=0;i<obj_ar.length;i++) {
+		for (var j=0;j<obj_ar.length-i-1;j++) {
+			if(obj_ar[j].price<obj_ar[j+1].price)
+			{
+				var guodu=obj_ar[j];
+				obj_ar[j]=obj_ar[j+1];
+				obj_ar[j+1]=guodu;
+			}
+			
+		}
+	}
+	//  console.log(obj_ar[0].obj);
+	var htmltext='';
+	$(".ybc_main").html("");
+	for (var i=0;i<obj_ar.length;i++) {
+		$(".ybc_main").append($(obj_ar[i].obj));
+	}
+	  
+	  $(".ybc_jewel").mouseenter(function(){
+		$(this).children(".banner_glasses").children().children(".ps").fadeIn(500);		
+	})
+	
+	$(".ybc_jewel").mouseleave(function(){
+		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
+	})
+	  
+		
+		obj_ar=[];
+		
+		
+		
+	}
+		
 	
 </script>

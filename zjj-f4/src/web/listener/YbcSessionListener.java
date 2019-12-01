@@ -19,7 +19,7 @@ public class YbcSessionListener implements HttpSessionAttributeListener{
 		String attrname=arg0.getName();
 		//如果是登陆操作
 		if(attrname.equals("userlogininfo")){
-			System.out.println("进了监听事件");
+			System.out.println("进了添加");
 			//获得当前登陆信息
 			UserLoginInfo userlogininfo =(UserLoginInfo)arg0.getValue();
 			//如果在其他地方登陆过了
@@ -55,7 +55,7 @@ public class YbcSessionListener implements HttpSessionAttributeListener{
 		//拿出被替换的属性名看一看是不是userlogininfo
 		String attrname=arg0.getName();
 		if(attrname.equals("userlogininfo")){
-			System.err.println("进入了移除事件");
+			System.err.println("进入了替换");
 			//先把旧的移除
 			UserLoginInfo olduserlogininfo =(UserLoginInfo)arg0.getValue();
 			map.remove(olduserlogininfo.getUserid());

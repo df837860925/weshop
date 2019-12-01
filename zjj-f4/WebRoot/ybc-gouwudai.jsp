@@ -46,6 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				margin: 10px 0px;
 				font-size: 11px;
 			}
+			.hid{}
 	</style>
 	
 	<body>
@@ -127,6 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<c:forEach items="${shoppinglist}" var="goods" varStatus="i">
 					<div class="shangping">
 						<input class="check" type="checkbox"  checked="checked"/>
+						<input  class="hid" type="hidden" value="${goods.goodsid} ">
 						<a><img src="${goods.goodsimg}"/></a>
 						<div class="shangping_desc">
 							<div class="shangping_rightline">
@@ -177,8 +179,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</span>
 						</div>
 						
-						<div class="button">
-							<a href="" class="gopay">立即结算</a>
+						<div class="button " >
+							<a href="javascript:;" class="gopay" >立即结算</a>
 							<a href="" class="gobay">继续购买</a>
 						</div>
 					</div>
@@ -346,7 +348,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	//商品选择改变价格逻辑
 	var allpay=0;
 	var spcount=0;
-	var flag=1;
+	var flagm=1;
 	changepay();
 	$('input').each(function(x){
 		$(this).click(function(){
@@ -359,16 +361,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 	})
 	$('#quanxuan').click(function(){
-			if(flag==0){
+			if(flagm==0){
 				$('.check').each(function(x){
 						$(this).prop('checked',true);
 				})
-				flag=1;
+				flagm=1;
 			}else{
 				$('.check').each(function(x){
 				$(this).prop('checked',false);
 				})
-				flag=0;
+				flagm=0;
 			}
 			changepay();
 	})
@@ -392,6 +394,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		allpay=0;
 		spcount=0;
 	}
+	//========================支付
+	$('.gopay').click( function(){
+		var arr=[];
+		$('.check').each(function(x){
+			if($(this).prop('checked')){
+			var parm=$('.hid').eq(x).val()+"-"+$('select').eq(x).val();
+			arr.push(parm);
+			}
+		})
+		if(arr.length!=0){
+			alert(arr);
+		var allparm="";
+		for (var int = 0; int < arr.length; int++) {
+				allparm=allparm+arr[int];
+			if(int!=arr.length-1){
+				allparm+=",";
+			}
+		}
+			allparm=allparm.replace(/\s+/g, "");
+			location.href="dingdan.do?goods_id="+allparm;
+			return;
+		}
+			alert("亲，您还未选择任何商品哦");
+	})
+	
+	
 	//================================丁锋
 	read();
 	//读缓存 
