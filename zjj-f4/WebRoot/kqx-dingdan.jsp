@@ -567,6 +567,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="js/jquery-1.8.3.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/base.js"></script>
+	 <script src="js/DF_JS.js" type="text/javascript"></script>
   </body>
 </html>
 <script type="text/javascript">
@@ -687,4 +688,5 @@ $('#nav_a li').each(function(x){
 	{return;}
 	else return result[2];
 	}
+	loadnav();
 </script>

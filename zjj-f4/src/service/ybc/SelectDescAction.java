@@ -29,7 +29,7 @@ public class SelectDescAction extends Action{
 		try {
 			//∞¥’’
 		List<Goods>list=goodsim.selectByGoodsDesc(descd, 0);
-			
+			return new ActionForword("df_fenlei_type");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

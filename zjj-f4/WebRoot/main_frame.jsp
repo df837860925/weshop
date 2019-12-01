@@ -695,6 +695,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/DF_JS.js" type="text/javascript" charset="utf-8"></script>
 <!--<script src="js/cart.js" type="text/javascript" charset="utf-8"></script>-->
 <script type="text/javascript">
 	//====================================轮播======================
@@ -1026,29 +1027,7 @@ var a = parseInt($(this).val());
 	
 	var content_cat="";
 	loadnav();
-	function loadnav(){
-		$.get("http://wjian.top/shop/api_cat.php",{},function (resulit){
-		var obj=JSON.parse(resulit);
-		
-		if(obj.code!=0)
-		{
-			console.log("获取数据失败");
-			return
-		}
-		else{
-
-		console.log(obj);
-		for (var i=0;i<obj.data.length;i++) {
-			content_cat+='<li><a href="fenlei.jsp?cat_id='+obj.data[i].cat_id+'">'+obj.data[i].cat_name+'<p class="clearblock"><span  class="caret"></span></p></a></li>'
-						;
-						
-
-		}
-		
-	}
-				$("#nav_a").html(content_cat);
- })
-}
+	
 	
 	//==================读取
 	read();
