@@ -355,7 +355,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<div class="row " >
-					<div class="col-md-6 col-md-offset-3  navbar" id="ybc_main_nav">
+					<div class="col-md-3"  id="serchfather">
+						<a id="serch" href="javascript:;">
+							<span class="glyphicon glyphicon-search" id=""   >
+							</span>
+						</a>
+					</div>
+					<div class="col-md-3 "  id="serchinput">
+						<div class="input-group" >
+				      		<span class="input-group-btn">
+				       		 	<button class="btn btn-default" type="button">
+				       		 		<span class="glyphicon glyphicon-search" id="toserch"  >
+									</span>
+				       		 	</button>
+				      		</span>
+			      			<input type="text" class="form-control" placeholder="Search for...">
+   			 			</div><!-- /input-group -->
+					</div>
+					<div class="col-md-6   navbar" id="ybc_main_nav">
 							<ul class="nav  nav-justified" id="nav_a" >
 								<li><a href="">全新资讯<p class="clearblock"><span  class="caret"></span></p></a></li>
 								<li><a href="">女士<p class="clearblock"><span  class="caret"></span></p></a></li>
@@ -678,6 +695,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/DF_JS.js" type="text/javascript" charset="utf-8"></script>
 <!--<script src="js/cart.js" type="text/javascript" charset="utf-8"></script>-->
 <script type="text/javascript">
 	//====================================轮播======================
@@ -942,6 +960,20 @@ $('#nav_a li').each(function(x){
 //		$('.xialakuag').css('top',45);
 		},100)
 	})
+	//================搜索
+	$('#serchinput').hide();
+	$('#serch').click(function(){
+		$('#serchfather').hide();
+		$('#serchinput').show();
+	})
+	$('#serchinput').mouseleave(function(){
+		$('#serchfather').show();
+		$('#serchinput').hide();
+	})
+	$('#toserch').click(function(){
+		var desc=$('#serchinput input').val();
+		location.href="selectdesc.do?desc="+desc;
+	})
 	
 	//=========跳转
 	$("select").change(function(){
@@ -995,29 +1027,7 @@ var a = parseInt($(this).val());
 	
 	var content_cat="";
 	loadnav();
-	function loadnav(){
-		$.get("http://wjian.top/shop/api_cat.php",{},function (resulit){
-		var obj=JSON.parse(resulit);
-		
-		if(obj.code!=0)
-		{
-			console.log("获取数据失败");
-			return
-		}
-		else{
-
-		console.log(obj);
-		for (var i=0;i<obj.data.length;i++) {
-			content_cat+='<li><a href="fenlei.jsp?cat_id='+obj.data[i].cat_id+'">'+obj.data[i].cat_name+'<p class="clearblock"><span  class="caret"></span></p></a></li>'
-						;
-						
-
-		}
-		
-	}
-				$("#nav_a").html(content_cat);
- })
-}
+	
 	
 	//==================读取
 	read();

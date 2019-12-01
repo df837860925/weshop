@@ -145,6 +145,25 @@
 				top: 54px;
 			}
 		}
+		#serch:hover{
+			text-decoration: none;
+		}
+		#serchfather{
+			height: 100%;
+		}
+		#serch span{
+			display: block; height: 54px; line-height: 54px; margin-left: 22px;font-size: 18px;
+		}
+		#serchinput{
+			margin-top: 10px;
+		}
+		#serchinput>div{
+			margin-left: 10px;
+		}
+		#toserch{
+			font-size: 16px; 
+			color: #333333 !important;
+		}
 		.ybc_main{
 			/*height: 500px;*/
 			margin: 15px;

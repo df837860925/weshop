@@ -90,6 +90,9 @@ public class Mvc_servlet extends HttpServlet {
 		      System.out.println(config);
 		      String  classform=  config.getProperty(classFormPath);
 		      //���ظ���
+		      
+				
+			
 		      Class class1;
 		      ActionForm af = null;
 			try {
@@ -132,7 +135,7 @@ public class Mvc_servlet extends HttpServlet {
 
 			e1.printStackTrace();
 		}
-
+		      
 		// ��request.response �Լ�Ҫ�õ�ֵ�� ���ݵ�ʵ����תҳ�档
 		String classForName = config.getProperty(uri);
 		System.out.println(classForName);

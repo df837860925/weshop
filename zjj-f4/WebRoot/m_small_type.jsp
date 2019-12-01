@@ -58,7 +58,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<div class="row " >
-					<div class="col-md-6 col-md-offset-3  navbar" id="ybc_main_nav">
+					<div class="col-md-3"  id="serchfather">
+						<a id="serch" href="javascript:;">
+							<span class="glyphicon glyphicon-search" id=""   >
+							</span>
+						</a>
+					</div>
+					<div class="col-md-3 "  id="serchinput">
+						<div class="input-group" >
+				      		<span class="input-group-btn">
+				       		 	<button class="btn btn-default" type="button">
+				       		 		<span class="glyphicon glyphicon-search" id="toserch"  >
+									</span>
+				       		 	</button>
+				      		</span>
+			      			<input type="text" class="form-control" placeholder="Search for...">
+   			 			</div><!-- /input-group -->
+					</div>
+					<div class="col-md-6   navbar" id="ybc_main_nav">
 							<ul class="nav  nav-justified" id="nav_a" >
 								<li><a href="">全新资讯<p class="clearblock"><span  class="caret"></span></p></a></li>
 								<li><a href="">女士<p class="clearblock"><span  class="caret"></span></p></a></li>
@@ -266,7 +283,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/jquery.min.js">
 	
 </script>
+ <script src="js/DF_JS.js" type="text/javascript"></script>
 <script type="text/javascript">
+loadnav();
 	//头部JS
 	var flag=0;
 	$(document).scroll(function(){
@@ -313,6 +332,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 //		$('.xialakuag').css('top',45);
 		},100)
+	})
+	
+	//================搜索
+	$('#serchinput').hide();
+	$('#serch').click(function(){
+		$('#serchfather').hide();
+		$('#serchinput').show();
+	})
+	$('#serchinput').mouseleave(function(){
+		$('#serchfather').show();
+		$('#serchinput').hide();
+	})
+	$('#toserch').click(function(){
+		var desc=$('#serchinput input').val();
+		location.href="selectdesc.do?desc="+desc;
 	})
 	//中部
 	//商品选择改变价格逻辑

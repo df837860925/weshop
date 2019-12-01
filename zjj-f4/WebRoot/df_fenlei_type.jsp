@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -357,54 +358,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</section>
 		
 		<section class="ybc_main" style="padding: 0px;">
+			<c:forEach items="${goodslist}" var="user" varStatus="i" >
 			<div class="ybc_jewel">
 				<div class="banner_glasses">
 					<a href="">
-					<img class="imglimit" src="https://res.gucci.cn/resources/2019/6/19/15608923243776794_gs_470X470.jpg" />
+					<img class="imglimit" src="${user.goods_img} }" />
 					<div class="ps">
-						<h2>男童</h2>
-						<p id="price">￥999</p>
+						<h2>${user.goods_name}</h2>
+						<p id="price">${user.goods_price}</p>
 						<p id="">点击购买></p>
 					</div>
 				</a>
 				</div>
 			</div>
-			<div class="ybc_jewel">
-				<div class="banner_glasses">
-					<a href="">
-					<img class="imglimit" src="https://res.gucci.cn/resources/2018/5/9/15258126100208072_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>女童</h2>
-						<p id="price">￥999</p>
-						<p>点击购买 ></p>
-					</div>
-				</a>
-				</div>
-			</div>
-			<div class="ybc_jewel">
-				<div class="banner_glasses">
-					<a href="">
-					<img class="imglimit"  src="https://res.gucci.cn/resources/2019/8/30/15671506341921057_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>儿童礼品</h2>
-						<p id="price">￥999</p>
-						<p>点击购买 ></p>
-					</div>
-				</a>
-				</div>
-			</div>
-			<div class="ybc_jewel">
-				<div class="banner_glasses">
-					<a href="">
-					<img class="imglimit"  src="https://res.gucci.cn/resources/2019/8/30/15671506341921057_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>儿童礼品</h2>
-						<p id="price">￥999</p>
-						<p>点击购买 ></p>
-					</div>
-				</a>
-				</div>
-			</div>
+			
+			
+			
+			
+			</c:forEach>>
 		</section>
 			
 			
@@ -486,7 +457,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="js/bootstrap.js"></script>
 	
 </script>
+ <script src="js/DF_JS.js" type="text/javascript"></script>
 <script type="text/javascript">
+loadnav();
 var data=$("#data").val();
 if(data)
 { var x=data.split(",")[0];
@@ -496,52 +469,42 @@ else{
 var x=1;
 var y=2;
 }
-	var tiaojianpage=0;
-	var fenlei_data='';
-	// 请求数据
-	var  page=0;
+	
+	fenleidata(x,y,page);
+	function fenleidata(x,y,i){
+
+$.get({
+	 type:"POST",
+	 url:"DF_fenlei_datashow.do",
+	 data:{"bigtype":x,"smalltype":y,"page":i,"pagesize":24},
+	 success:function(result){
+	   var obj=result;
+	 
+console.log(result);
+	   
+   for (var i=0;i<obj.list.length;i++) {
+   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="'+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+	   }
+   $(".ybc_main").html(fenlei_data);
+   $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
+	$("#moregoods").click(function(){
+	
+	page++;
 	fenleidata(x,y,page);
 	
-	function fenleidata(x,y,i){
 	
-	$.get({
-		 type:"POST",
-		 url:"DF_fenlei_datashow.do",
-		 data:{"bigtype":x,"smalltype":y,"page":i,"pagesize":24},
-		 success:function(result){
-		   var obj=result;
-		 
-   console.log(result);
-		   
-	   for (var i=0;i<obj.list.length;i++) {
-	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="'+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
-		   }
-	   $(".ybc_main").html(fenlei_data);
-	   $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
-		$("#moregoods").click(function(){
-		
-		page++;
-		fenleidata(x,y,page);
-		
-		
-	}) 
-	   
-		$(".ybc_jewel").mouseenter(function(){
-		$(this).children(".banner_glasses").children(".jihe").children(".ps").fadeIn(500);	
-	})
-	
-	$(".ybc_jewel").mouseleave(function(){
-		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
-	}) 
-		
-		}
-		
-		
-		})
-	
+}) 
+   
+	fenlei_mouseShow();
 	
 	}
 	
+	
+	})
+
+
+}
+
 	
 	
 	
@@ -815,107 +778,9 @@ var y=2;
 	
 	}
 	
-	var obj_ar=[];
 	
-	function paixu_low_height(){
-	 $(".ybc_jewel>.banner_glasses>a>.ps>#price").each(function(i){
-	 	
-	var txt= 	$(this).text();
-	  
-	  var txt_array=txt.split(",");
-	  txt=txt_array[0].substring(1)+txt_array[1];
 	
-	 var price= txt;
-	 console.log(price);
-	 obj_ar.push({"price":parseInt(price),"obj":$(this).parent().parent().parent().parent()});
-	 //$(this).parent().parent().parent().parent()
-	// console.log($(this).parent().parent().parent().parent().html());
-	 	
-	 	
-	 })
-	   
-	for (var i=0;i<obj_ar.length;i++) {
-		for (var j=0;j<obj_ar.length-i-1;j++) {
-			if(obj_ar[j].price>obj_ar[j+1].price)
-			{
-				var guodu=obj_ar[j];
-				obj_ar[j]=obj_ar[j+1];
-				obj_ar[j+1]=guodu;
-			}
-			
-		}
-	}
-	//  console.log(obj_ar[0].obj);
-	var htmltext='';
-	$(".ybc_main").html("");
-	for (var i=0;i<obj_ar.length;i++) {
-		$(".ybc_main").append($(obj_ar[i].obj));
-	}
-	  
-	  $(".ybc_jewel").mouseenter(function(){
-		$(this).children(".banner_glasses").children().children(".ps").fadeIn(500);		
-	})
 	
-	$(".ybc_jewel").mouseleave(function(){
-		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
-	})
-	  
-		
-		obj_ar=[];
-		
-	}
-	
-	function paixu_height_low(){
-		
-		 $(".ybc_jewel>.banner_glasses>a>.ps>#price").each(function(i){
-	 	
-	var txt= 	$(this).text();
-	  var heat= txt.indexOf("￥");
-	  var tail=txt.indexOf(",");
-	  var txt_array=txt.split(",");
-	  txt=txt_array[0].substring(1)+txt_array[1];
-	
-	 var price=  txt;
-	 console.log(price);
-	 obj_ar.push({"price":parseInt(price),"obj":$(this).parent().parent().parent().parent()});
-	 //$(this).parent().parent().parent().parent()
-	// console.log($(this).parent().parent().parent().parent().html());
-	 	
-	 	
-	 })
-	   
-	for (var i=0;i<obj_ar.length;i++) {
-		for (var j=0;j<obj_ar.length-i-1;j++) {
-			if(obj_ar[j].price<obj_ar[j+1].price)
-			{
-				var guodu=obj_ar[j];
-				obj_ar[j]=obj_ar[j+1];
-				obj_ar[j+1]=guodu;
-			}
-			
-		}
-	}
-	//  console.log(obj_ar[0].obj);
-	var htmltext='';
-	$(".ybc_main").html("");
-	for (var i=0;i<obj_ar.length;i++) {
-		$(".ybc_main").append($(obj_ar[i].obj));
-	}
-	  
-	  $(".ybc_jewel").mouseenter(function(){
-		$(this).children(".banner_glasses").children().children(".ps").fadeIn(500);		
-	})
-	
-	$(".ybc_jewel").mouseleave(function(){
-		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
-	})
-	  
-		
-		obj_ar=[];
-		
-		
-		
-	}
 		
 	
 </script>
