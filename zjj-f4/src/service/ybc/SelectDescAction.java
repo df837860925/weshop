@@ -28,9 +28,9 @@ public class SelectDescAction extends Action{
 		//String desc=form.getDesc();
 		try {
 			//∞¥’’
-			List<Goods>list=goodsim.selectByGoodsDesc(descd, 0);
-			request.setAttribute("goodslist", list);
-			return  new  ActionForword("DF_fenlei_type");
+
+		List<Goods>list=goodsim.selectByGoodsDesc(descd, 0);
+			return new ActionForword("df_fenlei_type");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

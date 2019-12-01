@@ -388,4 +388,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#exit").hide();
 		read();
 	})
+	loadnav();
 </script>

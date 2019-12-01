@@ -135,83 +135,7 @@ public class Goodsdaoimpl implements Goodsdao {
 	}
 
 	@Override
-	public List<Goods> selectByGoodsDesc(String desc, int num)throws Exception {
-		// TODO Auto-generated method stub
-		List<Goods> list = new ArrayList<Goods>();
-		Connection conn = ConnectionPool.getConnection();
-		
-		//准备sql语句
-		String sql = "select * from goods where 1=1 ";
-		
-		//拿出材质分类
-		Materialdaoimpl matim=new Materialdaoimpl();
-		 List<Material> matims= matim.selectAll();
-		 Iterator<Material> itmat= matims.iterator();
-		 while(itmat.hasNext()){
-			 Material mat= itmat.next();
-			 if(desc.indexOf(mat.getMaterialname())>=0){
-				 String st=" and goods_material="+mat.getMaterialid();
-					sql+=st;
-			 }
-		 }
-		 //拿出颜色分类
-		 Colordaoimpl colorim=new Colordaoimpl();
-		 List<Color> colors= colorim.selectAll();
-		 Iterator<Color> itcolor= colors.iterator();
-		 while(itcolor.hasNext()){
-			 Color color= itcolor.next();
-			 if(desc.indexOf(color.getColor_name())>=0){
-				 String st=" and goods_color="+color.getColor_id();
-					sql+=st;
-			 }
-		 }
-		//拿出产品分分类
-		
-		Smalltypeimpl smim=new Smalltypeimpl();
-		List<Smalltype> sms=smim.selectAll();
-		Iterator<Smalltype> it=sms.iterator();
-		while(it.hasNext()){
-			Smalltype sm=it.next();
-			if(desc.indexOf(sm.getSmalltypename())>=0){//如果有这关键字
-				String st=" and goods_smalltype="+sm.getSmalltypeid();
-				sql+=st;
-			}
-		}
-		//大类别 如果有女字
-		int flagman=0;
-		int flagwoman=0;
-		if(desc.indexOf("男")>=0){
-			 flagman++;
-			sql+=" and goods_bigtype=2 ";
-		}
-		if(desc.indexOf("女")>=0){
-			 flagwoman++;
-			sql+=" and goods_bigtype=1 ";
-		}
-		if(flagman==1&&flagwoman==1){//如果男女都有 就都去掉
-			sql.replace(" and goods_bigtype=2 ", "");
-			sql.replace(" and goods_bigtype=1 ", "");
-		}
-		System.out.println(sql);
-		
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ResultSet rs = ps.executeQuery();
-		while(rs.next()){
-			Goods good = new Goods();
-			good.setGoodsid(rs.getInt("goods_id"));
-			good.setGoodsname(rs.getString("goods_name"));
-			good.setGoodsimg(rs.getString("goods_img"));
-			good.setGoodsprice(rs.getString("goods_price"));
-			good.setGoodstype(rs.getString("goods_type"));
-			good.setGoodsdesc(rs.getString("goods_desc"));
-			good.setGoodsbigtype(rs.getInt("goods_bigtype"));
-			good.setGoodssmalltype(rs.getInt("goods_smalltype"));
-			good.setGoodscolor(rs.getInt("goods_color"));
-			good.setGoodsmaterial(rs.getInt("goods_material"));
-			list.add(good);
-		}
-		return list;
-	}
+
 	public List<Goods> selectByGoodsSmalltype(int bigtype, int smalltype,int page,int pagesize)
 			throws Exception {
 		List<Goods> list = new ArrayList<Goods>();
@@ -309,7 +233,85 @@ public class Goodsdaoimpl implements Goodsdao {
 		ConnectionPool.closeConnection(conn);
 		return lists;
 		
+	}
+
+	public List<Goods> selectByGoodsDesc(String desc, int num)throws Exception {
+		// TODO Auto-generated method stub
+		List<Goods> list = new ArrayList<Goods>();
+		Connection conn = ConnectionPool.getConnection();
 		
+		//准备sql语句
+		String sql = "select * from goods where 1=1 ";
+		
+		//拿出材质分类
+		Materialdaoimpl matim=new Materialdaoimpl();
+		 List<Material> matims= matim.selectAll();
+		 Iterator<Material> itmat= matims.iterator();
+		 while(itmat.hasNext()){
+			 Material mat= itmat.next();
+			 if(desc.indexOf(mat.getMaterialname())>=0){
+				 String st=" and goods_material="+mat.getMaterialid();
+					sql+=st;
+			 }
+		 }
+		 //拿出颜色分类
+		 Colordaoimpl colorim=new Colordaoimpl();
+		 List<Color> colors= colorim.selectAll();
+		 Iterator<Color> itcolor= colors.iterator();
+		 while(itcolor.hasNext()){
+			 Color color= itcolor.next();
+			 if(desc.indexOf(color.getColor_name())>=0){
+				 String st=" and goods_color="+color.getColor_id();
+					sql+=st;
+			 }
+		 }
+		//拿出产品分分类
+		
+		Smalltypeimpl smim=new Smalltypeimpl();
+		List<Smalltype> sms=smim.selectAll();
+		Iterator<Smalltype> it=sms.iterator();
+		while(it.hasNext()){
+			Smalltype sm=it.next();
+			if(desc.indexOf(sm.getSmalltypename())>=0){//如果有这关键字
+				String st=" and goods_smalltype="+sm.getSmalltypeid();
+				sql+=st;
+			}
+		}
+		//大类别 如果有女字
+		int flagman=0;
+		int flagwoman=0;
+		if(desc.indexOf("男")>=0){
+			 flagman++;
+			sql+=" and goods_bigtype=2 ";
+		}
+		if(desc.indexOf("女")>=0){
+			 flagwoman++;
+			sql+=" and goods_bigtype=1 ";
+		}
+		if(flagman==1&&flagwoman==1){//如果男女都有 就都去掉
+			sql.replace(" and goods_bigtype=2 ", "");
+			sql.replace(" and goods_bigtype=1 ", "");
+		}
+		System.out.println(sql);
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			Goods good = new Goods();
+			good.setGoodsid(rs.getInt("goods_id"));
+			good.setGoodsname(rs.getString("goods_name"));
+			good.setGoodsimg(rs.getString("goods_img"));
+			good.setGoodsprice(rs.getString("goods_price"));
+			good.setGoodstype(rs.getString("goods_type"));
+			good.setGoodsdesc(rs.getString("goods_desc"));
+			good.setGoodsbigtype(rs.getInt("goods_bigtype"));
+			good.setGoodssmalltype(rs.getInt("goods_smalltype"));
+			good.setGoodscolor(rs.getInt("goods_color"));
+			good.setGoodsmaterial(rs.getInt("goods_material"));
+			list.add(good);
+		}
+		return list;
+
 	}
 
 }

@@ -376,8 +376,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 <script src="js/product.js"></script>
+ <script src="js/DF_JS.js" type="text/javascript"></script>
 
 <script>
+loadnav();
     $('.color-wrap ul li').each(function(i)
     {
     	$(this).click(function()
