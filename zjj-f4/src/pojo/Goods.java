@@ -79,6 +79,8 @@ public String toString() {
 			+ ", goodsbigtype=" + goodsbigtype + ", goodssmalltype="
 			+ goodssmalltype + ", goodscolor=" + goodscolor
 			+ ", goodsmaterial=" + goodsmaterial + "]";
+	
+	
 }
 
    
