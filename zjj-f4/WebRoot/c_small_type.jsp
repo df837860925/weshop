@@ -130,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<section class="ybc_main" style="padding: 0px;">
 			<div class="ybc_wristwatch">
 				<div class="banner_wristwatch">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=3&goods_smalltype=15">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/6/19/15608923243776794_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>男童</h2>
@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_jewel">
 				<div class="banner_jewel">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=3&goods_smalltype=16">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/11/14/15737350956673721_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>女童</h2>
@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_glasses">
 				<div class="banner_glasses">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=3&goods_smalltype=17">
 					<img class="imglimit"  src="https://res.gucci.cn/resources/2019/11/1/15725481288121873_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>儿童礼品</h2>
@@ -302,6 +302,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var desc=$('#serchinput input').val();
 		location.href="selectdesc.do?desc="+desc;
 	})
+	//跳转到分类页面
+		$('.ybc_main a').each(function(){
+			var that=$(this)
+			$(this).click(function(){
+				var parm=that.attr('id');
+				location.href="df_fenlei_type.jsp?"+parm;
+			})
+		})
+		
 	//中部
 	//商品选择改变价格逻辑
 	var allpay=0;
