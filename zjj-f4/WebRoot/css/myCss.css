@@ -23,7 +23,7 @@ ul{
 	height: 500px;
 	background-size: 100%;
 	background-color: #e7e7e7;
-	opacity: 0.6;
+	opacity: 1;
 	float: left;
 	margin-right: 50px;
 }
@@ -42,13 +42,13 @@ ul{
 	margin: 15px 10px 0px 35px;
 	width: 100px; height: 100px;
 	margin-left: 25px;
-	opacity: 0.8;
+	opacity: 1;
 }
 .img-small .clothes2{
 	margin: 15px 10px 0px 0px;
 	width: 100px; height: 100px;
 	margin-left: 25px;
-	opacity: 0.8;
+	opacity: 1;
 }
 .product-info{
 	width:500px;

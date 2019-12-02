@@ -40,14 +40,14 @@ $('#nav_a li').each(function(x){
 //加载导航分类信息
 
 function loadnav(){
-	$.get({
+	$.ajax({
 	type:"POST",
 	url:"DF_loadnav.do",
 	data:{},
 	success:function(result)
 	{
 	var obj=result;
-	
+	 console.log("1111111");
 	if(obj.code!=0)
 	{
 		console.log("获取数据失败");

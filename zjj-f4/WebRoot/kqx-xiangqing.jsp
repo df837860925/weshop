@@ -32,6 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/daohang.css"/>
+		<link rel="stylesheet" type="text/css" href="css/DF_small_type.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
 		<style type="text/css">
 			#last{
 				background: #1B1B1B;
@@ -376,10 +378,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 <script src="js/product.js"></script>
- <script src="js/DF_JS.js" type="text/javascript"></script>
+ <script src="js/DF_JS.js" ></script>
 
 <script>
-loadnav();
+ 
     $('.color-wrap ul li').each(function(i)
     {
     	$(this).click(function()
@@ -572,6 +574,7 @@ $('#nav_a li').each(function(x){
 	{return;}
 	else return result[2];
 	}
+	loadnav();
 </script>
 <script language="javascript">
 	var goods_id = ${goods.goodsid}
