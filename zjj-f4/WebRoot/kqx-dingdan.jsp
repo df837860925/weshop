@@ -147,8 +147,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 			</div>
 		</div>
-    
-    
  <!--收货地址body部分开始-->  
  <div class="border_top_cart">
   <script type="text/javascript">
