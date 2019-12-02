@@ -15,13 +15,14 @@ public class Userdaoimpl implements Userdao {
 	public void insertUser(User us) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = ConnectionPool.getConnection();
-		String sql = "insert into user(user_pass,user_name,user_adress,user_shopping,user_order) values(?,?,?,?,?)";
+		String sql = "insert into user(user_pass,user_name,user_phone,user_adress,user_shopping,user_order) values(?,?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, us.getUserpass());
 		ps.setString(2, us.getUsername());
-		ps.setString(3, us.getUseradress());
-		ps.setString(4, us.getShopping());
-		ps.setString(5, us.getUserorder());
+		ps.setString(3, us.getUserphone());
+		ps.setString(4, us.getUseradress());
+		ps.setString(5, us.getUsershopping());
+		ps.setString(6, us.getUserorder());
 		ps.executeUpdate();
 		ConnectionPool.closeConnection(conn);
 	}
@@ -36,14 +37,14 @@ public class Userdaoimpl implements Userdao {
 	public void updateUser(User us) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = ConnectionPool.getConnection();
-		String sql = "update user set user_pass=?,user_name=?,user_adress=?,user_shopping=?,user_order where user_id=?";
+		String sql = "update user set user_pass=?,user_name=?,user_phone=?,user_adress=?,user_shopping=?,user_order where user_id=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, us.getUserpass());
 		ps.setString(2, us.getUsername());
-		ps.setString(3, us.getUseradress());
-		ps.setString(4, us.getShopping());
-		ps.setString(5, us.getUserorder());
-		ps.setInt(6, us.getUserid());
+		ps.setString(3, us.getUserphone());
+		ps.setString(4, us.getUseradress());
+		ps.setString(5, us.getUsershopping());
+		ps.setString(6, us.getUserorder());
 		ps.executeUpdate();
 		ConnectionPool.closeConnection(conn);
 	}
@@ -63,8 +64,9 @@ public class Userdaoimpl implements Userdao {
 			us.setUserid(id);
 			us.setUserpass(rs.getString("user_pass"));
 			us.setUsername(rs.getString("user_name"));
+			us.setUserphone(rs.getString("user_phone"));
 			us.setUseradress(rs.getString("user_adress"));
-			us.setShopping(rs.getString("user_shopping"));
+			us.setUsershopping(rs.getString("user_shopping"));
 			us.setUserorder(rs.getString("user_order"));
 		}
 		ConnectionPool.closeConnection(conn);
@@ -72,7 +74,7 @@ public class Userdaoimpl implements Userdao {
 	}
 
 	@Override
-	public User selectByUsername(String username) throws Exception {
+	public User selectByUserName(String username) throws Exception {
 		// TODO Auto-generated method stub
 		User us = null;
 		Connection conn = ConnectionPool.getConnection();
@@ -84,9 +86,33 @@ public class Userdaoimpl implements Userdao {
 			us = new User();
 			us.setUserid(rs.getInt("user_id"));
 			us.setUserpass(rs.getString("user_pass"));
-			us.setUsername(rs.getString("user_name"));
+			us.setUsername(username);
+			us.setUserphone(rs.getString("user_phone"));
 			us.setUseradress(rs.getString("user_adress"));
-			us.setShopping(rs.getString("user_shopping"));
+			us.setUsershopping(rs.getString("user_shopping"));
+			us.setUserorder(rs.getString("user_order"));
+		}
+		ConnectionPool.closeConnection(conn);
+		return us;
+	}
+
+	@Override
+	public User selectByUserPhone(String userphone) throws Exception {
+		// TODO Auto-generated method stub
+		User us = null;
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "select * from user where user_phone=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, userphone);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			us = new User();
+			us.setUserid(rs.getInt("user_id"));
+			us.setUserpass(rs.getString("user_pass"));
+			us.setUsername(rs.getString("user_name"));
+			us.setUserphone(userphone);
+			us.setUseradress(rs.getString("user_adress"));
+			us.setUsershopping(rs.getString("user_shopping"));
 			us.setUserorder(rs.getString("user_order"));
 		}
 		ConnectionPool.closeConnection(conn);

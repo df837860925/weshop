@@ -565,13 +565,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
 	$('.zhucebiaoqian').click(function(){
 		$('.zhuce').css('visibility','visible');
-		huantupian();
+//		huantupian();
 		$('.shurukuang4').css('visibility','visible');
+		$('#yzmId').attr('src','img.do');
 		
 		
 	})
 //=====================================================请求服务器
-
+/*
 //==========注册
 $(".tijiao").click(function(){
 	console.log("!!!!!!!!!!")
@@ -712,6 +713,8 @@ $("#login").click(function(){
 	
 	})
 //========================================	
+	*/
+	
 	
 //	正则
 	var re1 = /^1[3456789]\d{9}$/g;
