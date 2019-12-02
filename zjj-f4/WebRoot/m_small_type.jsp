@@ -49,7 +49,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 					</div>
 					<div class="col-lg-4  text-right " id="ybc_shoping">
-						<a  class="login" id="login"><span>登陆 </span></a>
+						<c:if test="${not empty userlogininfo }">
+						<a href="user.do" class="login" id="login"><span>${userlogininfo.username }</span></a>
+						</c:if>
+						<c:if test="${empty userlogininfo }">
+						<a href="gouwdai.do" class="login" id="login"><span>登陆 </span></a>
+						</c:if>
 						<a href="#"><span class="glyphicon glyphicon-user "style="display: none;" id="welcome">欢迎..</span></a>
 					<a href="#"><span class="glyphicon glyphicon-log-out " style="display: none;" id="exit">退出</span></a>
 						<span class="glyphicon glyphicon-heart"></span>

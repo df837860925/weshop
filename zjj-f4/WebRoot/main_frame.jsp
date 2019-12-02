@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -346,11 +347,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 					</div>
 					<div class="col-lg-4  text-right " id="ybc_shoping">
+						<c:if test="${not empty userlogininfo }">
+						<a href="user.do" class="login" id="login"><span>${userlogininfo.username }</span></a>
+						</c:if>
+						<c:if test="${empty userlogininfo }">
 						<a  class="login" id="login"><span>登陆 </span></a>
+						</c:if>
 						<a href="#"><span class="glyphicon glyphicon-user "style="display: none;" id="welcome">欢迎..</span></a>
 					<a href="#"><span class="glyphicon glyphicon-log-out " style="display: none;" id="exit">退出</span></a>
 						<span class="glyphicon glyphicon-heart"></span>
-						<a  class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
+						<a href="gouwudai.do" class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 					</div>
 				</div>
@@ -1010,7 +1016,7 @@ var a = parseInt($(this).val());
 	$(".login").click(function(){
 		$(location).attr("href","wkr-zhuce.jsp?gc=1");
 	})
-	$(".shop_cart").click(function(){
+	/**$(".shop_cart").click(function(){
 		var token=localStorage.getItem("token");
 		if(token)
 		{  
@@ -1023,7 +1029,7 @@ var a = parseInt($(this).val());
 			}
 		}
 	
-	})
+	})*/
 	
 	var content_cat="";
 	loadnav();
