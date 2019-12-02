@@ -129,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<section class="ybc_main" style="padding: 0px;">
 			<div class="ybc_clohtes ">
-				<a href="">
+				<a href="javascript:;" id="goods_bigtype=2&goods_smalltype=1">
 					<img src="https://res.gucci.cn/resources/2019/10/23/15718156659127710_content_LightGray_CategoryDoubleVertical_Standard_463x926_1570117506_CategoryDoubleVertical_SS20MNMLook063_001_Light.jpg" />
 					<div class="banner_clothes">
 						<h2>男士服饰</h2>
@@ -139,7 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_handbag">   
 				<div class="banner_handbag ">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=2&goods_smalltype=9">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/26/15720321324792962_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>男士箱包</h2>
@@ -150,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_shouse">
 				<div class="banner_shouse">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=2&goods_smalltype=10">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/8/15705403357969434_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>男鞋</h2>
@@ -161,7 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_wallet">
 				<div class="banner_wallet">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=2&goods_smalltype=11">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/5/8/15572928846066415_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>银饰</h2>
@@ -172,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_belt">
 				<div class="banner_belt">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=2&goods_smalltype=12">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/1/11/15471486269581417_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>眼镜</h2>
@@ -183,7 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_wristwatch">
 				<div class="banner_wristwatch">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=2&goods_smalltype=13">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/9/24/15692724207606658_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>腕表</h2>
@@ -194,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_jewel">
 				<div class="banner_jewel">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=2&goods_smalltype=14">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/9/22/15691464537037810_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>帽子&手套</h2>
@@ -348,6 +348,15 @@ loadnav();
 		var desc=$('#serchinput input').val();
 		location.href="selectdesc.do?desc="+desc;
 	})
+	//跳转到分类页面
+		$('.ybc_main a').each(function(){
+			var that=$(this)
+			$(this).click(function(){
+				var parm=that.attr('id');
+				location.href="df_fenlei_type.jsp?"+parm;
+			})
+		})
+		
 	//中部
 	//商品选择改变价格逻辑
 	var allpay=0;

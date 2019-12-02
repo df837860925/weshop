@@ -28,6 +28,7 @@ public class SelectDescAction extends Action{
 		//String desc=form.getDesc();
 		try {
 			//∞¥’’
+
 		List<Goods>list=goodsim.selectByGoodsDesc(descd, 0);
 			return new ActionForword("df_fenlei_type");
 		} catch (Exception e) {
