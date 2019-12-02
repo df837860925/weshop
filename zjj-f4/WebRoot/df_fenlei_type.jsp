@@ -210,6 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 	</style>
   <body>
+  <% System.out.print("@@@@@"+request.getAttribute("list")); %>
     	<div class="ybc_nav">
 			<div class="container " id="ybc_mynav">
 				<div class="row" >
@@ -384,14 +385,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</section>
 		
 		<section class="ybc_main" style="padding: 0px;">
-			<c:forEach items="${goodslist}" var="user" varStatus="i" >
+			<c:forEach items="${list}" var="user" varStatus="i" >
 			<div class="ybc_jewel">
 				<div class="banner_glasses">
-					<a href="">
-					<img class="imglimit" src="${user.goods_img} }" />
+					<a class="jihe" href="xiangqing.do?goods_id=${user.goodsid}">
+				
+					<img class="imglimit" src="${user.goodsimg}" />
 					<div class="ps">
-						<h2>${user.goods_name}</h2>
-						<p id="price">${user.goods_price}</p>
+						<h2 >${user.goodsname}</h2>
+						<p id="price">￥${user.goodsprice}</p>
 						<p id="">点击购买></p>
 					</div>
 				</a>
@@ -401,7 +403,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			
 			
-			</c:forEach>>
+			</c:forEach>
 		</section>
 			
 			
@@ -495,8 +497,9 @@ else{
 var x=1;
 var y=2;
 }
-	
-	fenleidata(x,y,page);
+	if($("#prive").text()==null)
+	{
+	fenleidata(x,y,page);}
 	function fenleidata(x,y,i){
 
 $.get({
@@ -509,7 +512,7 @@ $.get({
 console.log(result);
 	   
    for (var i=0;i<obj.list.length;i++) {
-   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="'+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
 	   }
    $(".ybc_main").html(fenlei_data);
    $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
@@ -742,6 +745,7 @@ console.log(result);
 	 
 	    fenlei_data='';
 	   
+	$("html,body").animate({"scrollTop":0},1000);
 	  
 	tiaojian(x,y,tiaojianpage);
 		   
@@ -765,7 +769,7 @@ console.log(result);
 		   if(obj.list.length!=0){
 		   
 		    for (var i=0;i<obj.list.length;i++) {
-	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="'+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p >点击购买></p></div></a></div></div>'
+	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p >点击购买></p></div></a></div></div>'
 		   }
 		   }
 		   else{
@@ -812,13 +816,24 @@ console.log(result);
 		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
 	}) 
 	
-	 $("html,body").animate({"scrollTop":0},1000);
+	 
 	}
 	})
 	
 	}
 	
+	 
+		
+		
+		   $(".ybc_jewel").mouseenter(function(){
+		   console.log("!!!!!!!!!!!!!!!!!!!!");
+		$(this).children(".banner_glasses").children(".jihe").children(".ps").fadeIn(500);	
+	})
 	
+	
+	$(".ybc_jewel").mouseleave(function(){
+		$(this).children(".banner_glasses").children(".jihe").children(".ps").fadeOut(500);		
+	}) 
 	
 	
 		
