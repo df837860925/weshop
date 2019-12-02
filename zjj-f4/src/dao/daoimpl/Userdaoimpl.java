@@ -37,7 +37,7 @@ public class Userdaoimpl implements Userdao {
 	public void updateUser(User us) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = ConnectionPool.getConnection();
-		String sql = "update user set user_pass=?,user_name=?,user_phone=?,user_adress=?,user_shopping=?,user_order where user_id=?";
+		String sql = "update user set user_pass=?,user_name=?,user_phone=?,user_adress=?,user_shopping=?,user_order=? where user_id=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, us.getUserpass());
 		ps.setString(2, us.getUsername());
@@ -45,6 +45,7 @@ public class Userdaoimpl implements Userdao {
 		ps.setString(4, us.getUseradress());
 		ps.setString(5, us.getUsershopping());
 		ps.setString(6, us.getUserorder());
+		ps.setInt(7, us.getUserid());
 		ps.executeUpdate();
 		ConnectionPool.closeConnection(conn);
 	}

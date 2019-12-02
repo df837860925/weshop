@@ -30,8 +30,9 @@ public class GouwudaiAction extends Action {
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("userlogininfo");
 		if (obj == null) {
+			System.out.println("跳转");
 			// 如果没有登录 就跳转到注册页面
-			return new ActionForword("wkr-zhuce.jsp", true);
+			return new ActionForword("wkr-zhuce", true);
 		} else {
 			// 如果登陆了,就查出购物车内的商品信息
 			UserLoginInfo uslf = (UserLoginInfo) obj;
@@ -47,6 +48,7 @@ public class GouwudaiAction extends Action {
 					int goodsid = Integer.parseInt(st.nextToken());
 					list.add(goodim.selectByGoodsId(goodsid));
 				}
+				System.out.println("购物网车"+list);
 				request.setAttribute("shoppinglist", list);
 				return new ActionForword("ybc-gouwudai");
 			} catch (Exception e) {

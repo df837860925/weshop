@@ -20,13 +20,11 @@ public class YbcSessionListener implements HttpSessionAttributeListener {
 		String attrname = arg0.getName();
 		// 如果是登陆操作
 		if (attrname.equals("userlogininfo")) {
-			System.out.println("进了登录的监听事件");
 			// 获得当前登陆信息
 			UserLoginInfo userlogininfo = (UserLoginInfo) arg0.getValue();
 			// 如果在其他地方登陆过了
 			if (map.get(userlogininfo.getUserid()) != null) {
 				// 拿出旧的session
-				System.out.println("判断出重复登陆了");
 				HttpSession session = map.get(userlogininfo.getUserid());
 				// 移除旧登陆状态并提示
 				session.removeAttribute("userlogininfo");
@@ -49,7 +47,6 @@ public class YbcSessionListener implements HttpSessionAttributeListener {
 		// 当有属性被移除时看一下是不是userlogininfo
 		String attrname = arg0.getName();
 		if (attrname.equals("userlogininfo")) {
-			System.err.println("在不同的浏览器中登录了");
 			UserLoginInfo userlogininfo = (UserLoginInfo) arg0.getValue();
 			map.remove(userlogininfo.getUserid());
 		}
@@ -61,7 +58,6 @@ public class YbcSessionListener implements HttpSessionAttributeListener {
 		// 拿出被替换的属性名看一看是不是userlogininfo
 		String attrname = arg0.getName();
 		if (attrname.equals("userlogininfo")) {
-			System.err.println("在同一个浏览器中登录了");
 			// 先把旧的移除
 			UserLoginInfo olduserlogininfo = (UserLoginInfo) arg0.getValue();
 			map.remove(olduserlogininfo.getUserid());
@@ -71,7 +67,6 @@ public class YbcSessionListener implements HttpSessionAttributeListener {
 			// 再看看新的有没有在其他地方登陆过
 			if (map.get(userlogininfo.getUserid()) != null) {
 				// 如果有
-				System.out.println("此账号已在其他浏览器中登录过");
 				// 拿出其他地方登陆的session
 				HttpSession session = map.get(userlogininfo.getUserid());
 				// 移除其他地方登陆状态并提示
@@ -84,7 +79,6 @@ public class YbcSessionListener implements HttpSessionAttributeListener {
 		}
 		if (attrname.equals("nowPage")) {
 			String nowYemian = (String) arg0.getValue();
-			System.out.println("上一个jsp页面是：" + nowYemian + ".jsp");
 		}
 	}
 

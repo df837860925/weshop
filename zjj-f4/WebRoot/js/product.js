@@ -88,7 +88,7 @@ function addCart(){
     	var number =  $(".input-number input").val();
 		goodsId = goodsId+"-"+number;
 		//传入了一个状态参数 status
-		location.href="gouwudai.do?goods_id="+goodsId+"&status=addCart";
+		location.href="xiadan.do?goods_id="+goodsId+"&status=addCart";
 		times = 1;
 		confirm('添加成功！')
     }else{
@@ -105,6 +105,6 @@ function Buy(){
 		  var number = $(".input-number input").val();
 		  goodsId = goodsId+"-"+number;
 		  //传入了一个状态参数 status
-		  location.href="gouwudai.do?goods_id="+goodsId+"&status=buy";
+		  location.href="xiadan.do?goods_id="+goodsId+"&status=buy";
 	  });
 	};
