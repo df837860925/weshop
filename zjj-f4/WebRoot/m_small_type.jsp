@@ -3,7 +3,9 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<% 
+	System.out.print(request.getSession().getAttribute("userlogininfo"));
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -49,14 +51,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 					</div>
 					<div class="col-lg-4  text-right " id="ybc_shoping">
-						<c:if test="${not empty userlogininfo }">
+						<c:if test="${!empty userlogininfo }">
 							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
 							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
 						</c:if>
 						<c:if test="${empty userlogininfo }">
 							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
 						</c:if>
-						<span class="glyphicon glyphicon-heart"></span>
 						<a  class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 					</div>

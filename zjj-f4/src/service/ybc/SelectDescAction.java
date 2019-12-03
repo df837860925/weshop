@@ -12,6 +12,7 @@ import service.core.Action;
 import service.core.ActionForm;
 import service.core.ActionForword;
 import dao.daoimpl.Goodsdaoimpl;
+import dto.Goodslist;
 
 public class SelectDescAction extends Action {
 
@@ -22,14 +23,13 @@ public class SelectDescAction extends Action {
 		// TODO Auto-generated method stub
 		String descd = request.getParameter("desc");
 		descd = new String(descd.getBytes("ISO-8859-1"), "utf-8");
-		System.out.println("selectaction" + descd);
 		Goodsdaoimpl goodsim = new Goodsdaoimpl();
 		SelectDescForm form = (SelectDescForm) actionForm;
 		// String desc=form.getDesc();
 		try {
 			// ∞¥’’
-			List<Goods> list = goodsim.selectByGoodsDesc(descd, 0);
-			request.setAttribute("list", list);
+			Goodslist goodslist = goodsim.selectGoodsByDesc(descd, 1, 48);
+			request.setAttribute("list", goodslist);
 			return new ActionForword("df_fenlei_type");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
