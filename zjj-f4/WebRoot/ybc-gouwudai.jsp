@@ -149,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<c:forEach items="${shoppinglist}" var="goods" varStatus="i">
 					<div class="shangping">
 						<input class="check" type="checkbox"  checked="checked"/>
-						<input  class="hid" type="hidden" value="${goods.goodsid} ">
+						<input  class="hid" type="hidden" value="${goods.goodsid}">
 						<a><img src="${goods.goodsimg}"/></a>
 						<div class="shangping_desc">
 							<div class="shangping_rightline">
@@ -398,7 +398,21 @@ loadnav();
 			changepay();
 	})
 	$('.delete').each(function(){
+	//删除操作去Ajax去数据库
+		var that=$(this);
 		$(this).click(function(){
+		var goodsid=that.parent().siblings('.hid').val();
+			$.ajax({
+				type:"POST",
+				url:"deletegouwudai.do",
+				dataType:"text",
+				data:{goods_id:goodsid},
+				success:function(result){
+					if("true"==result){
+						alert("删除成功");
+					}
+				}
+			})
 			$(this).parent().parent().remove();
 			changepay();
 		})

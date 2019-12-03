@@ -21,7 +21,7 @@ import dto.UserLoginInfo;
 public class xiadanAction extends Action {
 
 	/**
-	 * 这是一个下单逻辑页面
+	 * 这是一个下单逻辑
 	 */
 	@Override
 	public ActionForword execute(HttpServletRequest request,
@@ -55,7 +55,7 @@ public class xiadanAction extends Action {
 			if ("go".equals(status)) {
 				return new ActionForword("gouwudai.do", true);
 			}
-			if ("add-card".equals(status)) {
+			if ("addcart".equals(status)) {
 				while (shopping.hasMoreTokens()) {// 如果商品已经存在于购物车当中 则直接去购物车
 					if (shopping.nextToken().equals(goodsid)) {
 						out.print("false");
@@ -79,8 +79,8 @@ public class xiadanAction extends Action {
 			}
 
 			System.out.println(us.getUsershopping() + "+下单传过来的id+" + goodsid);
-			us.setUsershopping(goodsid + "-" + us.getUsershopping());// 加入购物车操作
-			usim.updateUser(us);// 将更新后的用户信息放入
+				us.setUsershopping("-"+goodsid + us.getUsershopping());// 加入购物车操作
+				usim.updateUser(us);// 将更新后的用户信息放入
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
