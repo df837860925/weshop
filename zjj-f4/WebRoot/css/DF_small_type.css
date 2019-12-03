@@ -1,0 +1,131 @@
+.ybc_main:after{
+	content: '';
+	display: block;
+	clear: both;
+	
+}
+a{
+	color: #333333;
+}
+a:hover{
+	color: #333333;
+	text-decoration: none;
+}
+.ybc_main h2{
+	text-align: center;
+}
+.ybc_main p{
+	text-align: center;
+}
+.ybc_main{
+	
+margin: 0px;
+}
+
+.ybc_clohtes{
+			width: 50%;
+			height: 1072px;
+			border-right: 1px solid #FFFFFF;
+			float: left;
+			border-bottom: 1px solid #FFFFFF;
+			background:#f6f6f6 ;
+		}
+.ybc_handbag{
+	width: 50%;
+	height: 536px;
+	float: left;
+	border-bottom: 1px solid #FFFFFF;
+}
+.ybc_shouse{
+	width: 50%;
+	height: 536px;
+	float: left;
+	border-bottom: 1px solid #FFFFFF;
+}
+.ybc_wallet{
+	width: 50%;
+	height: 536px;
+	float: left;
+	border-right: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+}
+.ybc_belt{
+	width: 50%;
+	height: 536px;
+	float: left;
+	border-bottom: 1px solid #FFFFFF;
+}
+.ybc_wristwatch{
+	width: 25%;
+	height: 500px;
+	float: left;
+	border-right:1px solid #FFFFFF;
+}
+.ybc_jewel{
+	width: 25%;
+	height: 500px;
+	float: left;
+	border-right:1px solid #FFFFFF;
+	border-bottom:3px solid #FFFFFF;
+}
+.ybc_glasses{
+	width: 25%;
+	height: 500px;
+	float: left;
+	border-right:1px solid #FFFFFF
+}
+.imglimit{
+	transform: scale(1.5);
+	display: block;
+	margin: 0px auto;
+	margin-top: 85px;
+}
+.ybc_clohtes img{
+	width: 450px;
+	height: 900px;
+	display: block;
+	margin: 0px auto;
+	margin-top:30px ;
+}
+.banner_clothes{
+	padding: 5;
+}
+.ps{
+	margin-top: 80px;
+	display: none;
+}
+.ybc_main img{
+	transition: 0.5s all
+}
+.ybc_main img:hover{
+	transform: scale(1.7);
+}
+.ybc_main .ybc_clohtes img:hover{
+	transform: scale(1)
+}
+
+#price {
+	font-family: 'FuturaLT-Book', 'GucciChinese';
+    font-size: 14px;
+    color: #999999;
+    letter-spacing: 1px;
+    line-height: 14px;
+	
+}
+#moregoods{
+				margin: 20px 10px; 
+				display: inline-block;
+				padding-top: 1px;
+				font-size: ;
+				color: #e5dfd9;
+				background-color:#1b1b1b;
+				width: 100px;
+				height: 45px;
+			}
+#moregoods:hover
+{
+				background: #444;
+				color: white;
+				list-style: none;
+				text-decoration: none;
+			}
