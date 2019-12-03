@@ -182,6 +182,7 @@ function fenlei_mouseShow(){
 		$(".ybc_jewel").mouseleave(function(){
 			$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
 		})
+
 }
 
 
@@ -268,3 +269,6 @@ function fenlei_mouseShow(){
 		   }
 		   
 }
+
+
+

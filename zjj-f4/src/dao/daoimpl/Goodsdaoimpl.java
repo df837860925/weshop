@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
 import JSON.paixuOBJ;
 import pojo.Color;
 import pojo.Goods;
@@ -301,6 +302,7 @@ public class Goodsdaoimpl implements Goodsdao {
 		obj.setCm(cm);
 		obj.setList(list);
 		return obj;
+
 	}
 
 	@Override

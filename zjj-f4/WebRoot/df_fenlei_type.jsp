@@ -500,6 +500,7 @@ console.log($("#price").text());
 	if($("#price").text()=="")
 	{
 	fenleidata(x,y,page);}
+
 	
 	function fenleidata(x,y,i){
 
@@ -516,6 +517,7 @@ console.log(result);
    	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
 	   }
 	   jinyong(objs);
+
    $(".ybc_main").html(fenlei_data);
    $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
 	$("#moregoods").click(function(){

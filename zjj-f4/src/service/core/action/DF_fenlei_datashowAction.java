@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import JSON.JSONm;
+
 import JSON.JSONmm;
 import JSON.paixuOBJ;
 import pojo.Goods;
@@ -43,6 +44,7 @@ public class DF_fenlei_datashowAction extends Action {
 		}
 		
 		JSONmm  mJsoNm=new JSONmm(obj, response, 0, "获得分类商品数据成功");
+
 		 mJsoNm.result();
 		
 		
