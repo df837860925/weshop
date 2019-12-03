@@ -306,7 +306,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="smll_daohang">
 				 <ul class="ul_big">
-				 	<li id="li_leibie"><a href="">类别 </a><span class="caret"></span>
+				 	<li id="li_leibie"><a href="">排序</a><span class="caret"></span>
 				 		<div class="leibie">
 				 			<ul>
 				 				<li class="leibie1"><a  onclick="paixu_height_low()">价格从高到底</a></li>
@@ -317,7 +317,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<li id="li_shaixuan">筛选<span class="caret"></span>
 				 		<div class="shaixuan">
 				 			<p style="color: #A6A5A6; font-size: 14px; float: left; margin-left:50px;">颜色</p>
-				 			<ul  style="display: inline-block; float: left;">
+				 			<ul id="c_flag"  style="display: inline-block; float: left;">
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-1" /><span id="color">　蓝色</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-2" /><span id="color">　粉色</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-3" /><span id="color">　绿色</span></li>
@@ -328,7 +328,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-8" /><span id="color">　黄色</span></li>
 				 			
 				 			</ul>
-				 			<ul style="display: inline-block;float: left;" >
+				 			<ul id="c_flag" style="display: inline-block;float: left;" >
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-9" /><span id="color">　灰色</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-10" /><span id="color">　紫色</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="15-11" /><span id="color">　橙色</span></li>
@@ -339,7 +339,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			
 				 			</ul>
 				 			<p style="color: #A6A5A6; font-size: 14px; float: left;margin-left:100px; ">材质</p>
-				 			<ul  style="display: inline-block; float: left; margin-left:70px ;">
+				 			<ul  d="m_flag" style="display: inline-block; float: left; margin-left:70px ;">
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-1"  /><span id="color">　织物</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-2" /><span id="color">　真皮</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-3" /><span id="color">　GG帆布</span></li>
@@ -350,7 +350,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-8" /><span id="color">　橡胶</span></li>
 				 			
 				 			</ul>
-				 			<ul style="display: inline-block;float: left;" >
+				 			<ul d="m_flag" style="display: inline-block;float: left;" >
 				 				<li class="leibie2"><input type="checkbox" name="" id="" value="12-9" /><span id="color">　带有logo</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-10" /><span id="color">　纯银</span></li>
 				 			<li class="leibie2"><input type="checkbox" name="" id="" value="12-11" /><span id="color">　时尚首饰</span></li>
@@ -364,7 +364,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			</div>
 				 		</div>
 				 	</li>
-				 	<li id="li_paixu">排序<span class="caret"></span>
+				 	<li id="li_paixu">类别<span class="caret"></span>
 				 		<div class="paixu">
 				 			<ul id="shaixuan_ajax">
 				 				<li class="leibie1"><a href="">价格从高到底</a></li>
@@ -486,6 +486,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
  <script src="js/DF_JS.js" type="text/javascript"></script>
 <script type="text/javascript">
+ var name='';
 loadnav();
 var data=$("#data").val();
 if(data)
@@ -751,9 +752,15 @@ console.log(result);
 	if( $(document).scrollTop()>1000)
 	{$("html,body").animate({"scrollTop":0},1000);
 	}
-		if($("#prive").text()==null)
+	if(name!='')
+		{  select_name(name,colorarray);
+		  return
+		}
+	
+		if($("#prive").text()=="")
 	{
 	tiaojian(x,y,tiaojianpage);}
+	
 	else{
 	var num=0;
 	var desc="童装";
@@ -772,14 +779,15 @@ console.log(result);
 		 url:"DF_fenlei_shaixuan.do",
 		 data:{"bigtype":x,"smalltype":y,"page":i,"pagesize":24,"list":colorarray},
 		 success:function(result){
-		   var obj=result;
+		   var objs=result;
 		   console.log(result);
 		  
-		   if(obj.list.length!=0){
+		   if(objs.obj.list.length!=0){
 		   
-		    for (var i=0;i<obj.list.length;i++) {
-	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p >点击购买></p></div></a></div></div>'
-		   }
+		    for (var i=0;i<objs.obj.list.length;i++) {
+	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+	   }
+	   jinyong(objs);
 		   }
 		   else{
 		     fenlei_data='<h1>没有相关的物品<h1>';
@@ -798,7 +806,8 @@ console.log(result);
 	   })
 	   
 		tiaojianpage++;
-		if($("#prive").text()==null)
+		
+		if($("#prive").text()=="")
 	{
 	tiaojian(x,y,tiaojianpage);}
 	else{
@@ -846,14 +855,15 @@ console.log(result);
 		 url:"DF_select_tiaojian.do",
 		 data:{"desc":desc,"num":num,"list":colorarray},
 		 success:function(result){
-		   var obj=result;
+		   var objs=result;
 		   console.log(result);
 		  
-		   if(obj.list.length!=0){
+		   if(objs.obj.list.length!=0){
 		   
-		    for (var i=0;i<obj.list.length;i++) {
-	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p >点击购买></p></div></a></div></div>'
-		   }
+		    for (var i=0;i<objs.obj.list.length;i++) {
+	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+	   }
+	   jinyong(objs);
 		   }
 		   else{
 		     fenlei_data='<h1>没有相关的物品<h1>';
@@ -927,6 +937,7 @@ console.log(result);
 	
 	shaixuan(x,y);
 //刷选方法
+ 
 function shaixuan(x,y){
 		var content='';
 		$("#shaixuan_ajax").html("");
@@ -963,7 +974,9 @@ function shaixuan(x,y){
 		
 	}
 	
+	
 	function select(obj){
+	name=obj.text;
 	 var content='';
 		var text=obj.text;
 		$.get({
@@ -973,9 +986,10 @@ function shaixuan(x,y){
 			success:function(result){
 				var objs=result;
 				$(".ybc_main").html("");
-				for (var i=0;i<objs.list.length;i++) {
-					content+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.list[i].goodsname+'</h2><p id="price">￥'+objs.list[i].goodsprice+'</p><p >点击购买></p></div></a></div></div>'
-				}
+				for (var i=0;i<objs.obj.list.length;i++) {
+					content+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+	   }
+	   jinyong(objs);
 				$(".ybc_main").html(content);
 				
 				fenlei_mouseShow();
@@ -986,4 +1000,35 @@ function shaixuan(x,y){
 		
 	};	
 	
+	
+	
+	function select_name(name,colorarray){
+	
+	    var content='';
+		
+		$.get({
+			type:"POST",
+			url:"DF_nameselect_shaixuan.do",
+			data:{"name":name,"list":colorarray},
+			success:function(result){
+				var objs=result;
+				console.log(objs);
+				$(".ybc_main").html("");
+				for (var i=0;i<objs.obj.list.length;i++) {
+					content+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+	   }
+	   jinyong(objs);
+				$(".ybc_main").html(content);
+				
+				fenlei_mouseShow();
+				
+				name='';
+				colorarray=[];
+			}
+			
+			
+		})
+	}
+	
+	 
 </script>

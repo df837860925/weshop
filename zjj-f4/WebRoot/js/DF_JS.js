@@ -187,84 +187,94 @@ function fenlei_mouseShow(){
 
 
 //½ûÓÃinput
- function jinyong(objs) {
+function jinyong(objs) {
+$(".shaixuan>ul>li>input").each(function(){
+	 	
+	 	$(this).attr("onclick","return false;");
+	         $(this).css("background-color","gainsboro");
+	 	
+	 	
+	 	
+	 })
 	 for (var i=0;i<objs.obj.cm.length;i++) {
+		
 		   	if(objs.obj.cm[i]=="c-1")
-		   	{$(".shaixuan>#c_flag>li").eq(0).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(0).children("input").css("background-color","gainsboro");}
+		   	{  
+		     $(".shaixuan>#c_flag>li").eq(0).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(0).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-2")
-		   	{$(".shaixuan>#c_flag>li").eq(1).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(1).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(1).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(1).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-3")
-		   	{$(".shaixuan>#c_flag>li").eq(2).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(2).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(2).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(2).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-4")
-		   	{$(".shaixuan>#c_flag>li").eq(3).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(3).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(3).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(3).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-5")
-		   	{$(".shaixuan>#c_flag>li").eq(4).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(4).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(4).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(4).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-6")
-		   	{$(".shaixuan>#c_flag>li").eq(5).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(5).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(5).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(5).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-7")
-		   	{$(".shaixuan>#c_flag>li").eq(6).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(6).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(6).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(6).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-8")
-		   	{$(".shaixuan>#c_flag>li").eq(7).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(7).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(7).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(7).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-9")
-		   	{$(".shaixuan>#c_flag>li").eq(8).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(8).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(8).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(8).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-10")
-		   	{$(".shaixuan>#c_flag>li").eq(9).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(9).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(9).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(9).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-11")
-		   	{$(".shaixuan>#c_flag>li").eq(10).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(10).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(10).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(10).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-12")
-		   	{$(".shaixuan>#c_flag>li").eq(11).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(11).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(11).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(11).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-13")
-		   	{$(".shaixuan>#c_flag>li").eq(12).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(12).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(12).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(12).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="c-14")
-		   	{$(".shaixuan>#c_flag>li").eq(13).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#c_flag>li").eq(13).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#c_flag>li").eq(13).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(13).children("input").css("background-color","white");}
 		   	
 		   	if(objs.obj.cm[i]=="m-1")
-		   	{$(".shaixuan>#m_flag>li").eq(0).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(0).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(0).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(0).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-2")
-		   	{$(".shaixuan>#m_flag>li").eq(1).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(1).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(1).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(1).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-3")
-		   	{$(".shaixuan>#m_flag>li").eq(2).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(2).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(2).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(2).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-4")
-		   	{$(".shaixuan>#m_flag>li").eq(3).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(3).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(3).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(3).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-5")
-		   	{$(".shaixuan>#m_flag>li").eq(4).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(4).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(4).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(4).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-6")
-		   	{$(".shaixuan>#m_flag>li").eq(5).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(5).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(5).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(5).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-7")
-		   	{$(".shaixuan>#m_flag>li").eq(6).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(6).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(6).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(6).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-8")
-		   	{$(".shaixuan>#m_flag>li").eq(7).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(7).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(7).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(7).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-9")
-		   	{$(".shaixuan>#m_flag>li").eq(8).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(8).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(8).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(8).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-10")
-		   	{$(".shaixuan>#m_flag>li").eq(9).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(9).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(9).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(9).children("input").css("background-color","white");}
 		   	if(objs.obj.cm[i]=="m-11")
-		   	{$(".shaixuan>#m_flag>li").eq(10).children("input").attr("onclick","return false;");
-	         $(".shaixuan>#m_flag>li").eq(10).children("input").css("background-color","gainsboro");}
+		   	{$(".shaixuan>#m_flag>li").eq(10).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(10).children("input").css("background-color","white");}
 		   	
 		   }
 		   

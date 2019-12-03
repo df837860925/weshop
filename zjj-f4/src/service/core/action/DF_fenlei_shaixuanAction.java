@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import JSON.JSONm;
+import JSON.JSONmm;
 import JSON.jsonclass;
+import JSON.paixuOBJ;
 import pojo.Goods;
 import pojo.User;
 import dao.daoimpl.Goodsdaoimpl;
@@ -24,7 +26,7 @@ public class DF_fenlei_shaixuanAction  extends Action {
 	public ActionForword execute(HttpServletRequest request,
 			HttpServletResponse response, ActionForm actionForm)
 			throws ServletException, IOException {
-		List<Goods> listsql=null;
+		paixuOBJ listsql=null;
 		
 	     DF_fenlei_shaixuanForm shaixuan=(DF_fenlei_shaixuanForm) actionForm;
 	     int bigtype=Integer.valueOf( shaixuan.getBigtype());
@@ -50,7 +52,7 @@ public class DF_fenlei_shaixuanAction  extends Action {
 			e.printStackTrace();
 		}
 		  
-		  JSONm mJsoNm=new JSONm(listsql, response, 0, "获取条件商品数据成功");
+		  JSONmm mJsoNm=new JSONmm(listsql, response, 0, "获取条件商品数据成功");
 		  mJsoNm.result();
 		
 		
