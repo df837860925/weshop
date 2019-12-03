@@ -99,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   line-height: 30px;
 				display: none;
 				width: 120px;
-				height: 250px;
+				height:350px;
 			background: white;
 			z-index: 10000;
 			}
@@ -366,7 +366,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	</li>
 				 	<li id="li_paixu">排序<span class="caret"></span>
 				 		<div class="paixu">
-				 			<ul>
+				 			<ul id="shaixuan_ajax">
 				 				<li class="leibie1"><a href="">价格从高到底</a></li>
 				 			     <li class="leibie1"><a href="">价格从低到高</a></li>
 				 			     <li class="leibie1"><a href="">价格从低到高</a></li>
@@ -494,9 +494,10 @@ var y=data.split(",")[1];
 }
 else{
 var x=1;
-var y=2;
+var y=1;
 }
-	if($("#prive").text()==null)
+console.log($("#price").text());
+	if($("#price").text()=="")
 	{
 	fenleidata(x,y,page);}
 	function fenleidata(x,y,i){
@@ -743,12 +744,17 @@ console.log(result);
 	   
 	 
 	    fenlei_data='';
-	   
-	$("html,body").animate({"scrollTop":0},1000);
-	  
-	tiaojian(x,y,tiaojianpage);
-		   
-
+	if( $(document).scrollTop()>1000)
+	{$("html,body").animate({"scrollTop":0},1000);
+	}
+		if($("#prive").text()==null)
+	{
+	tiaojian(x,y,tiaojianpage);}
+	else{
+	var num=0;
+	var desc="童装";
+	tiaojian1(num,desc,tiaojianpage);}
+	
 	
 
 	console.log(colorarray);
@@ -788,7 +794,14 @@ console.log(result);
 	   })
 	   
 		tiaojianpage++;
-	tiaojian(x,y,tiaojianpage);
+		if($("#prive").text()==null)
+	{
+	tiaojian(x,y,tiaojianpage);}
+	else{
+	var num=0;
+	var desc="童装";
+	tiaojian1(x,y,tiaojianpage);}
+	
 		   
 		
 
@@ -822,6 +835,79 @@ console.log(result);
 	}
 	
 	 
+		function tiaojian1(num,desc,i){
+	
+		$.get({
+	type:"POST",
+		 url:"DF_select_tiaojian.do",
+		 data:{"desc":desc,"num":num,"list":colorarray},
+		 success:function(result){
+		   var obj=result;
+		   console.log(result);
+		  
+		   if(obj.list.length!=0){
+		   
+		    for (var i=0;i<obj.list.length;i++) {
+	   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p >点击购买></p></div></a></div></div>'
+		   }
+		   }
+		   else{
+		     fenlei_data='<h1>没有相关的物品<h1>';
+		   }
+	   $(".ybc_main").html(fenlei_data);
+	   if(obj.list.length>=24){
+	   $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
+		$("#moregoods").click(function(){
+		var count=0;
+	   $(".shaixuan>ul>li>input").each(function(i){
+	   if ($(this).prop("checked")==true){
+	   	
+	   colorarray[count]=$(this).prop("value");
+	   count++;
+	  }
+	   })
+	   
+		tiaojianpage++;
+	tiaojian1(x,y,tiaojianpage);
+		   
+		
+
+	
+
+	console.log(colorarray);
+	colorarray=[];
+		
+		
+	}) }
+	
+	
+		   if(tiaojianpage<0){
+		   
+		   fenlei_data='';
+		   }
+		   
+		   $(".ybc_jewel").mouseenter(function(){
+		$(this).children(".banner_glasses").children(".jihe").children(".ps").fadeIn(500);	
+	})
+	
+	
+	$(".ybc_jewel").mouseleave(function(){
+		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
+	}) 
+	
+	 
+	}
+	})
+	
+	}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		   $(".ybc_jewel").mouseenter(function(){
@@ -835,6 +921,65 @@ console.log(result);
 	}) 
 	
 	
+	shaixuan(x,y);
+//刷选方法
+function shaixuan(x,y){
+		var content='';
+		$("#shaixuan_ajax").html("");
+		$.get({
+			
+			type:"POST",
+			url:"DF_shaixuan.do",
+			data:{"goods_bigtype":x,"goods_smalltype":y},
+			success:function(result){
+				var obj=result;
+				for (var i=0;i<obj.list.length;i++) {
+					content+='<li class="leibie1"><a  onclick="select(this)" >'+obj.list[i].goods_liebie_name+'</a></li>'
+					
+				}
+				
+				$("#shaixuan_ajax").html(content);
+				
+				$(".leibie1").hover(function(){
+		$(this).css("background","#ecebe6");
 		
+	})
+	$(".leibie1").mouseleave(function(){
+		$(this).css("background","white");
+		
+	})
+				
+			}
+			
+			
+		})
+		
+		
+		
+		
+	}
+	
+	function select(obj){
+	 var content='';
+		var text=obj.text;
+		$.get({
+			type:"POST",
+			url:"DF_nameselect.do",
+			data:{"name":text},
+			success:function(result){
+				var objs=result;
+				$(".ybc_main").html("");
+				for (var i=0;i<objs.list.length;i++) {
+					content+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.list[i].goodsname+'</h2><p id="price">￥'+objs.list[i].goodsprice+'</p><p >点击购买></p></div></a></div></div>'
+				}
+				$(".ybc_main").html(content);
+				
+				fenlei_mouseShow();
+			}
+			
+			
+		})
+		
+	};	
 	
 </script>
