@@ -121,10 +121,13 @@ $('.add-cart').click(function(){
 		type:"POST",
 		url:"xiadan.do",
 		dataType:"text",
+
+
 		data:{goods_id:goodsid,status:"addcart",
 		},
 		success:function(result)
 		{
+
 			if(result=="false"){
 				alert("商品已经存在于购物车！");
 			}

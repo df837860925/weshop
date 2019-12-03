@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import JSON.JSONm;
+
+import JSON.JSONmm;
+import JSON.paixuOBJ;
 import pojo.Goods;
 import dao.daoimpl.Goodsdaoimpl;
 import service.core.Action;
@@ -29,9 +32,9 @@ public class DF_fenlei_datashowAction extends Action {
 		  
 		  
 		  Goodsdaoimpl gd=new Goodsdaoimpl();
-		  List<Goods> list=null;
+		  paixuOBJ obj=new paixuOBJ();
 		  try {
-		 list=	gd.selectByGoodsSmalltype(Integer.valueOf(bigtype), Integer.valueOf(smalltype),Integer.valueOf(page),Integer.valueOf(pagesize));
+		 obj=	gd.selectByGoodsSmalltype(Integer.valueOf(bigtype), Integer.valueOf(smalltype),Integer.valueOf(page),Integer.valueOf(pagesize));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,7 +43,8 @@ public class DF_fenlei_datashowAction extends Action {
 			e.printStackTrace();
 		}
 		
-		JSONm  mJsoNm=new JSONm(list, response, 0, "获得分类商品数据成功");
+		JSONmm  mJsoNm=new JSONmm(obj, response, 0, "获得分类商品数据成功");
+
 		 mJsoNm.result();
 		
 		

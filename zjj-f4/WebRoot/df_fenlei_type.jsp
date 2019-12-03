@@ -500,6 +500,8 @@ console.log($("#price").text());
 	if($("#price").text()=="")
 	{
 	fenleidata(x,y,page);}
+
+	
 	function fenleidata(x,y,i){
 
 $.get({
@@ -507,13 +509,15 @@ $.get({
 	 url:"DF_fenlei_datashow.do",
 	 data:{"bigtype":x,"smalltype":y,"page":i,"pagesize":24},
 	 success:function(result){
-	   var obj=result;
+	   var objs=result;
 	 
 console.log(result);
 	   
-   for (var i=0;i<obj.list.length;i++) {
-   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+obj.list[i].goodsimg+'" /><div class="ps"><h2>'+obj.list[i].goodsname+'</h2><p id="price">￥'+obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+   for (var i=0;i<objs.obj.list.length;i++) {
+   	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
 	   }
+	   jinyong(objs);
+
    $(".ybc_main").html(fenlei_data);
    $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
 	$("#moregoods").click(function(){
