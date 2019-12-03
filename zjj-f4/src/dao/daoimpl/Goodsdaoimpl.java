@@ -14,6 +14,7 @@ import pojo.Material;
 import pojo.Smalltype;
 import dao.Goodsdao;
 import db.ConnectionPool;
+import dto.Goodslist;
 
 public class Goodsdaoimpl implements Goodsdao {
 
@@ -235,12 +236,12 @@ public class Goodsdaoimpl implements Goodsdao {
 		return lists;
 		
 	}
-
-	public List<Goods> selectByGoodsDesc(String desc, int num)throws Exception {
+	@Override
+	public Goodslist selectGoodsByDesc(String desc, int pagenum,int pagesize)throws Exception {
 		// TODO Auto-generated method stub
 		List<Goods> list = new ArrayList<Goods>();
 		Connection conn = ConnectionPool.getConnection();
-		
+		Goodslist goodslist=new Goodslist();
 		//准备sql语句
 		String sql = "select * from goods where 1=1 ";
 		
@@ -297,6 +298,9 @@ public class Goodsdaoimpl implements Goodsdao {
 		//颜色
 		
 		System.out.println(sql);
+		//分页
+		sql+=" limit "+pagenum+","+pagesize;
+		//
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
@@ -312,10 +316,11 @@ public class Goodsdaoimpl implements Goodsdao {
 			good.setGoodssmalltype(rs.getInt("goods_smalltype"));
 			good.setGoodscolor(rs.getInt("goods_color"));
 			good.setGoodsmaterial(rs.getInt("goods_material"));
-			list.add(good);
+			goodslist.addgoods(good);;
 		}
-		return list;
-
+		goodslist.setDesc(desc);
+		return goodslist;
+		
 	}
 
 	@Override
@@ -412,6 +417,7 @@ public class Goodsdaoimpl implements Goodsdao {
 			aBuffer.append(" and "+type+")");
 		}
 		
+		
 		System.out.println(aBuffer.toString());
 		
 		PreparedStatement ps = conn.prepareStatement(aBuffer.toString());
@@ -460,5 +466,9 @@ public class Goodsdaoimpl implements Goodsdao {
 		return list;
 		
 	}
+
+	
+
+	
 
 }

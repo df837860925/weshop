@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import dto.Goodslist;
 import pojo.Goods;
 import pojo.Liebie;
 
@@ -17,7 +18,7 @@ public interface Goodsdao {
 	public List<Goods> selectByGoodsSmalltype(int bigtype,int smalltype,int page,int pagesize,String[] list) throws Exception; 
 	public List<Goods> selectAll(int num) throws Exception;
 	public List<Goods> selectAll() throws Exception;
-	public List<Goods> selectByGoodsDesc(String desc,int num)throws Exception;
+	public Goodslist selectGoodsByDesc(String desc, int pagenum,int pagesize)throws Exception;
 	public List<Goods> selectByGoodsDesc(String desc,int num,String[] list)throws Exception;
 	
 	}
