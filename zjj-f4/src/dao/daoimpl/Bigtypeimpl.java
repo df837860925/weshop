@@ -80,6 +80,7 @@ public class Bigtypeimpl implements Bigtypedao {
    paixuOBJ obj=new paixuOBJ();
    obj.setCm(cm);
    obj.setList(list);
+   ConnectionPool.closeConnection(cc);
 	return obj;
 	
 			} catch (SQLException e) {
@@ -92,7 +93,7 @@ public class Bigtypeimpl implements Bigtypedao {
 	}
 
 	@Override
-	public paixuOBJ nameSelect(String name, String[] list) {
+	public List<Goods> nameSelect(String name, String[] list) {
 		
 		List<Goods> lists =new ArrayList<>();
 		Connection cc=ConnectionPool.getConnection();
@@ -154,13 +155,8 @@ public class Bigtypeimpl implements Bigtypedao {
 		good.setGoodsmaterial(rs.getInt("goods_material"));
 		lists.add(good);
 	}
-	 Color_m clm=new Color_m(rs, lists);
-	   Set<String> cm= clm.forselect_none();
-		
-	   paixuOBJ obj=new paixuOBJ();
-	   obj.setCm(cm);
-	   obj.setList(lists);
-		return obj;
+	ConnectionPool.closeConnection(cc);
+		return lists;
 	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

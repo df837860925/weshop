@@ -25,7 +25,7 @@ public class DF_nameselect_shaixuanAction extends Action {
 			HttpServletResponse response, ActionForm actionForm)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		paixuOBJ listsql=null;
+		List<Goods> listsql=null;
 		DF_nameselect_shaixuanForm shaixuan=(DF_nameselect_shaixuanForm ) actionForm;
 		   
 		String  name=shaixuan.getName();
@@ -42,7 +42,7 @@ public class DF_nameselect_shaixuanAction extends Action {
 		  
 		  Bigtypeimpl  bl=new Bigtypeimpl();
 		listsql=   bl.nameSelect(name, lists);
-		JSONmm m=new JSONmm(listsql, response, 0, "获取按名字筛选数据成功");
+		JSONm m=new JSONm(listsql, response, 0, "获取按名字筛选数据成功");
 		m.result();
 		
 		return null;

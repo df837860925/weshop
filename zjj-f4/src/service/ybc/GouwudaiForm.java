@@ -1,7 +1,7 @@
 package service.ybc;
 
 import service.core.ActionForm;
-import service.core.form.showForm;
+
 
 public class GouwudaiForm extends ActionForm{
 	public String uname;

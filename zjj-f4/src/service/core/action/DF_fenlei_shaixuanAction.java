@@ -26,7 +26,7 @@ public class DF_fenlei_shaixuanAction  extends Action {
 	public ActionForword execute(HttpServletRequest request,
 			HttpServletResponse response, ActionForm actionForm)
 			throws ServletException, IOException {
-		paixuOBJ listsql=null;
+		List<Goods> listsql=null;
 		
 	     DF_fenlei_shaixuanForm shaixuan=(DF_fenlei_shaixuanForm) actionForm;
 	     int bigtype=Integer.valueOf( shaixuan.getBigtype());
@@ -52,7 +52,7 @@ public class DF_fenlei_shaixuanAction  extends Action {
 			e.printStackTrace();
 		}
 		  
-		  JSONmm mJsoNm=new JSONmm(listsql, response, 0, "获取条件商品数据成功");
+		  JSONm mJsoNm=new JSONm(listsql, response, 0, "获取条件商品数据成功");
 		  mJsoNm.result();
 		
 		

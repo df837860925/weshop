@@ -11,5 +11,5 @@ public interface Bigtypedao {
    
 	public List<Bigtype> selectALL_bigtype(); 
 	public paixuOBJ nameSelect(String name);
-	public paixuOBJ nameSelect(String name,String[] list);
+	public List<Goods> nameSelect(String name,String[] list);
 }

@@ -21,7 +21,7 @@ public interface Goodsdao {
 	public paixuOBJ selectByGoodsSmalltype(int bigtype,int smalltype,int page,int pagesize) throws Exception; 
 
 	//通过筛选颜色和材质查出来的结果
-	public paixuOBJ selectByGoodsSmalltype(int bigtype,int smalltype,int page,int pagesize,String[] list) throws Exception; 
+	public List<Goods> selectByGoodsSmalltype(int bigtype,int smalltype,int page,int pagesize,String[] list) throws Exception; 
 	public List<Goods> selectAll(int num) throws Exception;
 	public List<Goods> selectAll() throws Exception;
 	public Goodslist selectGoodsByDesc(String desc, int pagenum,int pagesize)throws Exception;

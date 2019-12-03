@@ -194,7 +194,7 @@ public class Goodsdaoimpl implements Goodsdao {
 	}
 
 	@Override
-	public paixuOBJ selectByGoodsSmalltype(int bigtype, int smalltype,
+	public List<Goods> selectByGoodsSmalltype(int bigtype, int smalltype,
 			int page, int pagesize, String[] list) throws Exception {
 		Connection conn = ConnectionPool.getConnection();
 		int count_color=0;
@@ -230,15 +230,8 @@ public class Goodsdaoimpl implements Goodsdao {
 			String type=	typeBuffer.toString().substring(0,typeBuffer.toString().length()-3);
 			aBuffer.append(" and "+type+")");
 		}
-		List<Goods> list1=new ArrayList<>();
-		PreparedStatement ps1=   conn.prepareStatement(aBuffer.toString());
-		ps1.setInt(1, bigtype);
-		ps1.setInt(2, smalltype);
-		ResultSet rs1 = ps1.executeQuery();
-		Color_m crs=new Color_m(rs1, list1);
-		  Set<String> cm=crs.forselect();
 		
-		
+
 		
 		aBuffer.append(" limit ?,?");
 		System.out.println(aBuffer.toString());
@@ -266,12 +259,8 @@ public class Goodsdaoimpl implements Goodsdao {
 				good.setGoodsmaterial(rs.getInt("goods_material"));
 				lists.add(good);
 			}
-	
-		ConnectionPool.closeConnection(conn);
-		paixuOBJ obj=new paixuOBJ();
-		obj.setCm(cm);
-		obj.setList(lists);
-		return obj;
+			ConnectionPool.closeConnection(conn);
+		return lists;
 		
 	}
 	@Override
@@ -357,6 +346,7 @@ public class Goodsdaoimpl implements Goodsdao {
 			goodslist.addgoods(good);;
 		}
 		goodslist.setDesc(desc);
+		ConnectionPool.closeConnection(conn);
 		return goodslist;
 		
 	}
@@ -474,7 +464,7 @@ public class Goodsdaoimpl implements Goodsdao {
 			good.setGoodsmaterial(rs.getInt("goods_material"));
 			lists.add(good);
 		}
-		
+		ConnectionPool.closeConnection(conn);
 		return lists;
 
 	}
