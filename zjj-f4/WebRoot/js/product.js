@@ -45,10 +45,10 @@ $('.img-small .clothes img').each(function(){
   });
   
 })();
-(function(){
-	addCart();
-	Buy();
-})()
+//(function(){
+//	addCart();
+//	Buy();
+//})()
 //(function(){
 //	var goodsId = getUrlVal('goods_id');
 //  $.get('http://www.wjian.top/shop/api_goods.php', {
@@ -74,9 +74,11 @@ $('.img-small .clothes img').each(function(){
 //    addCart();
 //  });
 //})();
-var times = 0;
+
+/*var times = 0;
 function addCart(){
   $('.add-cart').click(function(){
+	  
 	if(times !=0){
 		confirm('您已经添加至购物车！')
 		return;
@@ -98,7 +100,8 @@ function addCart(){
     };
   });
 };
-
+*/
+/*
 function Buy(){
 	  $('.buy').click(function(){
 		  var goodsId = $('.add-cart span').attr('data-goods-id');
@@ -106,5 +109,54 @@ function Buy(){
 		  goodsId = goodsId+"-"+number;
 		  //传入了一个状态参数 status
 		  location.href="xiadan.do?goods_id="+goodsId+"&status=buy";
+		  
 	  });
 	};
+	*/
+//加入购物车执行ajax不刷新界面
+$('.add-cart').click(function(){
+	var goodsid = $("#goodsid").val();
+	console.log("11113332er");
+	$.ajax({
+		type:"POST",
+		url:"xiadan.do",
+		dataType:"text",
+		data:{goods_id:goodsid,status:"addCart",
+		},
+		success:function(result)
+		{
+			console.log(result);
+			alert(result);
+			if(result=="false"){
+				alert("商品已经存在于购物车！");
+			}
+			if(result=="true"){
+				alert("添加成功！");
+			}
+			if(result=="unlogin"){
+				console.log("111");
+				alert("未登录！");
+			}
+		},
+	})
+})
+//立即购买执行ajax
+$('.buy').click(function(){
+	var goodsid = $("#goodsid").val();
+	$.ajax({
+		type:"POST",
+		url:"xiadan.do",
+		dataType:"text",
+		data:{goods_id:goodsid,status:"buy"
+		},
+		success:function(result)
+		{
+			if(result=="unlogin"){
+				alert("未登录！");
+			}
+			if(result=="true"){
+				location.href="xiadan.do?goods_id="+goodsid+"&status=go";
+			}
+		}
+	})
+})

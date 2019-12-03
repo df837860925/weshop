@@ -29,21 +29,15 @@ public class xiangqingAction extends Action {
 		xiangqingForm form = (xiangqingForm) actionForm;
 		String goods_id = form.goods_id;
 		System.out.println(goods_id);
-		// 判断，没有就跳转到登录注册页面
-		if (obj == null) {
-			return new ActionForword("zhuce.do");
-		} else {
-			// 调用数据库
-			Goodsdaoimpl Goodsimpl = DaoimplFactory.getGoodsdaoimpl();
-			if (goods_id != null) {
-				try {
-					goods = Goodsimpl.selectByGoodsId(Integer
-							.parseInt(goods_id));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				request.setAttribute("goods", goods);
+		// 调用数据库
+		Goodsdaoimpl Goodsimpl = DaoimplFactory.getGoodsdaoimpl();
+		if (goods_id != null) {
+			try {
+				goods = Goodsimpl.selectByGoodsId(Integer.parseInt(goods_id));
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+			request.setAttribute("goods", goods);
 		}
 		return new ActionForword("kqx-xiangqing");
 	}

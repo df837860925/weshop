@@ -18,4 +18,6 @@ public interface Userdao {
 	public User selectByUserPhone(String userphone) throws Exception;
 
 	public List<User> selectAll() throws Exception;
+
+	public void emptyShoppingCart(int userid) throws Exception;
 }

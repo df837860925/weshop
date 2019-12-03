@@ -126,4 +126,13 @@ public class Userdaoimpl implements Userdao {
 		return null;
 	}
 
+	@Override
+	public void emptyShoppingCart(int userid) throws Exception {
+		Connection conn = ConnectionPool.getConnection();
+		String sql = "update user set user_shopping = '' where user_id = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, userid);
+		int rs = ps.executeUpdate();
+		ConnectionPool.closeConnection(conn);
+	}
 }
