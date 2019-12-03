@@ -16,6 +16,7 @@ import service.kqx.form.tijiaoForm;
 import dao.daoimpl.Adressdaoimpl;
 import dao.daoimpl.DaoimplFactory;
 import dao.daoimpl.Orderdaoimpl;
+import dao.daoimpl.Userdaoimpl;
 import dto.UserLoginInfo;
 
 public class tijiaoAction extends Action {
@@ -26,11 +27,12 @@ public class tijiaoAction extends Action {
 			throws ServletException, IOException {
 		Adress adress = new Adress();
 		HttpSession session = request.getSession();
+		Userdaoimpl userimpl = DaoimplFactory.getUserdaoimpl();
+		tijiaoForm form = (tijiaoForm) actionForm;
+		String Order_mes = (String) form.getOrder_mes();
 		// 从session中拿到dto中UserLoginInfo对象
 		Object obj = session.getAttribute("userlogininfo");
 		UserLoginInfo userinfo = (UserLoginInfo) obj;
-		tijiaoForm form = (tijiaoForm) actionForm;
-		String Order_mes = (String) form.getOrder_mes();
 		// 从UserLoginInfo对象中拿到userid
 		int userid = userinfo.getUserid();
 		// 判断，没有就跳转到登录注册页面
@@ -46,9 +48,11 @@ public class tijiaoAction extends Action {
 					String number = mesgString.split("-")[1];
 					order.setOrderadressid(userid);
 					try {
+						// 从数据库中得到用户对应的地址信息
 						Adressdaoimpl adressimpl = DaoimplFactory
 								.getAdressdaoimpl();
 						Adress adress2 = adressimpl.selectAdressById(userid);
+						// 操作数据库插入信息到订单信息表
 						Orderdaoimpl orderimpl = DaoimplFactory
 								.getOrderdaoimpl();
 						order.setOrderadressid(adress2.getAdressid());
@@ -56,12 +60,14 @@ public class tijiaoAction extends Action {
 						order.setOrdergoodsid(Integer.parseInt(goods_id));
 						order.setOrdergoodsum(Integer.parseInt(number));
 						orderimpl.insertOrder(order);
+						// 进行更新用户表购物车字段和订单字段
+						userimpl.emptyShoppingCart(userid);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
 			}
-			return new ActionForword("");
 		}
+		return new ActionForword("");
 	}
 }

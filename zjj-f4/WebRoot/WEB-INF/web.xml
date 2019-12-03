@@ -30,7 +30,7 @@
   </resource-ref>
   
   <!-- 这是kqx的防恶意访问过滤器 --> 
-  <filter>
+  <!--  <filter>
   	<filter-name>sessionFilter</filter-name>
   	<filter-class>web.filter.KQXfilter</filter-class>
   </filter>
@@ -38,8 +38,9 @@
   	<filter-name>sessionFilter</filter-name>
   	<url-pattern>/guolvqi/*</url-pattern>
   </filter-mapping>
+  -->
    <!-- 这是wkr的防恶意访问过滤器 --> 
-  <filter>
+  <!-- <filter>
   	<filter-name>jspFilter</filter-name>
   	<filter-class>web.filter.WkrFilter</filter-class>
   </filter>
@@ -47,6 +48,7 @@
   	<filter-name>jspFilter</filter-name>
   	<url-pattern>*.jsp</url-pattern>
   </filter-mapping>
+   -->
   <!--这是杨保才的 session属性监听器  -->
   <listener>
   <listener-class>web.listener.YbcSessionListener</listener-class>

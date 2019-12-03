@@ -29,15 +29,14 @@ public class dingdanAction extends Action {
 		Map<Goods, String> map = new HashMap<Goods, String>();
 		Goodsdaoimpl goodsimpl = DaoimplFactory.getGoodsdaoimpl();
 		Adressdaoimpl adressimpl = DaoimplFactory.getAdressdaoimpl();
-		// 获得作用域中的userid
 		HttpSession session = request.getSession();
 		dingdanForm form = (dingdanForm) actionForm;
 		// 从session中拿到dto中UserLoginInfo对象
 		Object obj = session.getAttribute("userlogininfo");
 		UserLoginInfo userinfo = (UserLoginInfo) obj;
-		Adress adress = new Adress();
 		// 从UserLoginInfo对象中拿到userid
 		int userid = userinfo.getUserid();
+		Adress adress = new Adress();
 		try {// 根据userid查到对应的地址
 			adress = adressimpl.selectAdressById(userid);
 		} catch (Exception e1) {

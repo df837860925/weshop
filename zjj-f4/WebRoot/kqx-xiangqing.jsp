@@ -215,6 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="clothes">
 					<img src="${goods.goodsimg}" class="clothes1"/>
 					<img src="${goods.goodsimg}" class="clothes2"/>
+					<input type="hidden" value="${ goods.goodsid}" id="goodsid">
 				</div>
 				<input type="button" value=">" class="next" />
 			</div>
