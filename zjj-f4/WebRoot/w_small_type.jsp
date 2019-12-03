@@ -49,11 +49,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 					</div>
 					<div class="col-lg-4  text-right " id="ybc_shoping">
-						<a  class="login" id="login"><span>登陆 </span></a>
-						<a href="#"><span class="glyphicon glyphicon-user "style="display: none;" id="welcome">欢迎..</span></a>
-					<a href="#"><span class="glyphicon glyphicon-log-out " style="display: none;" id="exit">退出</span></a>
+						<c:if test="${not empty userlogininfo }">
+							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
+							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
+						</c:if>
+						<c:if test="${empty userlogininfo }">
+							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
+						</c:if>
 						<span class="glyphicon glyphicon-heart"></span>
-						<a  class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
+						<a href="gouwudai.do" class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 					</div>
 				</div>
@@ -129,9 +133,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<section class="ybc_main" style="padding: 0px;">
 			<div class="ybc_clohtes ">
-				<a href="">
+				<a href="javascript:;"  id="goods_bigtype=1&goods_smalltype=1">
 					<img src="https://res.gucci.cn/resources/2019/10/22/1571731200670454_content_LightGray_CategoryDoubleVertical_Medium_360x720_1570117507_CategoryDoubleVertical_SS20MNWLook018_001_Light.jpg" />
-					<div class="banner_clothes">
+					<div class="banner_clothes" >
 						<h2>女士服饰</h2>
 						<p>探索 ></p>
 					</div>
@@ -139,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_handbag">   
 				<div class="banner_handbag ">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=2">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/10/15706789081696141_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>手袋</h2>
@@ -150,7 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_shouse">
 				<div class="banner_shouse">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=3">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/4/15701334874667130_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>女鞋</h2>
@@ -160,8 +164,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="ybc_wallet">
-				<div class="banner_wallet">
-					<a href="">
+				<div class="banner_wallet" >
+					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=4">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/4/14/15552135146438727_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>皮包&小皮件</h2>
@@ -171,8 +175,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="ybc_belt">
-				<div class="banner_belt">
-					<a href="">
+				<div class="banner_belt" >
+					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=5">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2017/5/15/14948540515149090_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>腰带</h2>
@@ -183,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_wristwatch">
 				<div class="banner_wristwatch">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=6">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2019/9/8/15679392839127966_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>腕表</h2>
@@ -194,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_jewel">
 				<div class="banner_jewel">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=7">
 					<img class="imglimit" src="https://res.gucci.cn/resources/2018/5/9/15258126100208072_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>珠宝</h2>
@@ -205,7 +209,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="ybc_glasses">
 				<div class="banner_glasses">
-					<a href="">
+					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=8">
 					<img class="imglimit"  src="https://res.gucci.cn/resources/2019/8/30/15671506341921057_gs_470X470.jpg" />
 					<div class="ps">
 						<h2>眼镜</h2>
@@ -355,6 +359,16 @@ loadnav();
 		var desc=$('#serchinput input').val();
 		location.href="selectdesc.do?desc="+desc;
 	})
+	//==传参数到分类页面
+		$('.ybc_main a').each(function(){
+			var that=$(this)
+			$(this).click(function(){
+				var parm=that.attr('id');
+				location.href="df_fenlei_type.jsp?"+parm;
+			})
+		})
+		
+		
 	//中部
 	//商品选择改变价格逻辑
 	var allpay=0;

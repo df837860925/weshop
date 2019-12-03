@@ -86,8 +86,6 @@ public class Mvc_servlet extends HttpServlet {
 			}
 		    //����ת������ƴ�ӳ���Ҫ���������
 		      String  classFormPath=uri+"Form";
-		      System.out.println(classFormPath);
-		      System.out.println(config);
 		      String  classform=  config.getProperty(classFormPath);
 		      //���ظ���
 		      
@@ -138,7 +136,6 @@ public class Mvc_servlet extends HttpServlet {
 		      
 		// ��request.response �Լ�Ҫ�õ�ֵ�� ���ݵ�ʵ����תҳ�档
 		String classForName = config.getProperty(uri);
-		System.out.println(classForName);
 		Class o;
 		try {
 			o = Class.forName(classForName);
@@ -170,7 +167,6 @@ public class Mvc_servlet extends HttpServlet {
 		Properties action = new Properties();
 		String configpath = this.getServletConfig().getInitParameter(
 				"configLocaltion");
-		System.out.println(configpath + "1111111111111111111111");
 		String path = this.getServletContext().getRealPath("/") + configpath;
 
 		Properties config = new Properties();

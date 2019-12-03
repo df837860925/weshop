@@ -17,8 +17,7 @@ import service.core.Action;
 import service.core.ActionForm;
 import service.core.ActionForword;
 
-public class ImgAction extends Action{
-	// ͼƬ�Ŀ�͸�
+public class ImgAction extends Action {
 	private static int WIDTH = 140;
 	private static int HEIGHT = 30;
 
@@ -26,6 +25,7 @@ public class ImgAction extends Action{
 			"K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
 			"X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
 	private Random r = new Random();
+
 	@Override
 	public ActionForword execute(HttpServletRequest request,
 			HttpServletResponse response, ActionForm actionForm)
@@ -34,48 +34,35 @@ public class ImgAction extends Action{
 		ServletOutputStream sos = response.getOutputStream();
 		StringBuffer sb = new StringBuffer();
 		StringBuffer sbsb = new StringBuffer();
-		// �ܹ����4λ�������֤��
 		for (int i = 0; i < 4; i++) {
 			int index = r.nextInt(str.length);
 			sb.append(str[index]);
-			sbsb.append(str[index]+" ");
+			sbsb.append(str[index] + " ");
 		}
-		//��֤��
 		String content = sb.toString();
 		System.out.println(content);
 		request.getSession().setAttribute("code", content);
-		//�ڴ���һ�������ͼƬ����
 		BufferedImage bi = new BufferedImage(WIDTH, HEIGHT,
 				BufferedImage.TYPE_INT_RGB);
-		//���ͼƬ�Ļ���
 		Graphics g = bi.getGraphics();
-		//�ÿ��Ի���ɫ�ı�����ɫ
 		g.setColor(Color.BLACK);
-		//�����
 		g.drawRect(0, 0, WIDTH, HEIGHT);
-		//��䱳��
 		g.setColor(Color.white);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
-		//д����
-		char[]zifushuzu = sbsb.toString().toCharArray();
+		char[] zifushuzu = sbsb.toString().toCharArray();
 		for (int i = 0; i < zifushuzu.length; i++) {
-			g.setColor(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
-			g.setFont(new Font("宋体",Font.BOLD,r.nextInt(15)+20));
-			g.drawString(String.valueOf(zifushuzu[i]), (i+1)*15, 22);
+			g.setColor(new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+			g.setFont(new Font("宋体", Font.BOLD, r.nextInt(15) + 20));
+			g.drawString(String.valueOf(zifushuzu[i]), (i + 1) * 15, 22);
 		}
-//		g.setFont(new Font("����", Font.BOLD, 26));
-//		g.drawString(sbsb.toString(), 10, 22);
-		//��300�����ŵ�
 		g.setColor(Color.CYAN);
 		for (int i = 0; i < 300; i++) {
 			int x = r.nextInt(WIDTH);
 			int y = r.nextInt(HEIGHT);
 			g.drawLine(x, y, x, y);
 		}
-		//��3��������
 		g.drawLine(10, 10, r.nextInt(130), 10);
 		g.drawLine(10, 15, r.nextInt(130), 20);
-		//���ڴ�������ͼƬд���������
 		ImageIO.write(bi, "jpg", sos);
 		sos.flush();
 		sos.close();

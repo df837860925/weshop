@@ -2,10 +2,9 @@ package service.wkr.form;
 
 import service.core.ActionForm;
 
-public class LoginActionForm extends ActionForm{
+public class LoginActionForm extends ActionForm {
 	private String loginShoujihao;
 	private String loginPassword;
-	
 
 	public String getLoginShoujihao() {
 		return loginShoujihao;
@@ -22,8 +21,6 @@ public class LoginActionForm extends ActionForm{
 	public void setLoginPassword(String loginPassword) {
 		this.loginPassword = loginPassword;
 	}
-	
-	
 
 	@Override
 	public String toString() {
@@ -33,7 +30,7 @@ public class LoginActionForm extends ActionForm{
 
 	@Override
 	public void flagfunction() {
-		System.out.println("ï¿½ï¿½ï¿½Ëµï¿½Â¼ï¿½?");
-		
+		System.out.println("µ½ÁËµÇÂ¼±íµ¥");
+
 	}
 }

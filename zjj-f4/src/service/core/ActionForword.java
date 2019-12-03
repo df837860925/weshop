@@ -29,14 +29,20 @@ public  class ActionForword {
 			Properties config=(Properties)request.getSession().getServletContext().getAttribute("config");
 			//如果是为自己的页面 放行 写个对应地址的就行
 			if (redirect) {
+				System.out.println("进入了重定向");
 				response.sendRedirect(config.getProperty(path));//要用绝对路径 因为这里不是servlet;要在属性文件加对应的跳转；
+				
 			}
 			else {
 				request.getRequestDispatcher(config.getProperty(path)).forward(request, response);
 			}
-		}else{
-			request.getRequestDispatcher(this.path).forward(request, response);
-		}
+		}else{//没有选择地址
+				if(redirect){
+					response.sendRedirect(this.path);
+				}else{
+					request.getRequestDispatcher(this.path).forward(request, response);
+					}
+			}
 		
 		
 	}

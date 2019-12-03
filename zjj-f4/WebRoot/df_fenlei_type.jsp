@@ -5,6 +5,10 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<%
+	System.out.print(request.getAttribute("goodslist"));
+ %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -214,16 +218,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 					</div>
 					<div class="col-lg-4  text-right " id="ybc_shoping">
-						<a  class="login" id="login"><span>登陆 </span></a>
-						<a href="#"><span class="glyphicon glyphicon-user "style="display: none;" id="welcome">欢迎..</span></a>
-					<a href="#"><span class="glyphicon glyphicon-log-out " style="display: none;" id="exit">退出</span></a>
+						<c:if test="${not empty userlogininfo }">
+							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
+							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
+						</c:if>
+						<c:if test="${empty userlogininfo }">
+							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
+						</c:if>
 						<span class="glyphicon glyphicon-heart"></span>
-						<a  class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
+						<a href="gouwudai.do" class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 					</div>
 				</div>
 				<div class="row " >
-					<div class="col-md-6 col-md-offset-3  navbar" id="ybc_main_nav">
+				<div class="col-md-3"  id="serchfather">
+						<a id="serch" href="javascript:;">
+							<span class="glyphicon glyphicon-search" id=""   >
+							</span>
+						</a>
+					</div>
+					<div class="col-md-3 "  id="serchinput">
+						<div class="input-group" >
+				      		<span class="input-group-btn">
+				       		 	<button class="btn btn-default" type="button">
+				       		 		<span class="glyphicon glyphicon-search" id="toserch"  >
+									</span>
+				       		 	</button>
+				      		</span>
+			      			<input type="text" class="form-control" placeholder="Search for...">
+   			 			</div><!-- /input-group -->
+					</div>
+					<div class="col-md-6   navbar" id="ybc_main_nav">
 							<ul class="nav  nav-justified" id="nav_a" >
 								<li><a href="">全新资讯<p class="clearblock"><span  class="caret"></span></p></a></li>
 								<li><a href="">女士<p class="clearblock"><span  class="caret"></span></p></a></li>
@@ -625,6 +650,20 @@ console.log(result);
 		allpay=0;
 		spcount=0;
 	}
+	//================搜索
+	$('#serchinput').hide();
+	$('#serch').click(function(){
+		$('#serchfather').hide();
+		$('#serchinput').show();
+	})
+	$('#serchinput').mouseleave(function(){
+		$('#serchfather').show();
+		$('#serchinput').hide();
+	})
+	$('#toserch').click(function(){
+		var desc=$('#serchinput input').val();
+		location.href="selectdesc.do?desc="+desc;
+	})
 	//================================丁锋
 	read();
 	//读缓存 

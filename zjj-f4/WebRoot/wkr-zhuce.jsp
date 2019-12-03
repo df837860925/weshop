@@ -345,11 +345,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 				</div>
 				<div class="col-lg-4  text-right " id="ybc_shoping">
-					 <a  class="login" id="login"><span>登陆 </span></a>
-						<a href="#"><span class="glyphicon glyphicon-user "style="display: none;" id="welcome">欢迎..</span></a>
-					<a href="#"><span class="glyphicon glyphicon-log-out " style="display: none;" id="exit">退出</span></a>
+						<c:if test="${not empty userlogininfo }">
+							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
+							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
+						</c:if>
+						<c:if test="${empty userlogininfo }">
+							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
+						</c:if>
 						<span class="glyphicon glyphicon-heart"></span>
-						<a  class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
+						<a href="gouwudai.do" class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 				</div>
 			</div>
@@ -565,13 +569,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
 	$('.zhucebiaoqian').click(function(){
 		$('.zhuce').css('visibility','visible');
-		huantupian();
+//		huantupian();
 		$('.shurukuang4').css('visibility','visible');
+		$('#yzmId').attr('src','img.do');
 		
 		
 	})
 //=====================================================请求服务器
-
+/*
 //==========注册
 $(".tijiao").click(function(){
 	console.log("!!!!!!!!!!")
@@ -712,6 +717,8 @@ $("#login").click(function(){
 	
 	})
 //========================================	
+	*/
+	
 	
 //	正则
 	var re1 = /^1[3456789]\d{9}$/g;
