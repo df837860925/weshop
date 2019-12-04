@@ -208,6 +208,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				list-style: none;
 				text-decoration: none;
 			}
+			#tag:hover {
+			background-color: black;
+			
+			}
 	</style>
   <body>
   <% System.out.print("@@@@@"+request.getAttribute("list")); %>
@@ -305,7 +309,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<section>
 			
 			<div class="smll_daohang">
+			
 				 <ul class="ul_big">
+				    <c:if test="${list ne null }">
+			<span id="select_desc" style="dispaly:inline;width:500px;height:60px;margin: 0px;font-size:16px;font-family: 'FuturaLT-Book', 'GucciChinese';
+    font-size: 28px;color: #999999;">搜索“${list.desc}”共有${list.list.size()}个结果</span>
+			</c:if>
 				 	<li id="li_leibie"><a href="">排序</a><span class="caret"></span>
 				 		<div class="leibie">
 				 			<ul>
@@ -489,36 +498,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <script src="js/DF_JS.js" type="text/javascript"></script>
 <script type="text/javascript">
 
+
+
+if($("#p_flag").text()!=""){
+$("#li_paixu").css("display","none");
+
+}
  var name='';
 loadnav();
 var data=$("#data").val();
+console.log(data);
 var x=0;
 var y=0;
-if(data!=",")
+if(data!="null,null")
 {  x=data.split(",")[0];
  y=data.split(",")[1];
  console.log("大分类");
+ daohang_name(x, y);
 }
 else{
  x=1;
  y=1;
  console.log("默认");
 }
-console.log(x,y);
+console.log(x+y);
 	if($("#price").text()=="")
 	{
 	fenleidata(x,y,page);}
 
 	
 	function fenleidata(x,y,i){
-
+ 
 $.get({
 	 type:"POST",
 	 url:"DF_fenlei_datashow.do",
 	 data:{"bigtype":x,"smalltype":y,"page":i,"pagesize":24},
 	 success:function(result){
 	   var objs=result;
-	 
+	  
 console.log(result);
 	   
    for (var i=0;i<objs.obj.list.length;i++) {
@@ -531,6 +548,7 @@ console.log(result);
 	$("#moregoods").click(function(){
 	
 	page++;
+	console.log("tiaojian__"+(x,y));
 	fenleidata(x,y,page);
 	
 	
@@ -770,6 +788,7 @@ console.log(result);
 	tiaojian(x,y,tiaojianpage);}
 	
 	else{   //是条件查询过来的
+
 	var num=0;
 	var desc=$("#desc").val();
 	console.log("desc___"+x+y);
@@ -917,8 +936,8 @@ console.log(result);
 	$(".ybc_jewel").mouseleave(function(){
 		$(this).children(".banner_glasses").children().children(".ps").fadeOut(500);		
 	}) 
+	$("#li_paixu").css("display","none");
 	
-	 
 	}
 	})
 	
@@ -1040,5 +1059,74 @@ function shaixuan(x,y){
 		})
 	}
 	
-	 
+	function daohang_name(x,y) { 
+ if(y==1)
+ { $(".ul_big").prepend($("<span id='s_tag'>服饰</span>"));}
+ if(y==2)
+ { $(".ul_big").prepend($("<span id='s_tag'>包包</span>"));}
+ if(y==3)
+ { $(".ul_big").prepend($("<span id='s_tag'>女靴</span>"));}
+ if(y==4)
+ { $(".ul_big").prepend($("<span id='s_tag'>卡包</span>"));}
+ if(y==5)
+ { $(".ul_big").prepend($("<span id='s_tag'>腰带</span>"));}
+ if(y==6)
+ { $(".ul_big").prepend($("<span id='s_tag'>腕表</span>"));}
+ if(y==7)
+ { $(".ul_big").prepend($("<span id='s_tag'>首饰</span>"));}
+ if(y==8)
+ { $(".ul_big").prepend($("<span id='s_tag'>眼镜</span>"));}
+ if(y==9)
+ { $(".ul_big").prepend($("<span id='s_tag'>箱包</span>"));}
+ if(y==10)
+ { $(".ul_big").prepend($("<span id='s_tag'>男鞋</span>"));}
+ if(y==11)
+ { $(".ul_big").prepend($("<span id='s_tag'>首饰</span>"));}
+ if(y==12)
+ { $(".ul_big").prepend($("<span id='s_tag'>眼镜</span>"));}
+ if(y==13)
+ { $(".ul_big").prepend($("<span id='s_tag'>腕表</span>"));}
+ if(y==14)
+ { $(".ul_big").prepend($("<span id='s_tag'>帽子</span>"));}
+ if(y==15)
+ { $(".ul_big").prepend($("<span id='s_tag'>儿童服饰</span>"));}
+ if(y==16)
+ { $(".ul_big").prepend($("<span id='s_tag'>儿童配饰</span>"));}
+ 
+ if(x==1)
+	{
+	 $(".ul_big").prepend($("<a id='tag'  href='w_small_type.jsp'>女装</a>>"))
+	}
+if(x==2)
+	{
+	  $(".ul_big").prepend($("<a id='tag' href='m_small_type.jsp'>男装</a>>"));
+	}
+	if(x==3)
+	{
+	  $(".ul_big").prepend($("<a id='tag' href='c_small_type.jsp'>童装</a>>"));
+	}
+ }
+	
+$("#tag").css({
+ "dispaly":"inline-block",
+ "width":"100px",
+ "height":"60px",
+ "background-color":"#e7e7e7",
+ "line-height": "60px",
+ "font-size":"20px",
+ "margin":"0px 50px",
+ "padding":"5px",
+ "border-radius": "20%"
+}); 
+
+$("#s_tag").css({
+ "dispaly":"inline-block",
+ "width":"100px",
+ "height":"60px",
+ "background-color":"#e7e7e7",
+ "line-height": "60px",
+ "font-size":"20px",
+ "padding":"5px",
+ "border-radius": "20%"
+}); 
 </script>

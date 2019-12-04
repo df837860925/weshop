@@ -36,6 +36,8 @@ public Color_m(ResultSet rs1, List<Goods> list1) {
 				list1.add(good);
 			}
 		}
+
+
 		Set<String> cm=new HashSet<>();
 		for (int i = 0; i < list1.size(); i++) {
 			if (list1.get(i).getGoodsmaterial()==1) {

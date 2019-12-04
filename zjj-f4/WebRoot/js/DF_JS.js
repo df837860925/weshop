@@ -298,5 +298,51 @@ $(".shaixuan>ul>li>input").each(function(){
 		   
 }
 
-
+function daohang_name(x,y) { 
+ if(y==1)
+ { $(".ul_big").prepend($("<span>服饰</span>"))}
+ if(y==2)
+ { $(".ul_big").prepend($("<span>包包</span>"))}
+ if(y==3)
+ { $(".ul_big").prepend($("<span>女靴</span>"))}
+ if(y==4)
+ { $(".ul_big").prepend($("<span>卡包</span>"))}
+ if(y==5)
+ { $(".ul_big").prepend($("<span>腰带</span>"))}
+ if(y==6)
+ { $(".ul_big").prepend($("<span>腕表</span>"))}
+ if(y==7)
+ { $(".ul_big").prepend($("<span>首饰</span>"))}
+ if(y==8)
+ { $(".ul_big").prepend($("<span>眼镜</span>"))}
+ if(y==9)
+ { $(".ul_big").prepend($("<span>箱包</span>"))}
+ if(y==10)
+ { $(".ul_big").prepend($("<span>男鞋</span>"))}
+ if(y==11)
+ { $(".ul_big").prepend($("<span>首饰</span>"))}
+ if(y==12)
+ { $(".ul_big").prepend($("<span>眼镜</span>"))}
+ if(y==13)
+ { $(".ul_big").prepend($("<span>腕表</span>"))}
+ if(y==14)
+ { $(".ul_big").prepend($("<span>帽子</span>"))}
+ if(y==15)
+ { $(".ul_big").prepend($("<span>儿童服饰</span>"))}
+ if(y==16)
+ { $(".ul_big").prepend($("<span>儿童配饰</span>"))}
+ 
+ if(x==1)
+	{
+	 $(".ul_big").prepend($("<a href='w_small_type'>女装</a>"))
+	}
+if(x==2)
+	{
+	  $(".ul_big").prepend($("<a href='m_small_type'>男装</a>"))
+	}
+if(x==3)
+{
+  $(".ul_big").prepend($("<a href='c_small_type'>男装</a>"))
+}
+ }
 
