@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="row ">
 							<div class="col-lg-4 text-center col-lg-offset-4  visible-lg">
-								<h1>购物袋</h1>
+								<h1>个人信息</h1>
 							</div>
 						</div>
 			</div>
@@ -138,13 +138,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 
     		
 			<div class="active" >
-				<img src="https://res.gucci.cn/images/myaccount/account/standard-cirecle.jpg"/>
-				<a href="" > 心愿单</a>
-				<p>收藏您所喜爱的单品</p>
+				<c:forEach items="${list}" var="order" varStatus="i">
+				<div class="userorders">
+					<div class="orderimg">
+						<img src="${order.goodsimg}">
+					</div>
+					<div class="orderdesc">
+						<h3 >${order.goodsname}<span class="ordertime">下单时间:${order.ordertime}</span></h3>
+						<p>${order.goodstype}</p>
+						<p><span>￥</span>${order.goodsprice}</p>
+						<p># 503877HV8AE8709</p>
+						<p id="orderstatus">已支付</p>
+						<p  id="orderdetail"><a href="javascript:;">订单详情</a></p>
+					</div> 
+				</div>
+				</c:forEach>
 			</div>
 			<div class="user_bottom">
 				<div class="order">
-						<a href="">我的订单></a>
+						<a href="">我的收藏></a>
 						<p>管理和编辑您的订单</p>
 				</div>
 				<div class="user">
