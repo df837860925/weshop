@@ -52,7 +52,7 @@ public class JSONm {
 		
 //		response.setContentType("text/html; charset=UTF-8");
 
-		System.out.println(c1.toString());
+	//	System.out.println(c1.toString());
 	  pw.print(c1.toString());
 	}
 	
