@@ -25,10 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <%
-  UserLoginInfo userInfo =new UserLoginInfo(1,null,null,null);
+  UserLoginInfo userInfo =new UserLoginInfo(1,"756859",null,null);
   session.setAttribute("userlogininfo", userInfo); 
   %>
-	<center><a href="xiangqing.do?goods_id=1">xiangqing</a></center>
+	<center><a href="xiangqing.do?goods_id=8">xiangqing</a></center>
 	<center><a href="dingdan.do?order_mes=1-2,2-5
 	">dingdan</a></center>
   </body>
