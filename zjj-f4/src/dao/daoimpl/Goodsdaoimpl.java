@@ -343,7 +343,7 @@ public class Goodsdaoimpl implements Goodsdao {
 		
 		System.out.println("ËÑË÷µÄSQLÓï¾ä"+sql);
 		//·ÖÒ³
-		sql+=" limit "+pagenum+","+pagesize;
+		//sql+=" limit "+pagenum+","+pagesize;
 		//
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
