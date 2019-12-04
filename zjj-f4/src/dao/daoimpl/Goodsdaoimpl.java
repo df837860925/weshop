@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 import JSON.Color_m;
 import JSON.paixuOBJ;
@@ -265,6 +266,7 @@ public class Goodsdaoimpl implements Goodsdao {
 	}
 	@Override
 	public Goodslist selectGoodsByDesc(String desc, int pagenum,int pagesize)throws Exception {
+		//杨保才
 		// TODO Auto-generated method stub
 		List<Goods> list = new ArrayList<Goods>();
 		Connection conn = ConnectionPool.getConnection();
@@ -281,6 +283,7 @@ public class Goodsdaoimpl implements Goodsdao {
 			 if(desc.indexOf(mat.getMaterialname())>=0){
 				 String st=" and goods_material="+mat.getMaterialid();
 					sql+=st;
+					break;//一旦有一个颜色则退出
 			 }
 		 }
 		 //拿出颜色分类
@@ -292,6 +295,7 @@ public class Goodsdaoimpl implements Goodsdao {
 			 if(desc.indexOf(color.getColor_name())>=0){
 				 String st=" and goods_color="+color.getColor_id();
 					sql+=st;
+					break;
 			 }
 		 }
 		//拿出产品分分类
@@ -300,16 +304,29 @@ public class Goodsdaoimpl implements Goodsdao {
 		Smalltypeimpl smim=new Smalltypeimpl();
 		List<Smalltype> sms=smim.selectAll();
 		Iterator<Smalltype> it=sms.iterator();
+		int flag=0;
 		while(it.hasNext()){
 			Smalltype sm=it.next();
-			if(desc.indexOf(sm.getSmalltypename())>=0){//如果有这关键字
-				String st=" and goods_smalltype="+sm.getSmalltypeid();
-				sql+=st;
+			//拿到关键字
+			StringTokenizer stt=new StringTokenizer(sm.getSmalltypekeyword(),"-");
+			while(stt.hasMoreTokens()){
+				if(desc.indexOf(stt.nextToken())>=0){//如果有这关键字
+					String st="";
+					if(flag==0){
+						 st=" and goods_smalltype="+sm.getSmalltypeid();
+					}else{
+						 st=" or goods_smalltype="+sm.getSmalltypeid();
+					}
+					flag++;
+					sql+=st;
+					break;
+				}
 			}
 		}
 		//大类别 如果有女字
 		int flagman=0;
 		int flagwoman=0;
+		int flagchild=0;
 		if(desc.indexOf("男")>=0){
 			 flagman++;
 			sql+=" and goods_bigtype=2 ";
@@ -324,9 +341,9 @@ public class Goodsdaoimpl implements Goodsdao {
 		}
 		//颜色
 		
-		System.out.println(sql);
+		System.out.println("搜索的SQL语句"+sql);
 		//分页
-		sql+=" limit "+pagenum+","+pagesize;
+		//sql+=" limit "+pagenum+","+pagesize;
 		//
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
@@ -346,6 +363,9 @@ public class Goodsdaoimpl implements Goodsdao {
 			goodslist.addgoods(good);;
 		}
 		goodslist.setDesc(desc);
+		Color_m co=new Color_m(goodslist.getList());
+		Set<String> set =co.forselect_none();
+		goodslist.setSet(set);
 		ConnectionPool.closeConnection(conn);
 		return goodslist;
 		
@@ -383,17 +403,29 @@ public class Goodsdaoimpl implements Goodsdao {
 			 }
 		 }
 		//拿出产品分分类
-		
-		Smalltypeimpl smim=new Smalltypeimpl();
-		List<Smalltype> sms=smim.selectAll();
-		Iterator<Smalltype> it=sms.iterator();
-		while(it.hasNext()){
-			Smalltype sm=it.next();
-			if(desc.indexOf(sm.getSmalltypename())>=0){//如果有这关键字
-				String st=" and goods_smalltype="+sm.getSmalltypeid();
-				sql+=st;
+
+			Smalltypeimpl smim=new Smalltypeimpl();
+			List<Smalltype> sms=smim.selectAll();
+			Iterator<Smalltype> it=sms.iterator();
+		 int flag=0;
+			while(it.hasNext()){
+				Smalltype sm=it.next();
+				//拿到关键字
+				StringTokenizer stt=new StringTokenizer(sm.getSmalltypekeyword(),"-");
+				while(stt.hasMoreTokens()){
+					if(desc.indexOf(stt.nextToken())>=0){//如果有这关键字
+						String st="";
+						if(flag==0){
+							 st=" and goods_smalltype="+sm.getSmalltypeid();
+						}else{
+							 st=" or goods_smalltype="+sm.getSmalltypeid();
+						}
+						flag++;
+						sql+=st;
+						break;
+					}
+				}
 			}
-		}
 		//大类别 如果有女字
 		int flagman=0;
 		int flagwoman=0;

@@ -4,12 +4,10 @@
 
   <Resource name="mysql" auth="Container" type="javax.sql.DataSource"
       maxActive="100" maxIdle="30" maxWait="10000"
-
       username="root" password="" driverClassName="com.mysql.jdbc.Driver"
-
       url="jdbc:mysql://localhost:3306/test"/>
      <!-- C3P0 -->
- <!--     <Resource name="mysql" auth="Container" type="com.mchange.v2.c3p0.ComboPooledDataSource"
+     <!--<Resource name="mysql" auth="Container" type="com.mchange.v2.c3p0.ComboPooledDataSource"
       factory="org.apache.naming.factory.BeanFactory"
       initialPoolSize="3" maxPoolSize="4" checkoutTimeout="5000"
       user="root" password="" driverClass="com.mysql.jdbc.Driver"

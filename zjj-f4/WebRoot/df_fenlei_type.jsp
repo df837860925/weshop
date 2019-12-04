@@ -222,14 +222,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 					</div>
 					<div class="col-lg-4  text-right " id="ybc_shoping">
-						<c:if test="${not empty userlogininfo }">
+						<c:if test="${userlogininfo!=null}">
 							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
-							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
+							<a href="javascript:;" id="outline"><span class="glyphicon glyphicon-log-out "></span>退出</a>
 						</c:if>
-						<c:if test="${empty userlogininfo }">
+						<c:if test="${userlogininfo==null}">
 							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
 						</c:if>
-						<span class="glyphicon glyphicon-heart"></span>
 						<a href="gouwudai.do" class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 					</div>
@@ -488,11 +487,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<input type="text" style="display: none;"  name="" id="data" value="<%=request.getParameter("goods_bigtype")%>,<%=request.getParameter("goods_smalltype")%>" />
 	<input type="text" style="display: none;"  name="" id="desc" value="${list.desc}" />
+	<input  id="set" type="text " value="${list.set}" />
   </body>
 </html>
 
 <script src="js/jquery.min.js">
-	<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 	
 </script>
  <script src="js/DF_JS.js" type="text/javascript"></script>
@@ -525,6 +525,101 @@ console.log(x+y);
 	if($("#price").text()=="")
 	{
 	fenleidata(x,y,page);}
+	else{
+	var set=  $("#set").val();
+	console.log(set);
+	var obj=set.substring(1,set.length-1);
+	 var objs=  obj.split(",");
+	 $(".shaixuan>ul>li>input").each(function(){
+	 	
+	 	$(this).attr("onclick","return false;");
+	         $(this).css("background-color","gainsboro");
+	 	
+	 	
+	 	
+	 })
+	for (var i = 0; i < objs.length; i++) {
+     
+	if(objs[i]==" c-1")
+		   	{  
+		   	console.log("进去；了");
+		     $(".shaixuan>#c_flag>li").eq(0).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(0).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-2")
+		   	{$(".shaixuan>#c_flag>li").eq(1).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(1).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-3")
+		   	{$(".shaixuan>#c_flag>li").eq(2).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(2).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-4")
+		   	{$(".shaixuan>#c_flag>li").eq(3).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(3).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-5")
+		   	{$(".shaixuan>#c_flag>li").eq(4).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(4).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-6")
+		   	{$(".shaixuan>#c_flag>li").eq(5).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(5).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-7")
+		   	{$(".shaixuan>#c_flag>li").eq(6).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(6).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-8")
+		   	{$(".shaixuan>#c_flag>li").eq(7).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(7).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-9")
+		   	{$(".shaixuan>#c_flag>li").eq(8).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(8).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-10")
+		   	{$(".shaixuan>#c_flag>li").eq(9).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(9).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-11")
+		   	{$(".shaixuan>#c_flag>li").eq(10).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(10).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-12")
+		   	{$(".shaixuan>#c_flag>li").eq(11).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(11).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-13")
+		   	{$(".shaixuan>#c_flag>li").eq(12).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(12).children("input").css("background-color","white");}
+		   	if(objs[i]==" c-14")
+		   	{$(".shaixuan>#c_flag>li").eq(13).children("input").attr("onclick","");
+	         $(".shaixuan>#c_flag>li").eq(13).children("input").css("background-color","white");}
+		   	
+		   	if(objs[i]==" m-1")
+		   	{$(".shaixuan>#m_flag>li").eq(0).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(0).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-2")
+		   	{$(".shaixuan>#m_flag>li").eq(1).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(1).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-3")
+		   	{$(".shaixuan>#m_flag>li").eq(2).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(2).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-4")
+		   	{$(".shaixuan>#m_flag>li").eq(3).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(3).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-5")
+		   	{$(".shaixuan>#m_flag>li").eq(4).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(4).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-6")
+		   	{$(".shaixuan>#m_flag>li").eq(5).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(5).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-7")
+		   	{$(".shaixuan>#m_flag>li").eq(6).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(6).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-8")
+		   	{$(".shaixuan>#m_flag>li").eq(7).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(7).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-9")
+		   	{$(".shaixuan>#m_flag>li").eq(8).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(8).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-10")
+		   	{$(".shaixuan>#m_flag>li").eq(9).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(9).children("input").css("background-color","white");}
+		   	if(objs[i]==" m-11")
+		   	{$(".shaixuan>#m_flag>li").eq(10).children("input").attr("onclick","");
+	         $(".shaixuan>#m_flag>li").eq(10).children("input").css("background-color","white");}
+	}
+	}
 
 	
 	function fenleidata(x,y,i){
@@ -1058,6 +1153,7 @@ function shaixuan(x,y){
 			
 		})
 	}
+
 	
 	function daohang_name(x,y) { 
  if(y==1)
@@ -1129,4 +1225,23 @@ $("#s_tag").css({
  "padding":"5px",
  "border-radius": "20%"
 }); 
+
+	//=========退出登录
+	$('#outline').click(function(){
+		$.ajax({
+			type:"GET",
+			dataType:"text",
+			url:"outline.do",
+			success:function(result){
+			console.log("退出按钮");
+					alert("退出登录成功！");
+					$('#ybc_shoping').empty();
+					$('#ybc_shoping').html("<a href='wkr-zhuce.jsp' class='login' id='login'><span>登陆 </span></a><a href='gouwudai.do' class='shop_cart' id='shop_cart'><span >购物袋 </span></a><span class='glyphicon glyphicon-shopping-cart'></span>");
+					
+			},
+		})
+		
+	})
+	 
+
 </script>

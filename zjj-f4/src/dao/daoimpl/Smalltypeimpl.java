@@ -25,6 +25,7 @@ public class Smalltypeimpl implements Smalltypedao{
 			Smalltype sm=new Smalltype();
 			sm.setSmalltypeid(rs.getInt("smalltype_id"));
 			sm.setSmalltypename(rs.getString("smalltype_name"));
+			sm.setSmalltypekeyword(rs.getString("smalltype_keyword"));
 			list.add(sm);
 		}
 		ConnectionPool.closeConnection(conn);

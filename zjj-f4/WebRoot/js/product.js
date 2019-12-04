@@ -116,13 +116,10 @@ function Buy(){
 //加入购物车执行ajax不刷新界面
 $('.add-cart').click(function(){
 	var goodsid = $("#goodsid").val();
-	console.log("11113332er");
 	$.ajax({
 		type:"POST",
 		url:"xiadan.do",
 		dataType:"text",
-
-
 		data:{goods_id:goodsid,status:"addcart",
 		},
 		success:function(result)
@@ -135,7 +132,6 @@ $('.add-cart').click(function(){
 				alert("添加成功！");
 			}
 			if(result=="unlogin"){
-				console.log("111");
 				alert("未登录！");
 			}
 		},

@@ -61,14 +61,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 					</div>
 					<div class="col-lg-4  text-right " id="ybc_shoping">
-						<c:if test="${not empty userlogininfo }">
+						<c:if test="${userlogininfo!=null}">
 							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
-							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
+							<a href="javascript:;" id="outline"><span class="glyphicon glyphicon-log-out "></span>退出</a>
 						</c:if>
-						<c:if test="${empty userlogininfo }">
+						<c:if test="${userlogininfo==null}">
 							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
 						</c:if>
-						<span class="glyphicon glyphicon-heart"></span>
 						<a href="gouwudai.do" class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 					</div>
@@ -205,6 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="button-wrap">
+					<input type="hidden" value="${ goods.goodsid}" id="goodsid">
 						<button  type="button" class="buy"><span>立即购买</span></button> 
 						<button  type="button" class="add-cart" ><span data-goods-id="${goods.goodsid}">加入购物车</span></button>
 					</div>
@@ -215,7 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="clothes">
 					<img src="${goods.goodsimg}" class="clothes1"/>
 					<img src="${goods.goodsimg}" class="clothes2"/>
-					<input type="hidden" value="${ goods.goodsid}" id="goodsid">
+					
 				</div>
 				<input type="button" value=">" class="next" />
 			</div>
@@ -580,6 +580,22 @@ $('#nav_a li').each(function(x){
 	else return result[2];
 	}
 	loadnav();
+	//=========退出登录
+	$('#outline').click(function(){
+		$.ajax({
+			type:"GET",
+			dataType:"text",
+			url:"outline.do",
+			success:function(result){
+			console.log("退出按钮");
+					alert("退出登录成功！");
+					$('#ybc_shoping').empty();
+					$('#ybc_shoping').html("<a href='wkr-zhuce.jsp' class='login' id='login'><span>登陆 </span></a><a href='gouwudai.do' class='shop_cart' id='shop_cart'><span >购物袋 </span></a><span class='glyphicon glyphicon-shopping-cart'></span>");
+					
+			},
+		})
+		
+	})
 </script>
 <script language="javascript">
 	var goods_id = ${goods.goodsid}

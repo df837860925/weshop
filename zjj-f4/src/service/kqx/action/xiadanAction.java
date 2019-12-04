@@ -27,6 +27,7 @@ public class xiadanAction extends Action {
 	public ActionForword execute(HttpServletRequest request,
 			HttpServletResponse response, ActionForm actionForm)
 			throws ServletException, IOException {
+		// response.setContentType("text/html;charset=utf-8");
 		// TODO Auto-generated method stub
 		System.out.println("xiadan");
 		xiadanForm form = (xiadanForm) actionForm;
@@ -79,8 +80,8 @@ public class xiadanAction extends Action {
 			}
 
 			System.out.println(us.getUsershopping() + "+下单传过来的id+" + goodsid);
-				us.setUsershopping("-"+goodsid + us.getUsershopping());// 加入购物车操作
-				usim.updateUser(us);// 将更新后的用户信息放入
+			us.setUsershopping("-" + goodsid + us.getUsershopping());// 加入购物车操作
+			usim.updateUser(us);// 将更新后的用户信息放入
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

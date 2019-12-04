@@ -17,7 +17,9 @@ public Color_m(ResultSet rs1, List<Goods> list1) {
 	this.rs1 = rs1;
 	this.list1 = list1;
 }
-
+public Color_m(List<Goods> list1){
+	this.list1 = list1;
+}
 	public Set<String> forselect() throws SQLException {
 		
 		if (rs1 != null) {

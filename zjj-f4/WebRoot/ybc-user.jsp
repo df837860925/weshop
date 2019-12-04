@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -51,21 +52,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1 id="logo" style="margin-bottom: 0px;">G U C C I</h1>
 					</div>
 					<div class="col-lg-4  text-right " id="ybc_shoping">
-						<c:if test="${not empty userlogininfo }">
+						<c:if test="${userlogininfo!=null}">
 							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
-							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
+							<a href="javascript:;" id="outline"><span class="glyphicon glyphicon-log-out "></span>退出</a>
 						</c:if>
-						<c:if test="${empty userlogininfo }">
+						<c:if test="${userlogininfo==null}">
 							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
 						</c:if>
-						<span class="glyphicon glyphicon-heart"></span>
 						<a href="gouwudai.do" class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
 						<span class="glyphicon glyphicon-shopping-cart"></span><span class="badge" style="margin: 0px;">4</span>
 					</div>
 				</div>
 				<div class="row" >
-					
-					<div class="col-md-6 col-lg-offset-3 navbar" id="ybc_main_nav" >
+					<div class="col-md-3"  id="serchfather">
+						<a id="serch" href="javascript:;">
+							<span class="glyphicon glyphicon-search" id=""   >
+							</span>
+						</a>
+					</div>
+					<div class="col-md-3 "  id="serchinput">
+						<div class="input-group" >
+				      		<span class="input-group-btn">
+				       		 	<button class="btn btn-default" type="button">
+				       		 		<span class="glyphicon glyphicon-search" id="toserch" style="font-size:20px" >
+									</span>
+				       		 	</button>
+				      		</span>
+			      			<input type="text" class="form-control" placeholder="Search for...">
+   			 			</div><!-- /input-group -->
+					</div>
+					<div class="col-md-6 navbar" id="ybc_main_nav" >
 							<ul class="nav  nav-justified" id="nav_a" >
 								<li><a href="">全新资讯<p class="clearblock"><span  class="caret"></span></p></a></li>
 								<li><a href="">女士<p class="clearblock"><span  class="caret"></span></p></a></li>
@@ -269,6 +285,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	})
 	
 	//================搜索
+	$('#serchinput').hide();
 	$('#serch').click(function(){
 		$('#serchfather').hide();
 		$('#serchinput').show();
@@ -279,7 +296,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	})
 	$('#toserch').click(function(){
 		var desc=$('#serchinput input').val();
-		location.href="selectdesc.do?desc="desc;
+		location.href="selectdesc.do?desc="+desc;
 	})
 	//中部
 	//商品选择改变价格逻辑
@@ -357,5 +374,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#welcome").hide();
 		$("#exit").hide();
 		read();
+	})
+	//=========退出登录
+	$('#outline').click(function(){
+		if(confirm("您现在退出将会返回首页，无法继续进行个人账户的操作，确定吗？")){
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"outline.do",
+				success:function(result){
+						location.href="main_frame.jsp";
+				},
+			})
+				
+		}
 	})
 </script>
