@@ -1,18 +1,20 @@
 package JSON;
 
 import java.util.List;
+import java.util.Set;
 
 import pojo.Goods;
 
 public class paixuOBJ {
- List<String> cm;
+ Set<String> cm;
  List<Goods> list;
 
 
-public List<String> getCm() {
+
+public Set<String> getCm() {
 	return cm;
 }
-public void setCm(List<String> cm) {
+public void setCm(Set<String> cm) {
 	this.cm = cm;
 }
 public List<Goods> getList() {

@@ -148,6 +148,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<c:forEach items="${shoppinglist}" var="goods" varStatus="i">
 					<div class="shangping">
 						<input class="check" type="checkbox"  checked="checked"/>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> branch 'master' of https://github.com/df837860925/weshop.git
 						<input  class="hid" type="hidden" value="${goods.goodsid}">
 						<a><img src="${goods.goodsimg}"/></a>
 						<div class="shangping_desc">
