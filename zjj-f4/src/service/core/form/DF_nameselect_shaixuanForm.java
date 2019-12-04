@@ -2,18 +2,14 @@ package service.core.form;
 
 import service.core.ActionForm;
 
-public class showForm extends ActionForm{
-  public  String name;
-  public  String  value;
-  
-	
-	
+public class DF_nameselect_shaixuanForm  extends ActionForm{
+   String name;
+   String list;
+   
 	
 	public String getName() {
 	return name;
 }
-
-
 
 
 public void setName(String name) {
@@ -21,20 +17,14 @@ public void setName(String name) {
 }
 
 
-
-
-public String getValue() {
-	return value;
+public String getList() {
+	return list;
 }
 
 
-
-
-public void setValue(String value) {
-	this.value = value;
+public void setList(String list) {
+	this.list = list;
 }
-
-
 
 
 	@Override

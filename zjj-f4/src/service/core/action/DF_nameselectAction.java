@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import JSON.JSONm;
+import JSON.JSONmm;
+import JSON.paixuOBJ;
 import pojo.Goods;
 import dao.daoimpl.Bigtypeimpl;
 import service.core.Action;
@@ -21,14 +23,14 @@ public class DF_nameselectAction extends Action{
 	public ActionForword execute(HttpServletRequest request,
 			HttpServletResponse response, ActionForm actionForm)
 			throws ServletException, IOException {
-		List<Goods> list=null;
+		paixuOBJ list=null;
 		
 		DF_nameselectForm  ns=(DF_nameselectForm) actionForm;
 		  String name=   ns.getName();
 		  
 		  Bigtypeimpl bt=new Bigtypeimpl();
 		list=  bt.nameSelect(name);
-		JSONm  smNm=new JSONm(list, response, 0, "按名字查找数据成功");
+		JSONmm  smNm=new JSONmm(list, response, 0, "按名字查找数据成功");
 		smNm.result();
 		  
 		// TODO Auto-generated method stub

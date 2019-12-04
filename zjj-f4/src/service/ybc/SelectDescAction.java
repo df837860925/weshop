@@ -1,13 +1,11 @@
 package service.ybc;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pojo.Goods;
 import service.core.Action;
 import service.core.ActionForm;
 import service.core.ActionForword;
@@ -29,13 +27,14 @@ public class SelectDescAction extends Action {
 		try {
 			// °´ÕÕ
 			Goodslist goodslist = goodsim.selectGoodsByDesc(descd, 1, 48);
+			System.err.println("ËÑË÷³öÀ´" + goodslist.getList());
 			request.setAttribute("list", goodslist);
 			return new ActionForword("df_fenlei_type");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new ActionForword("ybc-gouwudai");
+		return new ActionForword("df_fenlei_type");
 	}
 
 }

@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'w_smalltype.jsp' starting page</title>
+    <title>My JSP 'user.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,12 +20,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
+ <head>
 		<meta charset="utf-8" />
 		<title></title>
 		<meta name="viewport" content="witdh=device-witdh,initial-scale=1"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/daohang.css"/>
-		<link rel="stylesheet" type="text/css" href="css/w_small_type.css" />
+		<link rel="stylesheet" type="text/css" href="css/user.css" />
 	</head>
 	<style type="text/css">
 		#last{
@@ -58,28 +60,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
 						</c:if>
 						<a href="gouwudai.do" class="shop_cart" id="shop_cart"><span >购物袋 </span></a>
-						<span class="glyphicon glyphicon-shopping-cart"></span>
+						<span class="glyphicon glyphicon-shopping-cart"></span><span class="badge" style="margin: 0px;">4</span>
 					</div>
 				</div>
-				<div class="row " >
-					<div class="col-md-3"  id="serchfather">
-						<a id="serch" href="javascript:;">
-							<span class="glyphicon glyphicon-search" id=""   >
-							</span>
-						</a>
-					</div>
-					<div class="col-md-3 "  id="serchinput">
-						<div class="input-group" >
-				      		<span class="input-group-btn">
-				       		 	<button class="btn btn-default" type="button">
-				       		 		<span class="glyphicon glyphicon-search" id="toserch"  >
-									</span>
-				       		 	</button>
-				      		</span>
-			      			<input type="text" class="form-control" placeholder="Search for...">
-   			 			</div><!-- /input-group -->
-					</div>
-					<div class="col-md-6   navbar" id="ybc_main_nav">
+				<div class="row" >
+					
+					<div class="col-md-6 col-lg-offset-3 navbar" id="ybc_main_nav" >
 							<ul class="nav  nav-justified" id="nav_a" >
 								<li><a href="">全新资讯<p class="clearblock"><span  class="caret"></span></p></a></li>
 								<li><a href="">女士<p class="clearblock"><span  class="caret"></span></p></a></li>
@@ -126,96 +112,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="row ">
 							<div class="col-lg-4 text-center col-lg-offset-4  visible-lg">
-								<h1>女士</h1>
+								<h1>购物袋</h1>
 							</div>
 						</div>
 			</div>
 		</div>
 		<section class="ybc_main" style="padding: 0px;">
-			<div class="ybc_clohtes ">
-				<a href="javascript:;"  id="goods_bigtype=1&goods_smalltype=1">
-					<img src="https://res.gucci.cn/resources/2019/10/22/1571731200670454_content_LightGray_CategoryDoubleVertical_Medium_360x720_1570117507_CategoryDoubleVertical_SS20MNWLook018_001_Light.jpg" />
-					<div class="banner_clothes" >
-						<h2>女士服饰</h2>
-						<p>探索 ></p>
-					</div>
-				</a>
+			
+			 
+    		
+			<div class="active" >
+				<img src="https://res.gucci.cn/images/myaccount/account/standard-cirecle.jpg"/>
+				<a href="" > 心愿单</a>
+				<p>收藏您所喜爱的单品</p>
 			</div>
-			<div class="ybc_handbag">   
-				<div class="banner_handbag ">
-					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=2">
-					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/10/15706789081696141_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>手袋</h2>
-						<p>探索 ></p>
-					</div>
-				</a>
+			<div class="user_bottom">
+				<div class="order">
+						<a href="">我的订单></a>
+						<p>管理和编辑您的订单</p>
 				</div>
-			</div>
-			<div class="ybc_shouse">
-				<div class="banner_shouse">
-					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=3">
-					<img class="imglimit" src="https://res.gucci.cn/resources/2019/10/4/15701334874667130_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>女鞋</h2>
-						<p>探索 ></p>
-					</div>
-				</a>
+				<div class="user">
+						<a href="">我的账户></a>
+						<p>管理您的个人信息</p>
 				</div>
-			</div>
-			<div class="ybc_wallet">
-				<div class="banner_wallet" >
-					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=4">
-					<img class="imglimit" src="https://res.gucci.cn/resources/2019/4/14/15552135146438727_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>皮包&小皮件</h2>
-						<p>探索 ></p>
-					</div>
-				</a>
-				</div>
-			</div>
-			<div class="ybc_belt">
-				<div class="banner_belt" >
-					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=5">
-					<img class="imglimit" src="https://res.gucci.cn/resources/2017/5/15/14948540515149090_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>腰带</h2>
-						<p>探索 ></p>
-					</div>
-				</a>
-				</div>
-			</div>
-			<div class="ybc_wristwatch">
-				<div class="banner_wristwatch">
-					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=6">
-					<img class="imglimit" src="https://res.gucci.cn/resources/2019/9/8/15679392839127966_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>腕表</h2>
-						<p>探索 ></p>
-					</div>
-				</a>
-				</div>
-			</div>
-			<div class="ybc_jewel">
-				<div class="banner_jewel">
-					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=7">
-					<img class="imglimit" src="https://res.gucci.cn/resources/2018/5/9/15258126100208072_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>珠宝</h2>
-						<p>探索 ></p>
-					</div>
-				</a>
-				</div>
-			</div>
-			<div class="ybc_glasses">
-				<div class="banner_glasses">
-					<a href="javascript:;" id="goods_bigtype=1&goods_smalltype=8">
-					<img class="imglimit"  src="https://res.gucci.cn/resources/2019/8/30/15671506341921057_gs_470X470.jpg" />
-					<div class="ps">
-						<h2>眼镜</h2>
-						<p>探索 ></p>
-					</div>
-				</a>
+				<div class="adress">
+						<a href="">我的地址></a>
+						<p>管理您的个人信息</p>
 				</div>
 			</div>
 		</section>
@@ -274,7 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   					<option value="">长沙市</option>
 	   				</select>
 	   				<p>查找其他地区直营店</p>
-	   				<img src="img/QQjietu20191025211758.png"/>
+	   				<img src="img/QQ截图20191025211758.png"/>
 	   				
 	   			</div>
 	   		</div>
@@ -282,6 +204,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   		    <div class="col-md-3">
 	   		    	<p style="font-size: 11px;">©2019 古驰（中国）贸易有限公司 保留所有权利</p>
 	   		    </div>
+	   		    
+	  
 	   		</div>
 	   	</div>
 	   </section>
@@ -295,9 +219,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/jquery.min.js">
 	
 </script>
- <script src="js/DF_JS.js" type="text/javascript"></script>
 <script type="text/javascript">
-loadnav();
 	//头部JS
 	var flag=0;
 	$(document).scroll(function(){
@@ -345,8 +267,8 @@ loadnav();
 //		$('.xialakuag').css('top',45);
 		},100)
 	})
+	
 	//================搜索
-	$('#serchinput').hide();
 	$('#serch').click(function(){
 		$('#serchfather').hide();
 		$('#serchinput').show();
@@ -357,18 +279,8 @@ loadnav();
 	})
 	$('#toserch').click(function(){
 		var desc=$('#serchinput input').val();
-		location.href="selectdesc.do?desc="+desc;
+		location.href="selectdesc.do?desc="desc;
 	})
-	//==传参数到分类页面
-		$('.ybc_main a').each(function(){
-			var that=$(this)
-			$(this).click(function(){
-				var parm=that.attr('id');
-				location.href="df_fenlei_type.jsp?"+parm;
-			})
-		})
-		
-		
 	//中部
 	//商品选择改变价格逻辑
 	var allpay=0;

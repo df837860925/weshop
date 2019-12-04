@@ -3,6 +3,7 @@ package pojo;
 public class Smalltype {
 	private int smalltypeid;
 	private String smalltypename;
+	private String smalltypekeyword;
 	public int getSmalltypeid() {
 		return smalltypeid;
 	}
@@ -14,6 +15,12 @@ public class Smalltype {
 	}
 	public void setSmalltypename(String smalltypename) {
 		this.smalltypename = smalltypename;
+	}
+	public String getSmalltypekeyword() {
+		return smalltypekeyword;
+	}
+	public void setSmalltypekeyword(String smalltypekeyword) {
+		this.smalltypekeyword = smalltypekeyword;
 	}
 	
 }
