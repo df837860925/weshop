@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="input-group" >
 				      		<span class="input-group-btn">
 				       		 	<button class="btn btn-default" type="button">
-				       		 		<span class="glyphicon glyphicon-search" id="toserch"  >
+				       		 		<span class="glyphicon glyphicon-search" id="toserch" style="font-size:20px" >
 									</span>
 				       		 	</button>
 				      		</span>

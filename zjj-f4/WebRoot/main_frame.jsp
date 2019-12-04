@@ -376,7 +376,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			      			<input type="text" class="form-control" placeholder="Search for...">
    			 			</div><!-- /input-group -->
 					</div>
-					<div class="col-md-6   navbar" id="ybc_main_nav">
+					<div class="col-md-6  navbar" id="ybc_main_nav">
 							<ul class="nav  nav-justified" id="nav_a" >
 								<li><a href="">全新资讯<p class="clearblock"><span  class="caret"></span></p></a></li>
 								<li><a href="">女士<p class="clearblock"><span  class="caret"></span></p></a></li>
