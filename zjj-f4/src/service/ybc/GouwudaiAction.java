@@ -32,7 +32,7 @@ public class GouwudaiAction extends Action {
 		if (obj == null) {
 			System.out.println("跳转");
 			// 如果没有登录 就跳转到注册页面
-			return new ActionForword("wkr-zhuce", true);
+			return new ActionForword("ybc-gouwudai", true);
 		} else {
 			// 如果登陆了,就查出购物车内的商品信息
 			UserLoginInfo uslf = (UserLoginInfo) obj;

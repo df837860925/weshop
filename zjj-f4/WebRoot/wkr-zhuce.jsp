@@ -977,5 +977,21 @@ $("#login").click(function(){
 		var desc=$('#serchinput input').val();
 		location.href="selectdesc.do?desc="+desc;
 	})
+	//=========退出登录
+	$('#outline').click(function(){
+		$.ajax({
+			type:"GET",
+			dataType:"text",
+			url:"outline.do",
+			success:function(result){
+			console.log("退出按钮");
+					alert("退出登录成功！");
+					$('#ybc_shoping').empty();
+					$('#ybc_shoping').html("<a href='wkr-zhuce.jsp' class='login' id='login'><span>登陆 </span></a><a href='gouwudai.do' class='shop_cart' id='shop_cart'><span >购物袋 </span></a><span class='glyphicon glyphicon-shopping-cart'></span>");
+					
+			},
+		})
+		
+	})
 </script>
 </html>

@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-lg-4  text-right " id="ybc_shoping">
 						<c:if test="${userlogininfo!=null}">
 							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
-							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
+							<a href="javascript:;" id="outline"><span class="glyphicon glyphicon-log-out "></span>退出</a>
 						</c:if>
 						<c:if test="${userlogininfo==null}">
 							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
@@ -141,18 +141,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<section class="ybc_main">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-8">
-					<p><input id="quanxuan" type="checkbox" checked="checked"/>全选</p>
+				<div class="col-md-8" id="usershoppinglist">
+					
+					<c:if test="${empty  userlogininfo}">
+						<p>您还没有登录哦，您可以返回<a href="main_frame.jsp">首页</a>或立即<a href="wkr-zhuce.jsp">登录 </a></p>
+					</c:if>
+						<p><input id="quanxuan" type="checkbox" checked="checked"/>全选</p>
 					<hr />
 					<!--循环页面  -->
 					<c:forEach items="${shoppinglist}" var="goods" varStatus="i">
 					<div class="shangping">
 						<input class="check" type="checkbox"  checked="checked"/>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> branch 'master' of https://github.com/df837860925/weshop.git
 						<input  class="hid" type="hidden" value="${goods.goodsid}">
 						<a><img src="${goods.goodsimg}"/></a>
 						<div class="shangping_desc">
@@ -376,12 +375,12 @@ loadnav();
 	var allpay=0;
 	var spcount=0;
 	var flagm=1;
-	changepay();
 	$('input').each(function(x){
 		$(this).click(function(){
 			changepay();
 		});
 	})
+	changepay();
 	$('select').each(function(x){
 		$(this).change(function(){
 			changepay();
@@ -403,6 +402,7 @@ loadnav();
 	})
 	$('.delete').each(function(){
 	//删除操作去Ajax去数据库
+		
 		var that=$(this);
 		$(this).click(function(){
 		var goodsid=that.parent().siblings('.hid').val();
@@ -503,5 +503,22 @@ loadnav();
 	$('#toserch').click(function(){
 		var desc=$('#serchinput input').val();
 		location.href="selectdesc.do?desc="+desc;
+	})
+	//=========退出登录
+		$('#outline').click(function(){
+		if(confirm("您现在退出将无法继续进行个人账户的操作，确定吗？")){
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"outline.do",
+				success:function(result){
+						alert("退出登录成功！");
+					$('#ybc_shoping').empty();
+					$('#ybc_shoping').html("<a href='wkr-zhuce.jsp' class='login' id='login'><span>登陆 </span></a><a href='gouwudai.do' class='shop_cart' id='shop_cart'><span >购物袋 </span></a><span class='glyphicon glyphicon-shopping-cart'></span>");
+					$('#usershoppinglist').html("<p>您还没有登录哦，您可以返回<a href='main_frame.jsp'>首页</a>或立即<a href='wkr-zhuce.jsp'>登录 </a></p>")
+				},
+			})
+				
+		}
 	})
 </script>

@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-lg-4  text-right " id="ybc_shoping">
 						<c:if test="${userlogininfo!=null}">
 							<a href="user.do" class="login" id="login"><span class="glyphicon glyphicon-user  id="welcome"></span><span>${userlogininfo.username }</span></a>
-							<a href="outline.do"><span class="glyphicon glyphicon-log-out "></span>退出</a>
+							<a href="javascript:;" id="outline"><span class="glyphicon glyphicon-log-out "></span>退出</a>
 						</c:if>
 						<c:if test="${userlogininfo==null}">
 							<a href="wkr-zhuce.jsp" class="login" id="login"><span>登陆 </span></a>
@@ -690,4 +690,17 @@ $('#nav_a li').each(function(x){
 	else return result[2];
 	}
 	loadnav();
+	//=========退出登录
+		$('#outline').click(function(){
+		if(confirm("您现在退出将会返回首页，无法继续进行个人账户的操作，确定吗？")){
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"outline.do",
+				success:function(result){
+						location.href="main_frame.jsp";
+				},
+			})
+		}
+	})
 </script>
