@@ -91,6 +91,6 @@ public class tijiaoAction extends Action {
 				}
 			}
 		}
-		return new ActionForword("");
+		return new ActionForword("user.do",true);
 	}
 }

@@ -28,8 +28,8 @@ public class YbcSessionListener implements HttpSessionAttributeListener {
 				HttpSession session = map.get(userlogininfo.getUserid());
 				// 移除旧登陆状态并提示
 				session.removeAttribute("userlogininfo");
-				String msg = "您的账号在" + userlogininfo.getIp() + " "
-						+ userlogininfo.getLogindate().getDate() + "登陆";
+				String msg = "您的账号已经在" + userlogininfo.getIp() + " "
+						+ userlogininfo.getLogindate().toLocaleString() + "登陆";
 				session.setAttribute("msg", msg);
 			}
 			// 将当前登陆信息存起来
@@ -71,8 +71,8 @@ public class YbcSessionListener implements HttpSessionAttributeListener {
 				HttpSession session = map.get(userlogininfo.getUserid());
 				// 移除其他地方登陆状态并提示
 				session.removeAttribute("userlogininfo");
-				String msg = "您的账号在" + userlogininfo.getIp() + " "
-						+ userlogininfo.getLogindate().getDate() + "登陆";
+				String msg = "您的账号已经在" + userlogininfo.getIp() + " "
+						+ userlogininfo.getLogindate().toLocaleString() + "登陆";
 				session.setAttribute("msg", msg);
 			}
 			map.put(userlogininfo.getUserid(), arg0.getSession());

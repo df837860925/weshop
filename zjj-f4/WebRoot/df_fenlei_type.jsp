@@ -214,7 +214,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 	</style>
   <body>
-  <% System.out.print("@@@@@"+request.getAttribute("list")); %>
+  <% //System.out.print("@@@@@"+request.getAttribute("list")); %>
+  <input type="hidden" value="${msg}" id="loginmsg"/>
     	<div class="ybc_nav">
 			<div class="container " id="ybc_mynav">
 				<div class="row" >
@@ -1268,4 +1269,27 @@ $("#s_tag").css({
  
  
  }
+ //================单态登录的提示
+	var msg=$('#loginmsg').val();
+	if(msg!=''){
+		if(confirm(msg+",是否立即去登录?"))
+		{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+					location.href="wkr-zhuce.jsp";
+				}
+			})
+		}else{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+				}
+			})
+		}
+	}
 </script>

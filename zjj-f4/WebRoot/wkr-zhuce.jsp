@@ -338,6 +338,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<!--<div style="height: 200px;width: 500px;background: red;"></div>-->
+	<input type="hidden" value="${msg}" id="loginmsg"/>
 	<body style="background: #e7e7e7;">
 		<!--导航栏-->
 		<div class="container " id="ybc_mynav" style="z-index: 100;">
@@ -993,5 +994,28 @@ $("#login").click(function(){
 		})
 		
 	})
+	//================单态登录的提示
+	var msg=$('#loginmsg').val();
+	if(msg!=''){
+		if(confirm(msg+",请从重新"))
+		{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+					location.href="wkr-zhuce.jsp";
+				}
+			})
+		}else{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+				}
+			})
+		}
+	}
 </script>
 </html>

@@ -341,6 +341,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<!--导航-->
 		<section>
+		<input type="hidden" value="${msg}" id="loginmsg"/>
 			<div class="container " id="ybc_mynav">
 				<div class="row" >
 					<div class="col-lg-4 col-lg-offset-4 text-center">
@@ -985,7 +986,6 @@ $('#nav_a li').each(function(x){
 			dataType:"text",
 			url:"outline.do",
 			success:function(result){
-			console.log("退出按钮");
 					alert("退出登录成功！");
 					$('#ybc_shoping').empty();
 					$('#ybc_shoping').html("<a href='wkr-zhuce.jsp' class='login' id='login'><span>登陆 </span></a><a href='gouwudai.do' class='shop_cart' id='shop_cart'><span >购物袋 </span></a><span class='glyphicon glyphicon-shopping-cart'></span>");
@@ -1076,4 +1076,27 @@ var a = parseInt($(this).val());
 		$("#exit").hide();
 		read();
 	})
+	//单态登录提示
+	var msg=$('#loginmsg').val();
+	if(msg!=''){
+		if(confirm(msg+",是否立即去登录?"))
+		{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+					location.href="wkr-zhuce.jsp";
+				}
+			})
+		}else{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+				}
+			})
+		}
+	}
 </script>

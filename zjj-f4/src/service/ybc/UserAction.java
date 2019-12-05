@@ -29,6 +29,9 @@ public class UserAction extends Action{
 			HttpServletResponse response, ActionForm actionForm)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(request.getSession().getAttribute("userlogininfo")==null){
+			response.sendRedirect("main_frame.jsp");
+		}
 		UserLoginInfo uslf= (UserLoginInfo)request.getSession().getAttribute("userlogininfo");
 		Userdaoimpl usim=new Userdaoimpl();
 		Goodsdaoimpl goim=new Goodsdaoimpl();

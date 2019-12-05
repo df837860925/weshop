@@ -54,6 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</style>
 	</head>
 	<body>
+	<input type="hidden" value="${msg}" id="loginmsg"/>
 		<div class="ybc_nav">
 			<div class="container " id="ybc_mynav">
 				<div class="row" >
@@ -556,7 +557,7 @@ $('#nav_a li').each(function(x){
 		var id=geturlval("goods_id")
 		$(location).attr("href","wkr-zhuce.jsp?goods_id="+id);
 	})
-	$("#shop_cart").click(function(){
+	/**$("#shop_cart").click(function(){
 		var token=localStorage.getItem("token");
 		if(token)
 		{  
@@ -569,7 +570,7 @@ $('#nav_a li').each(function(x){
 			}
 		}
 	
-	})
+	})*/
 	function  geturlval(content){
 //	var content=null;
 	var jieshou= window.location.search.substring(1);
@@ -596,6 +597,29 @@ $('#nav_a li').each(function(x){
 		})
 		
 	})
+	//================单态登录的提示
+	var msg=$('#loginmsg').val();
+	if(msg!=''){
+		if(confirm(msg+",是否立即去登录?"))
+		{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+					location.href="wkr-zhuce.jsp";
+				}
+			})
+		}else{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+				}
+			})
+		}
+	}
 </script>
 <script language="javascript">
 	var goods_id = ${goods.goodsid}

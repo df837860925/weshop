@@ -16,13 +16,14 @@ public class YbcLimitpageFilter implements Filter{
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+		System.out.println();
 	}
 
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
 			FilterChain arg2) throws IOException, ServletException {
 		// TODO Auto-generated method stub
+		System.out.println("进入了功率器");
 		HttpServletRequest request = (HttpServletRequest)arg0;
 		HttpServletResponse response=(HttpServletResponse)arg1;
 		Object obj= request.getSession().getAttribute("userlogininfo");
@@ -30,7 +31,7 @@ public class YbcLimitpageFilter implements Filter{
 //		if(obj!=null){
 //			response.sendRedirect("/zjj-f4/user.do");
 //		}else{
-		//全部给我首页
+		//全部给我去首页
 			response.sendRedirect("/zjj-f4/main_frame.jsp");
 //		}
 	}

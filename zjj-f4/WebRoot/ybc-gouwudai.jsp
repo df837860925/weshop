@@ -50,6 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 	
 	<body>
+	<input type="hidden" value="${msg}" id="loginmsg"/>
 		<div class="ybc_nav">
 			<div class="container " id="ybc_mynav">
 				<div class="row" >
@@ -349,7 +350,6 @@ loadnav();
 		$('#nav_a li a p').eq(x).show();
 		$('.xialakuag').fadeIn(500);
 		$('.xialakuag').addClass('gomove');
-		console.log(111);
 		
 	})
 		$(this).mouseleave(function(){
@@ -445,7 +445,6 @@ loadnav();
 			}
 		})
 		if(arr.length!=0){
-			alert(arr);
 		var allparm="";
 		for (var int = 0; int < arr.length; int++) {
 				allparm=allparm+arr[int];
@@ -521,4 +520,28 @@ loadnav();
 				
 		}
 	})
+	//================单态登录的提示
+	var msg=$('#loginmsg').val();
+	console.log("当前的msg:"+msg);
+	if(msg!=''){
+		if(confirm(msg+",是否立即去登录?"))
+		{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+					location.href="wkr-zhuce.jsp";
+				}
+			})
+		}else{
+			$.ajax({
+				type:"GET",
+				dataType:"text",
+				url:"cleanmsg.do",
+				success:function(result){
+				}
+			})
+		}
+	}
 </script>
