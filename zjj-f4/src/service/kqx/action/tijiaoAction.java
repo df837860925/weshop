@@ -52,6 +52,11 @@ public class tijiaoAction extends Action {
 						Adressdaoimpl adressimpl = DaoimplFactory
 								.getAdressdaoimpl();
 						Adress adress2 = adressimpl.selectAdressById(userid);
+						// Userifdaoimpl userifimpl = DaoimplFactory
+						// .getUserifdaoimpl();
+						// Userif userif = userifimpl.selectUserifById(userid);
+						// Adress adress2 = adressimpl.selectAdressById(userif
+						// .getUserifadress());
 						// 操作数据库插入信息到订单信息表
 						Orderdaoimpl orderimpl = DaoimplFactory
 								.getOrderdaoimpl();
