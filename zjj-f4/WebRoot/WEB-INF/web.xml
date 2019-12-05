@@ -30,6 +30,15 @@
   </resource-ref>
   
   <!-- 这是kqx的防恶意访问过滤器 --> 
+  
+  <filter>
+  	<filter-name>limitpages</filter-name>
+  	<filter-class>web.filter.YbcLimitpageFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>limitpages</filter-name>
+  	<url-pattern>/limitpage/*</url-pattern>
+  </filter-mapping>
   <!--  <filter>
   	<filter-name>sessionFilter</filter-name>
   	<filter-class>web.filter.KQXfilter</filter-class>
