@@ -4,7 +4,7 @@
 <% 
 	List<Goods> list =(List<Goods>)request.getAttribute("shoppinglist");
 	System.out.print(list);
-%>
+%> 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
