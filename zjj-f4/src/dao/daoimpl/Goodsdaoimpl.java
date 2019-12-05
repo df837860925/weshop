@@ -237,7 +237,7 @@ public class Goodsdaoimpl implements Goodsdao {
 
 		
 		aBuffer.append(" limit ?,?");
-		System.out.println(aBuffer.toString());
+		//System.out.println(aBuffer.toString());
 		List<Goods> lists = new ArrayList<Goods>();
 		
 		
@@ -283,7 +283,7 @@ public class Goodsdaoimpl implements Goodsdao {
 		 while(itmat.hasNext()){
 			 Material mat= itmat.next();
 			 if(desc.indexOf(mat.getMaterialname())>=0){
-				 String st=" and goods_material="+mat.getMaterialid();
+				 String st=" and (goods_material="+mat.getMaterialid()+")";
 					sql+=st;
 					break;//一旦有一个颜色则退出
 			 }
@@ -295,7 +295,7 @@ public class Goodsdaoimpl implements Goodsdao {
 		 while(itcolor.hasNext()){
 			 Color color= itcolor.next();
 			 if(desc.indexOf(color.getColor_name())>=0){
-				 String st=" and goods_color="+color.getColor_id();
+				 String st=" and (goods_color="+color.getColor_id()+")";
 					sql+=st;
 					break;
 			 }
@@ -315,7 +315,7 @@ public class Goodsdaoimpl implements Goodsdao {
 				if(desc.indexOf(stt.nextToken())>=0){//如果有这关键字
 					String st="";
 					if(flag==0){
-						 st=" and goods_smalltype="+sm.getSmalltypeid();
+						 st=" and (goods_smalltype="+sm.getSmalltypeid();
 					}else{
 						 st=" or goods_smalltype="+sm.getSmalltypeid();
 					}
@@ -324,6 +324,9 @@ public class Goodsdaoimpl implements Goodsdao {
 					break;
 				}
 			}
+		}
+		if(flag!=0){
+			sql=sql+")";
 		}
 		//大类别 如果有女字
 		int flagman=0;
@@ -338,8 +341,8 @@ public class Goodsdaoimpl implements Goodsdao {
 			sql+=" and goods_bigtype=1 ";
 		}
 		if(flagman==1&&flagwoman==1){//如果男女都有 就都去掉
-			sql.replace(" and goods_bigtype=2 ", "");
-			sql.replace(" and goods_bigtype=1 ", "");
+			sql.replace(" and (goods_bigtype=2) ", "");
+			sql.replace(" and (goods_bigtype=1) ", "");
 		}
 		//颜色
 		
@@ -389,7 +392,7 @@ public class Goodsdaoimpl implements Goodsdao {
 		 while(itmat.hasNext()){
 			 Material mat= itmat.next();
 			 if(desc.indexOf(mat.getMaterialname())>=0){
-				 String st=" and goods_material="+mat.getMaterialid();
+				 String st=" and (goods_material="+mat.getMaterialid()+")";
 					sql+=st;
 			 }
 		 }
@@ -400,7 +403,7 @@ public class Goodsdaoimpl implements Goodsdao {
 		 while(itcolor.hasNext()){
 			 Color color= itcolor.next();
 			 if(desc.indexOf(color.getColor_name())>=0){
-				 String st=" and goods_color="+color.getColor_id();
+				 String st=" and (goods_color="+color.getColor_id()+")";
 					sql+=st;
 			 }
 		 }
@@ -418,7 +421,7 @@ public class Goodsdaoimpl implements Goodsdao {
 					if(desc.indexOf(stt.nextToken())>=0){//如果有这关键字
 						String st="";
 						if(flag==0){
-							 st=" and goods_smalltype="+sm.getSmalltypeid();
+							 st=" and (goods_smalltype="+sm.getSmalltypeid();
 						}else{
 							 st=" or goods_smalltype="+sm.getSmalltypeid();
 						}
@@ -428,20 +431,23 @@ public class Goodsdaoimpl implements Goodsdao {
 					}
 				}
 			}
+			if(flag!=0){
+				sql=sql+")";
+			}
 		//大类别 如果有女字
 		int flagman=0;
 		int flagwoman=0;
 		if(desc.indexOf("男")>=0){
 			 flagman++;
-			sql+=" and goods_bigtype=2 ";
+			sql+=" and (goods_bigtype=2) ";
 		}
 		if(desc.indexOf("女")>=0){
 			 flagwoman++;
-			sql+=" and goods_bigtype=1 ";
+			sql+=" and (goods_bigtype=1) ";
 		}
 		if(flagman==1&&flagwoman==1){//如果男女都有 就都去掉
-			sql.replace(" and goods_bigtype=2 ", "");
-			sql.replace(" and goods_bigtype=1 ", "");
+			sql.replace(" and (goods_bigtype=2) ", "");
+			sql.replace(" and (goods_bigtype=1) ", "");
 		}
 		
 		//颜色和材质查询
@@ -480,7 +486,7 @@ public class Goodsdaoimpl implements Goodsdao {
 		}
 		
 		
-		System.out.println(aBuffer.toString());
+		//System.out.println(aBuffer.toString());
 		
 		PreparedStatement ps = conn.prepareStatement(aBuffer.toString());
 		ResultSet rs = ps.executeQuery();
@@ -512,7 +518,6 @@ public class Goodsdaoimpl implements Goodsdao {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, bigtype);
 		ps.setInt(2, smalltype);
-		
 		ResultSet rs = ps.executeQuery();
 		if (rs != null) {
 			while (rs.next()) {

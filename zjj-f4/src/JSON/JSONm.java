@@ -33,6 +33,11 @@ public class JSONm {
 
 
 	public  void result() {
+		if(list.size()<=0||list==null)
+		{
+			code=3;
+			message="·þÎñÆ÷³ö´í";
+		}
 		jsonclass  c=new jsonclass();
 		c.setList(list);
 		c.setCode(code);
@@ -55,7 +60,9 @@ public class JSONm {
 		
 //		response.setContentType("text/html; charset=UTF-8");
 
+
 		log.debug(c1.toString());
+
 	  pw.print(c1.toString());
 	}
 	

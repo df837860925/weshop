@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <%
-	System.out.print(request.getAttribute("goodslist"));
+	//System.out.print(request.getAttribute("goodslist"));
  %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -638,7 +638,7 @@ console.log(result);
    for (var i=0;i<objs.obj.list.length;i++) {
      ++index;
    	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
-	   if(index%6==0)
+	   if(index%10==0)
 	   {
 	   fenlei_data+='<img class="flag_img" onclick="img_loadown(this)" style="width:50%;height:500px; transition:0 0;" src="'+intarray[count]+'"  />';
 	     count++;
@@ -1083,6 +1083,7 @@ function shaixuan(x,y){
 			data:{"goods_bigtype":x,"goods_smalltype":y},
 			success:function(result){
 				var obj=result;
+				console.log(obj);
 				for (var i=0;i<obj.list.length;i++) {
 					content+='<li class="leibie1"><a  onclick="select(this)" >'+obj.list[i].goods_liebie_name+'</a></li>'
 					
@@ -1120,6 +1121,7 @@ function shaixuan(x,y){
 			data:{"name":text},
 			success:function(result){
 				var objs=result;
+				console.log(objs);
 				$(".ybc_main").html("");
 				for (var i=0;i<objs.obj.list.length;i++) {
 					content+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
