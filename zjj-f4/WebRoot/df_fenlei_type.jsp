@@ -632,13 +632,24 @@ $.get({
 	   var objs=result;
 	  
 console.log(result);
-	   
+	   var index=0;
+	   var intarray=["https://res.gucci.cn/resources/2019/10/25/15719787843739250_content_PromoComponent_Standard_632x395_1570606213_PromoComponent_S01CRUISE-PROMO-HERO-148_001_Default.jpg","https://res.gucci.cn/resources/2019/10/25/15719787843738908_content_PromoComponent_Standard_632x395_1570606212_PromoComponent_S01CRUISE-PROMO-HERO-140_001_Default.jpg","https://res.gucci.cn/resources/2019/10/25/15719787843736115_content_PromoComponent_Standard_632x395_1570606211_PromoComponent_S01CRUISE-PROMO-HERO-127_001_Default.jpg","https://res.gucci.cn/resources/2019/10/25/15719787843732355_content_PromoComponent_Standard_632x395_1570606209_PromoComponent_S01CRUISE-PROMO-HERO-119_001_Default.jpg"];
+	   var count=0;
    for (var i=0;i<objs.obj.list.length;i++) {
+     ++index;
    	fenlei_data+='<div class="ybc_jewel"><div class="banner_glasses"><a href="xiangqing.do?goods_id='+objs.obj.list[i].goodsid+'" class="jihe"><img class="imglimit" src="'+objs.obj.list[i].goodsimg+'" /><div class="ps"><h2>'+objs.obj.list[i].goodsname+'</h2><p id="price">￥'+objs.obj.list[i].goodsprice+'</p><p id="">点击购买></p></div></a></div></div>'
+	   if(index%6==0)
+	   {
+	   fenlei_data+='<img class="flag_img" onclick="img_loadown(this)" style="width:50%;height:500px; transition:0 0;" src="'+intarray[count]+'"  />';
+	     count++;
+	     if(count==4)
+	     {count=0;}
+	   }
 	   }
 	   jinyong(objs);
 
    $(".ybc_main").html(fenlei_data);
+  $(".flag_img").css("transform", "scale(1)");
    $(".ybc_main").append($("<center class='cc'><button id='moregoods'>加载更多</button></center>"));
 	$("#moregoods").click(function(){
 	
@@ -1018,10 +1029,10 @@ console.log(result);
 	}) }
 	
 	
-		   if(tiaojianpage<0){
+		   
 		   
 		   fenlei_data='';
-		   }
+		   
 		   
 		   $(".ybc_jewel").mouseenter(function(){
 		$(this).children(".banner_glasses").children(".jihe").children(".ps").fadeIn(500);	
@@ -1243,5 +1254,18 @@ $("#s_tag").css({
 		
 	})
 	 
-
+ function img_loadown(obj){
+  var src=obj.src;
+  if(confirm("将下载该图片,是否需要？"))
+  {  
+  
+  window.location.href="DF_loadown.do?src="+src;
+  
+  }
+  else{
+  
+  }
+ 
+ 
+ }
 </script>

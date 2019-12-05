@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
+import text.Testlog;
 import net.sf.json.JSONObject;
 
 public class JSONm {
@@ -15,7 +18,7 @@ public class JSONm {
       public String message;
   
       
-      
+      private static Logger log=Logger.getLogger(JSONm.class);
       
 	public JSONm(List list, HttpServletResponse response, int code,
 			String message) {
@@ -52,7 +55,7 @@ public class JSONm {
 		
 //		response.setContentType("text/html; charset=UTF-8");
 
-		System.out.println(c1.toString());
+		log.debug(c1.toString());
 	  pw.print(c1.toString());
 	}
 	
