@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jspsmart.upload.SmartUpload;
+
 public class Mvc_servlet extends HttpServlet {
 	Map<String, String[]> map = null;
 
@@ -142,7 +144,35 @@ public class Mvc_servlet extends HttpServlet {
 
 			Action action=(Action) o.newInstance();
 			ActionForword afd = action.execute(request, response,af);
+			try {
+				
+				if(afd.path.indexOf(",")>0)
+				{ 
+					String [] array= afd.path.split(",");
+					
+					try {
+						
+						SmartUpload su=new SmartUpload();
+						
+						
+						su.initialize(this.getServletConfig(),request,response);
+						su.downloadFile(array[1]);
+						
+						System.out.println("下载成功");
+						
+						return;
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("此时为空");
+			}
+			
 			if (afd!=null) {
+				
 				
 				afd.forword(request, response);
 			}

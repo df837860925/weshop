@@ -6,9 +6,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
+import dao.daoimpl.Goodsdaoimpl;
 import net.sf.json.JSONObject;
 
 public class JSONmm {
+	private static Logger log =Logger.getLogger(Goodsdaoimpl.class);
 	 public  paixuOBJ obj;
 	    public  HttpServletResponse response;
 	      public int  code;

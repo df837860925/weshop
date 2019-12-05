@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import JSON.Color_m;
 import JSON.paixuOBJ;
 import pojo.Bigtype;
@@ -16,7 +18,7 @@ import dao.Bigtypedao;
 import db.ConnectionPool;
 
 public class Bigtypeimpl implements Bigtypedao {
-
+	private static Logger log =Logger.getLogger(Goodsdaoimpl.class);
 	@Override
 	public List<Bigtype> selectALL_bigtype() {
 		// TODO Auto-generated method stub

@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import pojo.Color;
 import dao.Colordao;
 import db.ConnectionPool;
 
 public class Colordaoimpl implements Colordao{
-
+ 
 	@Override
 	public List<Color> selectAll() throws Exception {
 		// TODO Auto-generated method stub

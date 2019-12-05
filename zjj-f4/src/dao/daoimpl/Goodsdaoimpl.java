@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import org.apache.log4j.Logger;
+
 import JSON.Color_m;
 import JSON.paixuOBJ;
 import pojo.Color;
@@ -22,7 +24,7 @@ import db.ConnectionPool;
 import dto.Goodslist;
 
 public class Goodsdaoimpl implements Goodsdao {
-
+    private static Logger log =Logger.getLogger(Goodsdaoimpl.class);
 	@Override
 	public void insert(Goods good) throws Exception {
 		// TODO Auto-generated method stub
