@@ -72,17 +72,19 @@ public class tijiaoAction extends Action {
 				}
 				// 进行更新用户表购物车字段和订单字段
 				try {
-					StringBuffer sb = new StringBuffer();
+					// StringBuffer sb = new StringBuffer();
+					String sb = "";
 					userimpl.emptyShoppingCart(userid);
 					// 更新用户订单字段
 					List<Order> orderlist = orderimpl
 							.selectOderByUserId(userid);
 					for (int i = 0; i < orderlist.size(); i++) {
 						Order ord = orderlist.get(i);
-						sb.append("-" + String.valueOf(ord.getOrderid()));
+						// sb.append("-" + String.valueOf(ord.getOrderid()));
+						sb = "-" + ord.getOrderid() + sb;
 					}
 					User user = userimpl.selectByUserId(userid);
-					user.setUserorder(sb.toString());
+					user.setUserorder(sb);
 					userimpl.updateUser(user);
 				} catch (Exception e) {
 					e.printStackTrace();
