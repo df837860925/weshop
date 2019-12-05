@@ -70,7 +70,7 @@ public class Orderdaoimpl implements Orderdao {
 		// TODO Auto-generated method stub
 		List<Order> list = new ArrayList<Order>();
 		Connection conn = ConnectionPool.getConnection();
-		String sql = "select from orders where order_userid=?";
+		String sql = "select * from orders where order_userid=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, id);
 		ResultSet rs = ps.executeQuery();
@@ -80,8 +80,8 @@ public class Orderdaoimpl implements Orderdao {
 				ode.setOrderid(rs.getInt("order_id"));
 				ode.setOrderuserid(rs.getInt("order_userid"));
 				ode.setOrdergoodsid(rs.getInt("order_goodsid"));
-				ode.setOrdergoodsum(rs.getInt("order_goodssum"));
-				ode.setOrderadressid(rs.getInt("order_adress"));
+				ode.setOrdergoodsum(rs.getInt("order_goodsum"));
+				ode.setOrderadressid(rs.getInt("order_adressid"));
 				list.add(ode);
 			}
 		}
