@@ -48,7 +48,7 @@ public class GouwudaiAction extends Action {
 					int goodsid = Integer.parseInt(st.nextToken());
 					list.add(goodim.selectByGoodsId(goodsid));
 				}
-				System.out.println("购物网车"+list);
+				System.out.println("购物网车" + list);
 				request.setAttribute("shoppinglist", list);
 				return new ActionForword("ybc-gouwudai");
 			} catch (Exception e) {

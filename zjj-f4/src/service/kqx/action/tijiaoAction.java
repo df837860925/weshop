@@ -1,6 +1,7 @@
 package service.kqx.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import pojo.Adress;
 import pojo.Order;
+import pojo.User;
 import service.core.Action;
 import service.core.ActionForm;
 import service.core.ActionForword;
@@ -28,6 +30,7 @@ public class tijiaoAction extends Action {
 		Adress adress = new Adress();
 		HttpSession session = request.getSession();
 		Userdaoimpl userimpl = DaoimplFactory.getUserdaoimpl();
+		Orderdaoimpl orderimpl = DaoimplFactory.getOrderdaoimpl();
 		tijiaoForm form = (tijiaoForm) actionForm;
 		String Order_mes = (String) form.getOrder_mes();
 		// 从session中拿到dto中UserLoginInfo对象
@@ -58,18 +61,31 @@ public class tijiaoAction extends Action {
 						// Adress adress2 = adressimpl.selectAdressById(userif
 						// .getUserifadress());
 						// 操作数据库插入信息到订单信息表
-						Orderdaoimpl orderimpl = DaoimplFactory
-								.getOrderdaoimpl();
 						order.setOrderadressid(adress2.getAdressid());
 						order.setOrderuserid(userid);
 						order.setOrdergoodsid(Integer.parseInt(goods_id));
 						order.setOrdergoodsum(Integer.parseInt(number));
 						orderimpl.insertOrder(order);
-						// 进行更新用户表购物车字段和订单字段
-						userimpl.emptyShoppingCart(userid);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+				}
+				// 进行更新用户表购物车字段和订单字段
+				try {
+					StringBuffer sb = new StringBuffer();
+					userimpl.emptyShoppingCart(userid);
+					// 更新用户订单字段
+					List<Order> orderlist = orderimpl
+							.selectOderByUserId(userid);
+					for (int i = 0; i < orderlist.size(); i++) {
+						Order ord = orderlist.get(i);
+						sb.append("-" + String.valueOf(ord.getOrderid()));
+					}
+					User user = userimpl.selectByUserId(userid);
+					user.setUserorder(sb.toString());
+					userimpl.updateUser(user);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		}

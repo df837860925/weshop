@@ -55,7 +55,7 @@ public class Bigtypeimpl implements Bigtypedao {
 		 for (int i = 0; i < aa.length; i++) {
 			bbBuffer.append(" and goods_name like '%"+aa[i]+"%' ");
 		}
-		 System.out.println(bbBuffer.toString());
+		// System.out.println(bbBuffer.toString());
 		    try {
 			PreparedStatement pp=	cc.prepareStatement(bbBuffer.toString());
 	ResultSet  rs=	  pp.executeQuery();
@@ -137,7 +137,7 @@ public class Bigtypeimpl implements Bigtypedao {
 			String type=	typeBuffer.toString().substring(0,typeBuffer.toString().length()-3);
 			aBuffer.append(" and "+type+")");
 		}
-		System.out.println(aBuffer.toString());
+		//System.out.println(aBuffer.toString());
 		try {
 			PreparedStatement pp=	cc.prepareStatement(aBuffer.toString());
 	ResultSet  rs=	  pp.executeQuery();

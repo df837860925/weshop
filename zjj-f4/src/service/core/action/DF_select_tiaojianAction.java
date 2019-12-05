@@ -32,7 +32,7 @@ public class DF_select_tiaojianAction extends Action{
 	     
 	     
 		  
-		  System.out.println("list:"+list);
+		  //System.out.println("list:"+list);
 		  String lists[]=new String[1];
 		  if (list.indexOf(",")<0) {
 			lists[0]=list;
