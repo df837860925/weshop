@@ -132,7 +132,9 @@ $('.add-cart').click(function(){
 				alert("添加成功！");
 			}
 			if(result=="unlogin"){
-				alert("未登录！");
+				if(confirm("您还未登录，是否立即登录")){
+					location.href="wkr-zhuce.jsp?goods_id="+goodsid;
+				}   
 			}
 		},
 	})
@@ -149,7 +151,9 @@ $('.buy').click(function(){
 		success:function(result)
 		{
 			if(result=="unlogin"){
-				alert("未登录！");
+				if(confirm("您还未登录，是否立即登录")){
+					location.href="wkr-zhuce.jsp?goods_id="+goodsid;
+				}
 			}
 			if(result=="true"){
 				location.href="xiadan.do?goods_id="+goodsid+"&status=go";

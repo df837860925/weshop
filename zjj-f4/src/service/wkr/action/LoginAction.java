@@ -78,16 +78,21 @@ public class LoginAction extends Action {
 					// 将userlogininfo存入session中
 					HttpSession session = request.getSession();
 					session.setAttribute("userlogininfo", userlogininfo);
-					return new ActionForword("main_frame", true);
+					if (af.getGoods_id() != "") {
+						return new ActionForword("xiangqing.do?goods_id="
+								+ af.getGoods_id(), true);1
+					} else {
+						return new ActionForword("main_frame", true);
+					}
 				}
 
+			} else {
+				return new ActionForword("wkr-zhuce");
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return new ActionForword("wkr-zhuce");
-
+		return null;
 		// // 获得过来的页面
 		// String uri = (String) session.getAttribute("nowPage");
 		// System.out.println("uri是：" + uri);
@@ -103,5 +108,4 @@ public class LoginAction extends Action {
 		// // TODO Auto-generated method stub
 
 	}
-
 }

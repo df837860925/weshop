@@ -5,6 +5,15 @@ import service.core.ActionForm;
 public class LoginActionForm extends ActionForm {
 	private String loginShoujihao;
 	private String loginPassword;
+	private String goods_id = "";
+
+	public String getGoods_id() {
+		return goods_id;
+	}
+
+	public void setGoods_id(String goods_id) {
+		this.goods_id = goods_id;
+	}
 
 	public String getLoginShoujihao() {
 		return loginShoujihao;

@@ -425,7 +425,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="denglu3">
 				<div class="denglu4">
-				<form action="login.do"id="loginid"method="post">
+				<form action="login.do"id="loginid" method="post">
+					<input type="hidden" value="${param.goods_id}" name="goods_id">
 					<div class="denglu6">
 						<label>手机号码/电子邮箱</label>
 						<input class="shurukuang7" placeholder="请输入电子邮箱或手机号" name="loginShoujihao"/>
@@ -435,7 +436,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input class="shurukuang8" type="password" placeholder="请输入密码" name="loginPassword"/>
 					</div>
 					<div class="denglu8">
-						<div>
+						<div>   
 							<label style="cursor: pointer;position: relative;padding-left: 26px;width: 70px;">
 								<i class="fuxuani"></i>
 								<input class="fuxuankuang" type="checkbox" style="display: none;"/>
