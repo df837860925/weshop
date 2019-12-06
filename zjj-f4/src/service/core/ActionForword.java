@@ -24,7 +24,17 @@ public  class ActionForword {
 	}
 	
 	public void forword(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
-	{	//如果是要访问别人的页面应该要先经过他的action 所以要去.do
+	{	
+		//看是否有需要提示
+		String tishi = (String) request.getAttribute("tishi");
+		if (tishi != null) {
+			System.out.println("有提示:" + tishi);
+			response.getWriter().print(tishi);
+			request.setAttribute("tishi", tishi);
+		} else {
+			System.out.println("没有提示");
+		}
+		//如果是要访问别人的页面应该要先经过他的action 所以要去.do
 		if(this.path.indexOf(".do")<0){//如果没加.do
 			Properties config=(Properties)request.getSession().getServletContext().getAttribute("config");
 			//如果是为自己的页面 放行 写个对应地址的就行

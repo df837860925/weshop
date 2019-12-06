@@ -15,7 +15,7 @@ public class Userdaoimpl implements Userdao {
 	public void insertUser(User us) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = ConnectionPool.getConnection();
-		String sql = "insert into user(user_pass,user_name,user_phone,user_adress,user_shopping,user_order) values(?,?,?,?,?)";
+		String sql = "insert into user(user_pass,user_name,user_phone,user_adress,user_shopping,user_order) values(?,?,?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, us.getUserpass());
 		ps.setString(2, us.getUsername());

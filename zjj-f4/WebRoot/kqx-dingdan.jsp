@@ -147,7 +147,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
  <!--收货地址body部分开始-->  
  <div class="border_top_cart">
+ <script src="js/DF_JS.js" ></script>
   <script type="text/javascript">
+  loadnav();
     var checkoutConfig={
         addressMatch:'common',
         addressMatchVarName:'data',

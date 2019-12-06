@@ -26,5 +26,6 @@ public interface Goodsdao {
 	public List<Goods> selectAll() throws Exception;
 	public Goodslist selectGoodsByDesc(String desc, int pagenum,int pagesize)throws Exception;
 	public List<Goods> selectByGoodsDesc(String desc,int num,String[] list)throws Exception;
+	public List<Goods> hostGoods()throws Exception;
 	
 	}

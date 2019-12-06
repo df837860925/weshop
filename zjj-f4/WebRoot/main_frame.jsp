@@ -455,8 +455,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <!--主体-->
 	    <!--鞋子-->
 	    <section class="sport_box">
-	    	<div class="container">
-	    		<div class="row ">
+	    	<div id="first_host" class="container">
+	    		<div  class="row ">
 	    		   <div class="col-md-7 col-md-offset-2 col-xs-7 ">
 	    		   	<a style="display: inline-block;" href="#"><img src="img/15713959146483102_content_DarkGray_ProductPush_Standard_700x700_1569319203_ProductPush_5923451LH107665_001_Light.png"/></a>
 	    		   </div>
@@ -472,7 +472,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			<div class="col-md-12  col-sm-12 text-center" style="margin-bottom: 180px;" >
 	    		   	  <p>运动鞋</p>
 	    		   	  <h1 style="margin-top: 0px;">Ultrapace系列男士运动鞋</h1>
-	    		   	  <a class="sport_btn" href="" style="margin-top: 30px;">点击购买</a>
+	    		   	  <a class="sport_btn" href="xiangqing.do?goods_id=1682" style="margin-top: 30px;">点击购买</a>
 	    		   </div>
 	    		</div>
 	    	</div>
@@ -506,7 +506,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        		  <div class="col-md-12  col-sm-12 text-center" style="margin-bottom: 180px; margin-left: -20px;">
 	    		   	  <p >手袋</p>
 	    		   	  <h1 style="margin-top: 0px;">Sylvie 1969系列漆皮迷你手提包</h1>
-	    		   	  <a class="sport_btn" href="" style="margin-top: 30px;">点击购买</a>
+	    		   	  <a class="sport_btn" href="xiangqing.do?goods_id=471" style="margin-top: 30px;">点击购买</a>
 	    		   </div>
 	        			
 	        	
@@ -710,6 +710,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	$("#box>ul>li").css("width",parseInt(window_width*0.835));
 	$("#box").css("height",$(window).width()*0.39);
+	
+	loadhost();
+	//加载热门商品
+   function loadhost (){
+    var content='';
+   $.get({
+    type:"POST",
+    data:[],
+    url:"DF_hostgoods.do",
+    success:function(result){
+      var obj=result;
+      console.log(obj);
+      $("#first_host").html("");
+var content1='<div class="row "><div class="col-md-7 col-md-offset-2 col-xs-7 "><a style="display: inline-block;" href="#"><img style="width:700px;height:610px;" src="'+obj.list[0].goodsimg+'"/></a></div><div class="sport text-center col-md-2 col-sm-2 col-sm-2  hidden-xs" id="sport_desc"><a href=""><img src="img/frist-xiangmu/singleMianban/1571395914648180_content_LightGray_Vignette_Standard_80x80_1569319204_Vignette_5923451LH107665_001_Light.jpg"/></a><a href=""><p style="font-size: 20px; margin-top: 20px;">运动鞋</p></a><a href=""><p style="color: #666; font-style: italic;font-size:12px  ;">低帮造型，混搭多种皮革和织物</p></a><a href=""><p>更多></p></a></div></div>';
+var	  content2='<div class="row"><div class="col-md-12  col-sm-12 text-center" style="margin-bottom: 180px;" ><p>运动鞋</p><h1 style="margin-top: 0px;">'+obj.list[0].goodsname+'</h1><a class="sport_btn" href="xiangqing.do?goods_id='+obj.list[0].goodsid+'" style="margin-top: 30px;">点击购买</a></div></div>'  ;  
+   content=content1+content2; 
+     $("#first_host").html(content);
+    }
+   
+   
+   })
+   
+   
+   }
 
 //	              //克隆第一个属性，克隆出来的是另外一个东西，脱离了本体。
 	var n=0;

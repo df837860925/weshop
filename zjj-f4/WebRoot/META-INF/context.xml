@@ -5,7 +5,7 @@
   <Resource name="mysql" auth="Container" type="javax.sql.DataSource"
       maxActive="100" maxIdle="30" maxWait="10000"
       username="root" password="" driverClassName="com.mysql.jdbc.Driver"
-      url="jdbc:mysql://localhost:3306/test"/>
+      url="jdbc:mysql://localhost:3306/test?characterEncoding=utf-8"/>
      <!-- C3P0 -->
      <!--<Resource name="mysql" auth="Container" type="com.mchange.v2.c3p0.ComboPooledDataSource"
       factory="org.apache.naming.factory.BeanFactory"

@@ -9,8 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import dto.UserLoginInfo;
+import service.wkr.form.LoginActionForm;
 
 public class WkrFilter implements Filter{
 	@Override
@@ -23,6 +24,7 @@ public class WkrFilter implements Filter{
 			FilterChain arg2) throws IOException, ServletException {
 		System.out.println("进入了过滤器");
 		HttpServletRequest request = (HttpServletRequest)arg0;
+		HttpSession session = request.getSession();
 		String uri = request.getRequestURI();
 	    int begin= uri.lastIndexOf("/");
 	    int end=uri.indexOf(".");
@@ -32,16 +34,18 @@ public class WkrFilter implements Filter{
 	    System.out.println(uri);
 		}
 	    if ("wkr-zhuce".equals(uri)) {
-	    	UserLoginInfo userlogininfo = (UserLoginInfo)request.getSession().getAttribute("userlogininfo");
-			if (userlogininfo!=null) {
-				System.out.println(userlogininfo);
-				request.getSession().setAttribute("zhanghao", userlogininfo.getUsername());
+	    	LoginActionForm remember = (LoginActionForm)session.getAttribute("remember");
+			if (remember!=null) {
+				System.out.println(remember);
+				if ("on".equals(remember.getRemember())) {
+					request.getSession().setAttribute("zhanghao", remember.getLoginShoujihao());
+				}
 			}
 		}
 	    else{
 			System.out.println("错了");
 		}
-		request.getSession().setAttribute("nowPage", uri);
+		session.setAttribute("nowPage", uri);
 		arg2.doFilter(request, arg1);
 		
 	}

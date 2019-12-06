@@ -534,6 +534,33 @@ public class Goodsdaoimpl implements Goodsdao {
 		
 	}
 
+	@Override
+	public List<Goods> hostGoods() throws Exception {
+		// TODO Auto-generated method stub
+		List<Goods> lists = new ArrayList<Goods>();
+	Connection  cc=	  ConnectionPool.getConnection();
+	  String sql="select *from goods,hostgoods where goods.goods_id=hostgoods.goods_hid";
+	   PreparedStatement  pp= cc.prepareStatement(sql);
+	  ResultSet rs= pp.executeQuery();
+	   while(rs.next()){
+			Goods good = new Goods();
+			good.setGoodsid(rs.getInt("goods_id"));
+			good.setGoodsname(rs.getString("goods_name"));
+			good.setGoodsimg(rs.getString("goods_img"));
+			good.setGoodsprice(rs.getString("goods_price"));
+			good.setGoodstype(rs.getString("goods_type"));
+			good.setGoodsdesc(rs.getString("goods_desc"));
+			good.setGoodsbigtype(rs.getInt("goods_bigtype"));
+			good.setGoodssmalltype(rs.getInt("goods_smalltype"));
+			good.setGoodscolor(rs.getInt("goods_color"));
+			good.setGoodsmaterial(rs.getInt("goods_material"));
+			lists.add(good);
+		}
+		ConnectionPool.closeConnection(cc);
+		return lists;
+	
+	}
+
 	
 
 	

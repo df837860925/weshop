@@ -427,7 +427,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<form action="login.do"id="loginid"method="post">
 					<div class="denglu6">
 						<label>手机号码/电子邮箱</label>
-						<input class="shurukuang7" placeholder="请输入电子邮箱或手机号" name="loginShoujihao"/>
+						<input class="shurukuang7" placeholder="请输入电子邮箱或手机号" name="loginShoujihao"value="${zhanghao}"/>
 					</div>
 					<div class="denglu7">
 						<label>密码</label>
@@ -437,7 +437,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div>
 							<label style="cursor: pointer;position: relative;padding-left: 26px;width: 70px;">
 								<i class="fuxuani"></i>
-								<input class="fuxuankuang" type="checkbox" style="display: none;"/>
+								<input class="fuxuankuang" type="checkbox" style="display: none;"name="remember"/>
 								<span>记住我</span>
 							</label>
 						</div>
@@ -563,10 +563,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
+		<%
+     Object tishi = request.getAttribute("tishi");
+     if(tishi!=null && !"".equals(tishi)){
+ 
+  %>
+      <script type="text/javascript">
+          alert("<%=tishi%>");
+      </script>
+  <%} %>
 	</body>
 </html>
 <script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/DF_JS.js"></script>
 <script>
+ loadnav();
 	$('.zhucebiaoqian').click(function(){
 		$('.zhuce').css('visibility','visible');
 //		huantupian();
@@ -873,6 +884,7 @@ $("#login").click(function(){
 	//验证码和验证图片
 		function flushCode(obj){
 			obj.src = "img.do?id="+new Date().getTime();
+			code = '${code}';
 		}
 	/*
 //	随机
@@ -903,18 +915,32 @@ $("#login").click(function(){
 	$('#tuyanzheng').click(function(){
 		huantupian();
 	})
+	*/
+	/*
 	var tishi2 = null;
 	$('.shurukuang2').focusout(function(){
 		if ($(this).val().length<1) {
 			if (tishi2!=null) {
 				tishi2.remove();
+				tishi2 = null;
 			}
 			$(this).removeClass('cuowu');
 			return;
 		}
-		if (zifuchuan != $(this).val()) {
+		var code = null;
+		$.ajax({
+			type:"GET",
+			dataType:"text",
+			url:"img.do",
+			success:function(result){
+				code = result
+				var co = $.parseJSON(result);
+				console.log(co);
+			}
+		})
+		if (code!=$(this).val()) {
 			if (tishi2 == null) {
-				tishi2 = $(this).after($('<div><span>验证码错误</span></div>')).siblings('div');
+				tishi2 = $(this).parent().after($('<div><span>验证码错误</span></div>')).siblings('div');
 			}
 			console.log(tishi2);
 			tishi2.css('color','red');
@@ -923,12 +949,12 @@ $("#login").click(function(){
 		else{
 			if (tishi2!=null) {
 				tishi2.remove();
+				tishi2 = null;
 			}
 			$(this).removeClass('cuowu');
 		}
 	})
 	*/
-	
 //	记住账号复选框
 	$('.fuxuankuang').parent().click(function(){
 		if($('.fuxuankuang').is(':checked')){
