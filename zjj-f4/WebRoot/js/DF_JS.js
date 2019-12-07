@@ -57,6 +57,7 @@ function loadnav(){
 
 	console.log(obj);
 	for (var i=0;i<obj.list.length;i++) {
+		
 		content_cat+='<li><a href="'+obj.list[i].goods_bigtype+'">'+obj.list[i].typename+'<p class="clearblock"><span  class="caret"></span></p></a></li>'
 					;
 					
@@ -69,10 +70,10 @@ function loadnav(){
 			$("#nav_a>li>a").each(function(){
 				
 
-				if($(this).attr("href")==1)
-			{ 
+				if($(this).attr("href")=="1")
+			    { 
 					$(this).attr("href","w_small_type.jsp");
-			}
+			    }
 				if($(this).attr("href")=="2")
 				{
 						$(this).attr("href","m_small_type.jsp");
@@ -80,6 +81,10 @@ function loadnav(){
 				if($(this).attr("href")=="3")
 				{
 						$(this).attr("href","c_small_type.jsp");
+				}
+				if($(this).attr("href")=="0")
+				{
+						$(this).attr("href","main_frame.jsp");
 				}
 				
 			})

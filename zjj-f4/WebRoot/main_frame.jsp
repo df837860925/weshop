@@ -488,7 +488,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              </div>
 	       </div>
 
-	        <div class="container " id="img-2020">
+	        <div class="container second_host" id="img-2020">
 	        	<div class="row text-center">
 	        		<div class="col-md-7 col-md-push-2 ">
 	        			<a href=""><img src="img/15713959146481161_content_DarkGray_ProductPush_Standard_700x700_1565189103_ProductPush_5894791J70G1000_001_Light.png"/></a>
@@ -715,6 +715,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	//加载热门商品
    function loadhost (){
     var content='';
+    var content_two='';
    $.get({
     type:"POST",
     data:[],
@@ -723,10 +724,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var obj=result;
       console.log(obj);
       $("#first_host").html("");
+      $(".second_host").html("");
 var content1='<div class="row "><div class="col-md-7 col-md-offset-2 col-xs-7 "><a style="display: inline-block;" href="#"><img style="width:700px;height:610px;" src="'+obj.list[0].goodsimg+'"/></a></div><div class="sport text-center col-md-2 col-sm-2 col-sm-2  hidden-xs" id="sport_desc"><a href=""><img src="img/frist-xiangmu/singleMianban/1571395914648180_content_LightGray_Vignette_Standard_80x80_1569319204_Vignette_5923451LH107665_001_Light.jpg"/></a><a href=""><p style="font-size: 20px; margin-top: 20px;">运动鞋</p></a><a href=""><p style="color: #666; font-style: italic;font-size:12px  ;">低帮造型，混搭多种皮革和织物</p></a><a href=""><p>更多></p></a></div></div>';
 var	  content2='<div class="row"><div class="col-md-12  col-sm-12 text-center" style="margin-bottom: 180px;" ><p>运动鞋</p><h1 style="margin-top: 0px;">'+obj.list[0].goodsname+'</h1><a class="sport_btn" href="xiangqing.do?goods_id='+obj.list[0].goodsid+'" style="margin-top: 30px;">点击购买</a></div></div>'  ;  
    content=content1+content2; 
+   
+  var content3='<div class="row "><div class="col-md-7 col-md-offset-2 col-xs-7 "><a style="display: inline-block;" href="#"><img style="width:700px;height:610px;" src="'+obj.list[1].goodsimg+'"/></a></div><div class="sport text-center col-md-2 col-sm-2 col-sm-2  hidden-xs" id="bao_desc"><a href=""><img src="img/frist-xiangmu/singleMianban/15713959146486699_content_LightGray_Vignette_Standard_80x80_1564754406_Vignette_5894791J70G1000_001_Light.jpg"/></a><a href=""><p style="font-size: 20px; margin-top: 20px;">Sylvie</p></a><a href=""><p style="color: #666; font-style: italic;font-size:12px  ;">别致包链采用收窄设计，呈现别致新意</p></a><a href=""><p>更多></p></a></div></div>';
+  var content4='<div class="row"><div class="col-md-12  col-sm-12 text-center" style="margin-bottom: 180px;" ><p>手袋</p><h1 style="margin-top: 0px;">'+obj.list[1].goodsname+'</h1><a class="sport_btn" href="xiangqing.do?goods_id='+obj.list[1].goodsid+'" style="margin-top: 30px;">点击购买</a></div></div>';
+   content_two=content3+content4;
      $("#first_host").html(content);
+     $(".second_host").html(content_two);
+  $(".a_top").hide();
+	$("#sport_desc").hide();
+	$("#bao_desc").hide();
+  
+  $(document).scroll(function(){
+		if($(this).scrollTop()>=300)
+		{
+			$(".a_top").fadeIn();
+			$("#sport_desc").slideDown(800);
+			//$("#bao_desc").slideDown(800);
+		}
+		else{
+			$(".a_top").fadeOut();
+		}
+		if($(this).scrollTop()>=2100)
+		{
+			$("#bao_desc").slideDown(800);
+		}
+		
+	})
     }
    
    
@@ -1037,7 +1064,7 @@ var a = parseInt($(this).val());
 		{
 			$(".a_top").fadeIn();
 			$("#sport_desc").slideDown(800);
-			$("bao_desc").slideDown(800);
+			$("#bao_desc").slideDown(800);
 		}
 		else{
 			$(".a_top").fadeOut();

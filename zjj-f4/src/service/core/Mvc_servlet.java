@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.jspsmart.upload.SmartUpload;
 
 public class Mvc_servlet extends HttpServlet {
 	Map<String, String[]> map = null;
-
+   private static Logger log=Logger.getLogger(Mvc_servlet.class);
 	/**
 	 * Constructor of the object.
 	 */
@@ -168,7 +170,7 @@ public class Mvc_servlet extends HttpServlet {
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
-				System.out.println("此时为空");
+				log.error("这里为空正常不影响");;
 			}
 			
 			if (afd!=null) {

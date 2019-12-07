@@ -298,7 +298,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="row ">
 							<div class="col-lg-4 text-center col-lg-offset-4  visible-lg">
-								<h1>购物袋</h1>
+								<h1>分类</h1>
 							</div>
 						</div>
 			</div>

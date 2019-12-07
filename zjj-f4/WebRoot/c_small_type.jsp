@@ -244,6 +244,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/jquery.min.js">
 	
 </script>
+<script src="js/DF_JS.js">
+	
+</script>
 <script type="text/javascript">
 	//头部JS
 	var flag=0;
